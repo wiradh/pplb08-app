@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".view.pengguna.LoginActivity">
+    tools:context=".view.pengguna.Login">
 
     <RelativeLayout
         android:layout_centerInParent="true"
@@ -66,22 +66,6 @@
         </LinearLayout>
 
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/layout2"
-            android:layout_marginTop="20dp"
-            android:id="@+id/atau"
-            android:layout_marginBottom="10dp"
-            android:text="@string/atau"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Masuk dengan facebook"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/atau"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -97,7 +81,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/text1"
             android:layout_gravity="center"
-            android:text="@string/punya_laundry" />
+            android:text="@string/pengguna_laundry" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

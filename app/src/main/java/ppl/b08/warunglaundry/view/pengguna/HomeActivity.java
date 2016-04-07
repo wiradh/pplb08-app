@@ -9,7 +9,7 @@ import ppl.b08.warunglaundry.R;
 /**
  * Created by Andi Fajar on 07/04/2016.
  */
-public class Home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

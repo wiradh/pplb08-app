@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:text="Sebagai Pengguna Jasa Laundry"/>
+            android:text="Sebagai Penyedia Jasa Laundry"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/username_text"
@@ -37,7 +37,7 @@
                 android:id="@+id/username_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nama"/>
+                android:hint="Nama Laundry"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -78,6 +78,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nomer HP"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat Laundry"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Jangkauan Delivery Laundry (KM)"/>
         </android.support.design.widget.TextInputLayout>
 
         <CheckBox

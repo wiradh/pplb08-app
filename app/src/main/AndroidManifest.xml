@@ -9,10 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.pengguna.Home"
-            android:screenOrientation="portrait"></activity>
+            android:name=".view.pengguna.HomeActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".view.Login"
+            android:name=".view.pengguna.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.Register"
+            android:name=".view.pengguna.RegisterActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.penyedia.Home"></activity>
+        <activity android:name=".view.penyedia.HomeActivity" />
+        <activity android:name=".view.penyedia.LoginActivity" />
+        <activity android:name=".view.penyedia.RegisterActivity"></activity>
     </application>
 
 </manifest>

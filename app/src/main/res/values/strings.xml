@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Warung Laundry</string>
+    <string name="email_nama_hint">Email/Username</string>
+    <string name="password_hint">Sandi</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="punya_laundry">Seorang penyedia jasa laundry?</string>
+    <string name="login_laundry">Klik disini</string>
+    <string name="atau">atau</string>
+    <string name="pengguna_laundry">Seorang pengguna jasa laundry?</string>
 </resources>
