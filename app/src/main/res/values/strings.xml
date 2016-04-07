@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Warung Laundry</string>
-    <string name="email_nama_hint">Email/Username</string>
+    <string name="email_nama_hint">Email</string>
     <string name="password_hint">Sandi</string>
     <string name="login">Masuk</string>
     <string name="register">Daftar</string>

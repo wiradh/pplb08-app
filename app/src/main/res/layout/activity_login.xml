@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/username_edit_text"
+                android:id="@+id/email_txt"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email_nama_hint"/>
@@ -32,9 +33,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/password_text"
+                android:id="@+id/password_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="@string/password_hint"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -102,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_laundry"
+            android:id="@+id/change_btn"
             android:layout_gravity="center"
             android:textColor="@color/colorAccent"
             android:clickable="true"/>

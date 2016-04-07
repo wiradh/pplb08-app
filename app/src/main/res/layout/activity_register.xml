@@ -34,7 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/username_edit_text"
+                android:inputType="textCapWords"
+                android:id="@+id/name_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama"/>
@@ -46,6 +47,8 @@
             <EditText
 
                 android:layout_width="match_parent"
+                android:id="@+id/email_txt"
+                android:inputType="textEmailAddress"
                 android:layout_height="wrap_content"
                 android:hint="Email"/>
         </android.support.design.widget.TextInputLayout>
@@ -57,6 +60,8 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/password_txt"
+                android:inputType="textPassword"
                 android:hint="Sandi"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -64,7 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-
+                android:inputType="textPassword"
+                android:id="@+id/re_password_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ulangi Sandi"/>
@@ -74,7 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-
+                android:id="@+id/phone_txt"
+                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nomer HP"/>
@@ -83,6 +90,7 @@
         <CheckBox
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
+            android:id="@+id/checkbox"
             android:layout_height="wrap_content"
             android:text="Data yang saya masukkan benar"/>
 
@@ -90,6 +98,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/daftar_btn"
             android:text="Daftar"/>
     </LinearLayout>
 

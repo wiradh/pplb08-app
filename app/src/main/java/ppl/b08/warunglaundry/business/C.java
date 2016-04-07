@@ -5,4 +5,5 @@ package ppl.b08.warunglaundry.business;
  * Untuk menyimpan konstanta variable
  */
 public class C {
+    public final static String HOME_URL = "www.lalala.com";
 }
