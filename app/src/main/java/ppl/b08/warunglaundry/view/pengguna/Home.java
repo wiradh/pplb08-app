@@ -1,9 +1,15 @@
-package ppl.b08.warunglaundry;
+package ppl.b08.warunglaundry.view.pengguna;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class Home extends ActionBarActivity {
+import ppl.b08.warunglaundry.R;
+
+/**
+ * Created by Andi Fajar on 07/04/2016.
+ */
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
