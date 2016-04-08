@@ -12,12 +12,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
@@ -63,17 +67,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void register() {
 
-        String name = namaEdt.getText().toString();
-        String email = emailEdt.getText().toString();
-        String pasword = passwordEdt.getText().toString();
+        final String name = namaEdt.getText().toString();
+        final String email = emailEdt.getText().toString();
+        final String pasword = passwordEdt.getText().toString();
         String rePassword = rePasswordEdt.getText().toString();
-        String noHP = noHPEdt.getText().toString();
+        final String noHP = noHPEdt.getText().toString();
         boolean isCheck = checkBox.isSelected();
 
-        if (name.isEmpty() || email.isEmpty()||
-                pasword.isEmpty() || rePassword.isEmpty()
-                || noHP.isEmpty()) {
-            Toast.makeText(RegisterActivity.this, "Semua data wajib diisi", Toast.LENGTH_SHORT).show();
+        if (name.isEmpty() || email.isEmpty()|| pasword.isEmpty() ||
+                rePassword.isEmpty() || noHP.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Semua data harus diisi", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -122,7 +125,18 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "onErrorResponse: " + error.getMessage());
             }
-        });
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> re = new HashMap<>();
+                re.put("nama", name);
+                re.put("role", "0");
+                re.put("email", email);
+                re.put("pasword", pasword);
+                re.put("telepon", noHP);
+                return re;
+            }
+        };
 
         //TODO dummy
         Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);

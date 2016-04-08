@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
@@ -82,8 +85,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-        String email = emailEt.getText().toString();
-        String pass = paswordEt.getText().toString();
+        final String email = emailEt.getText().toString();
+        final String pass = paswordEt.getText().toString();
         if (email.isEmpty()) {
             Toast.makeText(this, "Email wajib diisi", Toast.LENGTH_SHORT).show();
             return;
@@ -119,7 +122,15 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
                 Log.e("volley", error.getMessage());
             }
-        });
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> re = new HashMap<>();
+                re.put("email", email);
+                re.put("pasword", pass);
+                return re;
+            }
+        };
 
         //TODO delete this blok
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
