@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getSupportActionBar().hide();
         PreferencesManager manager = PreferencesManager.getInstance(this);
         if (manager.getIdValue() != -1) {
             Intent intent = manager.getRoleValue() == 0 ?

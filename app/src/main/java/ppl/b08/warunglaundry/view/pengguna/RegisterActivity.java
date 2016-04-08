@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         namaEdt = (EditText) findViewById(R.id.name_txt);
         emailEdt = (EditText) findViewById(R.id.email_txt);
-        passwordEdt = (EditText) findViewById(R.id.password);
+        passwordEdt = (EditText) findViewById(R.id.password_txt);
         rePasswordEdt = (EditText) findViewById(R.id.re_password_txt);
         noHPEdt = (EditText) findViewById(R.id.phone_txt);
         checkBox = (CheckBox) findViewById(R.id.checkbox);

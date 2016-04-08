@@ -67,13 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
         String rePassword = rePasswordEdt.getText().toString();
         final String noHP = noHPEdt.getText().toString();
         final String alamat = alamatEdt.getText().toString();
-        final double jangkauan;
-        try {
-            jangkauan = Double.parseDouble(jangkauanEdt.getText().toString());
-        } catch (Exception e) {
-            Toast.makeText(RegisterActivity.this, "Jangkauan harus berupa angka dalam meter", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         boolean isCheck = checkBox.isSelected();
 
         if (name.isEmpty() || email.isEmpty() || pasword.isEmpty() ||
@@ -88,6 +82,14 @@ public class RegisterActivity extends AppCompatActivity {
         }
         if (!pasword.equals(rePassword)) {
             Toast.makeText(RegisterActivity.this, "Password tidak sesuai", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        final double jangkauan;
+        try {
+            jangkauan = Double.parseDouble(jangkauanEdt.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(RegisterActivity.this, "Jangkauan harus berupa angka dalam meter", Toast.LENGTH_SHORT).show();
             return;
         }
 

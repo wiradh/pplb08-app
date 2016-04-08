@@ -23,9 +23,11 @@
         <activity
             android:name=".view.pengguna.RegisterActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.penyedia.HomeActivity" />
-        <activity android:name=".view.penyedia.LoginActivity" />
-        <activity android:name=".view.penyedia.RegisterActivity"></activity>
+        <activity android:name=".view.penyedia.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.penyedia.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.penyedia.RegisterActivity"/>
     </application>
 
 </manifest>

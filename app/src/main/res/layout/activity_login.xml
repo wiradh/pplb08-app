@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".view.pengguna.LoginActivity">
 
+
     <RelativeLayout
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
@@ -16,6 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp">
+
+
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/username_text"
             android:layout_width="match_parent"
@@ -74,9 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/layout2"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/atau"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/atau"/>
         <Button
             android:layout_width="wrap_content"
@@ -90,8 +94,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
+        android:layout_below="@id/layout1"
+        android:layout_marginTop="30dp"
         android:id="@+id/linearLayout">
 
         <TextView
@@ -110,6 +114,50 @@
             android:clickable="true"/>
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_above="@id/layout1"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/ico"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/laundry_ico"/>
+        <LinearLayout
+            android:layout_toEndOf="@id/ico"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/masuk_sebagai"
+                android:layout_height="wrap_content"
+                android:text="Masuk sebagai :"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:text="Pengguna Jasa"
+                android:id="@+id/pengguna_jasa"
+                android:textColor="@color/colorAccent"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Laundry"
+                android:textColor="@color/colorPrimary"
+                />
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
 
 
