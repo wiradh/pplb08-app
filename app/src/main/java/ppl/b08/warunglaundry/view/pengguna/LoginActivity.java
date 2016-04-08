@@ -42,7 +42,9 @@ public class LoginActivity extends AppCompatActivity {
 
         PreferencesManager manager = PreferencesManager.getInstance(this);
         if (manager.getIdValue() != -1) {
-            Intent intent = new Intent(this,HomeActivity.class);
+            Intent intent = manager.getRoleValue() == 0 ?
+                    new Intent(this, ppl.b08.warunglaundry.view.pengguna.HomeActivity.class) :
+                    new Intent(this, ppl.b08.warunglaundry.view.penyedia.HomeActivity.class);
             startActivity(intent);
             finish();
         }
@@ -56,7 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -70,7 +73,9 @@ public class LoginActivity extends AppCompatActivity {
         changeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(LoginActivity.this, ppl.b08.warunglaundry.view.penyedia.LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -80,11 +85,11 @@ public class LoginActivity extends AppCompatActivity {
         String email = emailEt.getText().toString();
         String pass = paswordEt.getText().toString();
         if (email.isEmpty()) {
-            Toast.makeText(this, "Email wajib diisi",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Email wajib diisi", Toast.LENGTH_SHORT).show();
             return;
         }
         if (pass.isEmpty()) {
-            Toast.makeText(this, "Passeord wajib diisi",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Passeord wajib diisi", Toast.LENGTH_SHORT).show();
             return;
         }
         String url = C.HOME_URL + "/login";
@@ -95,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     int r = response.getInt("status");
                     if (r == 1) {
                         //TODO Sukses
-                        PreferencesManager.getInstance(LoginActivity.this).setIdValue("1123");
+                        PreferencesManager.getInstance(LoginActivity.this).setIdValue(111);
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
@@ -116,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //TODO delete this blok
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();

@@ -12,11 +12,12 @@ import ppl.b08.warunglaundry.BuildConfig;
  */
 public class PreferencesManager {
 
-    private static final String PREF_NAME="pref.name";
-    private static final String KEY_PREFERENCES_VERSION="pref.version";
-    private static final String KEY_ID="pref.id";
-    private static final String KEY_NAME="pref.name";
-    private static final String KEY_EMAIL="pref.email";
+    private static final String PREF_NAME = "NAME";
+    private static final String KEY_PREFERENCES_VERSION = "PREFERENCES_VERSION";
+    private static final String KEY_ID = "ID";
+    private static final String KEY_NAME = "NAME";
+    private static final String KEY_EMAIL = "EMAIL";
+    private static final String KEY_ROLE = "ROLE";
 
 
 
@@ -54,9 +55,9 @@ public class PreferencesManager {
         }
     }
 
-    public void setIdValue(String value) {
+    public void setIdValue(long value) {
         pref.edit()
-                .putString(KEY_ID, value)
+                .putLong(KEY_ID, value)
                 .apply();
     }
 
@@ -68,6 +69,14 @@ public class PreferencesManager {
         pref.edit()
                 .remove(key)
                 .apply();
+    }
+
+    public int getRoleValue() {
+        return pref.getInt(KEY_ROLE, 1);
+    }
+
+    public void setRoleValue(int role) {
+        pref.edit().putInt(KEY_ROLE, role).apply();
     }
 
     public boolean clear() {
