@@ -10,6 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.pengguna.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.pengguna.LoginActivity"
@@ -23,7 +24,9 @@
         <activity
             android:name=".view.pengguna.RegisterActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.penyedia.HomeActivity"
+        <activity
+            android:name=".view.penyedia.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name=".view.penyedia.LoginActivity"
             android:screenOrientation="portrait"/>
