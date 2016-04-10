@@ -1,5 +1,6 @@
 package ppl.b08.warunglaundry.view.penyedia;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import ppl.b08.warunglaundry.R;
+import ppl.b08.warunglaundry.business.PreferencesManager;
 
 /**
  * Created by Andi Fajar on 07/04/2016.
@@ -31,7 +33,10 @@ public class HomeActivity extends AppCompatActivity {
 
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
+        OrderFragment fragment = new OrderFragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.commit();
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -53,10 +58,19 @@ public class HomeActivity extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.order:
-                        Toast.makeText(getApplicationContext(),"Inbox Selected",Toast.LENGTH_SHORT).show();
+                        OrderFragment fragment = new OrderFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.frame,fragment);
+                        fragmentTransaction.commit();
                         return true;
 
                     // For rest of the options we just show a toast on click
+                    case R.id.logout:
+                        if (PreferencesManager.getInstance(HomeActivity.this).clear()) {
+                            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        };
 
 
                     default:
