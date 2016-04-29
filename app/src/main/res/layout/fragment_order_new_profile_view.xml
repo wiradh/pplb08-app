@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ppl.b08.warunglaundry.view.pengguna.OrderNewProfileViewFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:weightSum="10"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:text="Kembali"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="#FFF"
+                android:id="@+id/back_btn"
+                android:layout_height="match_parent" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                android:background="@color/colorAccent"
+                android:textColor="#FFF"
+                android:text="PESAN"
+                android:id="@+id/pesan_btn"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

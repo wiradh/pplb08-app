@@ -10,8 +10,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.pengguna.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.pengguna.LoginActivity"
             android:screenOrientation="portrait"
@@ -27,12 +27,21 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.penyedia.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.penyedia.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.penyedia.RegisterActivity"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.penyedia.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.penyedia.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.pengguna.OrderNewActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".view.pengguna.OrderCurrentActivity" />
+        <activity android:name=".view.pengguna.OrderCurrentDetail_Activity" />
+        <activity android:name=".view.pengguna.OrderHistoryActivity"></activity>
     </application>
 
 </manifest>
