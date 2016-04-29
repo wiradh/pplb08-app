@@ -68,7 +68,6 @@ public class RegisterActivity extends AppCompatActivity {
         final String noHP = noHPEdt.getText().toString();
         final String alamat = alamatEdt.getText().toString();
 
-        boolean isCheck = checkBox.isSelected();
 
         if (name.isEmpty() || email.isEmpty() || pasword.isEmpty() ||
                 rePassword.isEmpty() || noHP.isEmpty() || alamat.isEmpty()) {
@@ -93,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if (!isCheck) {
+        if (!checkBox.isSelected()) {
             Toast.makeText(RegisterActivity.this, "Silahkan centang bahwa data yang dimasukkan telah benar", Toast.LENGTH_SHORT).show();
             return;
         }
