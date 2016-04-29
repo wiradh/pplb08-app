@@ -24,6 +24,10 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import ppl.b08.warunglaundry.Entity.LProvider;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.MyLocation;
@@ -33,19 +37,26 @@ import ppl.b08.warunglaundry.business.MyLocation;
  */
 public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
+    SupportMapFragment mapFragment;
+    HashMap<String, LProvider> hashLaundry;
+    ArrayList<LProvider> arrLaundry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_new);
 
-
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
+        getListLaundry();
         mapFragment.getMapAsync(this);
 
+    }
+
+    public void getListLaundry() {
+        
     }
 
     /**
