@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if (!checkBox.isSelected()) {
+        if (!checkBox.isChecked()) {
             Toast.makeText(RegisterActivity.this, "Silahkan centang bahwa data yang dimasukkan telah benar", Toast.LENGTH_SHORT).show();
             return;
         }
