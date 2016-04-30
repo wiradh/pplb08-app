@@ -7,13 +7,11 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <meta-data
         android:name="com.google.android.maps.v2.API_KEY"
         android:value="AIzaSyBe9V4dLUdlvPUolgDTww8owSuW7E82PEg" />
-
-
 
     <application
         android:allowBackup="true"
@@ -67,6 +65,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".view.pengguna.OrderNewProfileActivity"></activity>
     </application>
 
 </manifest>
