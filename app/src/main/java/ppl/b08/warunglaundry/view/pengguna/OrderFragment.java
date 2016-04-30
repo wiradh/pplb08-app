@@ -49,8 +49,7 @@ public class OrderFragment extends Fragment {
         currentOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MapsActivity.class);
-                startActivity(intent);
+               
             }
         });
 

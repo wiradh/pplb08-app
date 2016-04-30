@@ -1,5 +1,7 @@
 package ppl.b08.warunglaundry.Entity;
 
+import ppl.b08.warunglaundry.business.C;
+
 /**
  * Created by Andi Fajar on 30/04/2016.
  */
@@ -16,8 +18,10 @@ public class LProvider {
     private String email;
     private String detil;
     private String lastLogin;
+    private double jarak;
 
-    public LProvider(long id, double lon, double lat, String nama, double harga) {
+
+    public LProvider(long id, double lat, double lon, String nama, double harga) {
         this.id = id;
         this.lat = lat;
         this.lon = lon;
@@ -120,4 +124,17 @@ public class LProvider {
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }
+
+    public double getJarak() {
+        return jarak;
+    }
+
+    public void setJarak(double jarak) {
+        this.jarak = jarak;
+    }
+
+    public void calculateDistance(double lat, double lon) {
+        this.jarak=C.distFrom(lat,lon,this.lat,this.lon);
+    }
+
 }
