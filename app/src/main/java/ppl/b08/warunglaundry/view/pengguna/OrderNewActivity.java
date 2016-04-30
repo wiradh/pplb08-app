@@ -2,6 +2,7 @@ package ppl.b08.warunglaundry.view.pengguna;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -53,6 +54,7 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_new);
+        getSupportActionBar().setTitle("New Order");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -142,7 +144,12 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
             @Override
             public void onInfoWindowClick(Marker marker) {
                 if (marker.getTitle().equalsIgnoreCase("saya")) return;
-                Toast.makeText(OrderNewActivity.this, "Harga laundry " + hashLaundry.get(marker.getTitle()).getHarga(), Toast.LENGTH_SHORT).show();
+                //TODO
+               // Toast.makeText(OrderNewActivity.this, "Harga laundry " + hashLaundry.get(marker.getTitle()).getHarga(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(OrderNewActivity.this, OrderNewProfileActivity.class);
+                intent.putExtra(C.KEY_LAUNDRY_ID, hashLaundry.get(marker.getTitle()).getId());
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                startActivity(intent);
             }
         });
     }

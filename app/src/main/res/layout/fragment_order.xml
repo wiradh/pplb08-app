@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="ppl.b08.warunglaundry.view.pengguna.OrderFragment">
 <LinearLayout
-    android:layout_gravity="center"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
@@ -12,16 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Order"
+        android:background="@color/colorAccent"
+        android:textColor="#FFF"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/new_order_btn"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="Current Order"
+        android:textColor="#FFF"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/current_order_btn"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="History Order"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#FFF"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/history_order_btn"/>
 </LinearLayout>
 

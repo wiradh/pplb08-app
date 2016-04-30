@@ -18,6 +18,7 @@ public class PreferencesManager {
     private static final String KEY_NAME = "NAME";
     private static final String KEY_EMAIL = "EMAIL";
     private static final String KEY_ROLE = "ROLE";
+    private static final String KEY_DETIL_ALAMAT = "DETIL_ALAMAT";
 
 
 
@@ -77,6 +78,14 @@ public class PreferencesManager {
 
     public void setRoleValue(int role) {
         pref.edit().putInt(KEY_ROLE, role).apply();
+    }
+
+    public String getAlamatValue() {
+        return pref.getString(KEY_DETIL_ALAMAT, "");
+    }
+
+    public void setAlamatValue(String alamat) {
+        pref.edit().putString(KEY_DETIL_ALAMAT, alamat).apply();
     }
 
     public boolean clear() {
