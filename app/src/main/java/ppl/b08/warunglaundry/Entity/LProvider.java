@@ -19,7 +19,20 @@ public class LProvider {
     private String detil;
     private String lastLogin;
     private double jarak;
+    private String pengerjaan;
 
+
+    public LProvider(long id, String nama, String lastLogin, String alamat, String telp, double harga, String pengerjaan, double jangkauan, double rate) {
+        this.id = id;
+        this.nama = nama;
+        this.lastLogin = lastLogin;
+        this.alamat = alamat;
+        this.telp = telp;
+        this.harga = harga;
+        this.pengerjaan = pengerjaan;
+        this.jangkauan = jangkauan;
+        this.rate = rate;
+    }
 
     public LProvider(long id, double lat, double lon, String nama, double harga) {
         this.id = id;
@@ -29,6 +42,13 @@ public class LProvider {
         this.harga = harga;
     }
 
+    public String getPengerjaan() {
+        return pengerjaan;
+    }
+
+    public void setPengerjaan(String pengerjaan) {
+        this.pengerjaan = pengerjaan;
+    }
     public double getLon() {
         return lon;
     }

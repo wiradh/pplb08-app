@@ -69,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         };
+                        return true;
 
                     // For rest of the options we just show a toast on click
 
