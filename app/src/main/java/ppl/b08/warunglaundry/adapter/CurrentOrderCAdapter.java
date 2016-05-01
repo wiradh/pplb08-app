@@ -58,8 +58,9 @@ public class CurrentOrderCAdapter extends BaseAdapter {
 
         holder.status.setTextColor(Color.parseColor(items.get(position).getColor()));
         holder.status.setText(items.get(position).getStatus());
-        holder.berat.setText(String.format("%.02f", items.get(position).getBerat()+" kg"));
-        holder.id.setText(items.get(position).getId()+"");
+        String berat = items.get(position).getBerat() == 0 ? "-" : String.format("%.02f", items.get(position).getBerat())+" kg";
+        holder.berat.setText(berat);
+        holder.id.setText("Order - "+items.get(position).getId());
         holder.nama.setText(items.get(position).getNamaProvider());
         holder.position = position;
 
