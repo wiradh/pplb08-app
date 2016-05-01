@@ -1,4 +1,4 @@
-package ppl.b08.warunglaundry.view.pengguna;
+package ppl.b08.warunglaundry.view.penyedia;
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 
 public class HistoryOrderDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
+
     private GoogleMap mMap;
     SupportMapFragment mapFragment;
     LatLng myLoc;
@@ -28,7 +29,8 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history_order_detail);
+        setContentView(R.layout.activity_history_order_detail2);
+
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
@@ -50,7 +52,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     }
 
     public void getOrder() {
-        order = new Order(orderId, 1, "Aishy Laundry", 5, 4,"08996222482", -6.3656374,106.8409036, "Rumah warna kuning, pager hijau nomer 41");
+        order = new Order(orderId, 1, "Aishy Laundry", 3, 5,"08996222482", -6.3656374,106.8409036, "Rumah warna kuning, pager hijau nomer 41");
         double harga = 7000;
 
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
