@@ -72,7 +72,10 @@
         <activity android:name=".view.penyedia.CheckOrderActivity" />
         <activity android:name=".view.penyedia.ChangeOrderActivity" />
         <activity android:name=".view.penyedia.CheckOrderChangeActivity" />
-        <activity android:name=".view.penyedia.ChangeOrderNextActivity"></activity>
+        <activity android:name=".view.penyedia.ChangeOrderNextActivity" />
+        <activity android:name=".view.pengguna.CurrentOrderDetailActivity" />
+        <activity android:name=".view.pengguna.HistoryOrderDetailActivity" />
+        <activity android:name=".view.penyedia.HistoryOrderDetailActivity"></activity>
     </application>
 
 </manifest>

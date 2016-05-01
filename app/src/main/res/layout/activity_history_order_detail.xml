@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ppl.b08.warunglaundry.view.pengguna.HistoryOrderDetailActivity">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nama_txt"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Nama Laundry"
+                style="@style/Base.TextAppearance.AppCompat.Large"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/status_txt"
+                android:textColor="@color/colorAccent"
+                android:text="Status : Accepted"
+                style="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/phone_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:hint="No Telp"
+                    android:text="0898987"
+                    android:cursorVisible="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/berat_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Berat"
+                    android:text="4 kg"
+                    android:cursorVisible="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/harga_satuan_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga per kg"
+                    android:text="Rp5000.00"
+                    android:cursorVisible="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/harga_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga total"
+                    android:text="Rp15000"
+                    android:cursorVisible="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/detil_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Detil Lokasi Penjemputan"
+                    android:text="Jalan alhidayah, rumah warna coklat nomer 43"
+                    android:cursorVisible="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <fragment
+                android:id="@+id/map"
+                android:layout_marginTop="5dp"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="40dp"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

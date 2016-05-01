@@ -1,5 +1,6 @@
 package ppl.b08.warunglaundry.view.penyedia;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import ppl.b08.warunglaundry.Entity.Order;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.adapter.HistoryOrderPAdapter;
+import ppl.b08.warunglaundry.business.C;
+import ppl.b08.warunglaundry.view.pengguna.*;
 
 public class HistoryOrderActivity extends AppCompatActivity {
 
@@ -27,7 +30,9 @@ public class HistoryOrderActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(HistoryOrderActivity.this, ppl.b08.warunglaundry.view.pengguna.HistoryOrderDetailActivity.class);
+                intent.putExtra(C.KEY_ORDER, id);
+                startActivity(intent);
             }
         });
 
