@@ -1,6 +1,8 @@
 package ppl.b08.warunglaundry.adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,24 +11,20 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ppl.b08.warunglaundry.Entity.LProvider;
+import ppl.b08.warunglaundry.Entity.Order;
 import ppl.b08.warunglaundry.R;
 
 /**
- * Created by Andi Fajar on 30/04/2016.
+ * Created by Andi Fajar on 01/05/2016.
  */
-public class NewOrderAdapter extends BaseAdapter {
+public class CurrentOrderCAdapter extends BaseAdapter {
 
-    ArrayList<LProvider> items;
+    ArrayList<Order> items;
     Context context;
 
-    public NewOrderAdapter(ArrayList<LProvider> items) {
+    public CurrentOrderCAdapter(ArrayList<Order> items, Context context) {
         this.items = items;
-    }
-    public NewOrderAdapter(Context context, ArrayList<LProvider> items) {
         this.context = context;
-        this.items =  items;
-      //  Log.e("ASD", "NewOrderAdapter: " + items);
     }
 
     @Override
@@ -46,32 +44,33 @@ public class NewOrderAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         if(convertView == null) {
             // Inflate a new View every time a new row requires one.
-            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_new_order, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_current_order, parent, false);
         }
-
-
 
         ViewHolder holder = new ViewHolder();
         holder.nama = (TextView) convertView.findViewById(R.id.nama_txt);
-        holder.jarak = (TextView) convertView.findViewById(R.id.jarak_txt);
-        holder.harga = (TextView) convertView.findViewById(R.id.harga_txt);
-        holder.position = position;
+        holder.berat = (TextView) convertView.findViewById(R.id.berat_txt);
+        holder.status = (TextView) convertView.findViewById(R.id.status_txt);
+        holder.id = (TextView) convertView.findViewById(R.id.id_txt);
         convertView.setTag(holder);
 
-        holder.nama.setText(items.get(position).getNama());
-        holder.jarak.setText(String.format("%.02f", items.get(position).getJarak())+" meter");
-        holder.harga.setText("Rp"+String.format("%.02f", items.get(position).getHarga()));
+        holder.status.setTextColor(Color.parseColor(items.get(position).getColor()));
+        holder.status.setText(items.get(position).getStatus());
+        holder.berat.setText(String.format("%.02f", items.get(position).getBerat()+" kg"));
+        holder.id.setText(items.get(position).getId()+"");
+        holder.nama.setText(items.get(position).getNamaProvider());
+        holder.position = position;
 
         return convertView;
     }
 
     static class ViewHolder {
         public TextView nama;
-        public TextView jarak;
-        public TextView harga;
+        public TextView id;
+        public TextView berat;
+        public TextView status;
         public int position;
     }
 }
