@@ -16,12 +16,12 @@ import ppl.b08.warunglaundry.R;
 /**
  * Created by Andi Fajar on 01/05/2016.
  */
-public class HistoryOrderPAdapter extends BaseAdapter {
+public class ChangeOrderPAdapter extends BaseAdapter {
 
     ArrayList<Order> items;
     Context context;
 
-    public HistoryOrderPAdapter(ArrayList<Order> items, Context context) {
+    public ChangeOrderPAdapter(ArrayList<Order> items, Context context) {
         this.items = items;
         this.context = context;
     }
@@ -56,8 +56,8 @@ public class HistoryOrderPAdapter extends BaseAdapter {
         convertView.setTag(holder);
 
         holder.status.setTextColor(Color.parseColor(items.get(position).getColor()));
-        holder.status.setText("Rp"+String.format("%.02f", items.get(position).getHargaTotal()));
-        String berat =  String.format("%.02f", items.get(position).getBerat())+" kg";
+        holder.status.setText(items.get(position).getStatusStr());
+        String berat = items.get(position).getBerat() == 0 ? "-" : String.format("%.02f", items.get(position).getBerat())+" kg";
         holder.berat.setText(berat);
         holder.id.setText("Order - "+items.get(position).getId());
         holder.nama.setText(items.get(position).getNamaCustomer());

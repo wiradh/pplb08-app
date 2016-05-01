@@ -19,9 +19,22 @@ public class Order {
     private String namaCustomer;
     private String namaProvider;
     private String color;
+    private double lng;
+    private double lat;
+    private String phone;
+    private String detilLokasi;
+
+
 
     public static final String[] statusStr = {"pending", "canceled", "accepted", "on-going", "done", "complete"};
 
+    /**
+     * Construktor untuk model Current Order Customer
+     * @param id
+     * @param namaProvider
+     * @param status
+     * @param berat
+     */
     public Order(long id, String namaProvider, int status, double berat) {
         this.id = id;
         this.namaProvider = namaProvider;
@@ -29,6 +42,15 @@ public class Order {
         this.berat = berat;
         setColor();
     }
+
+    /**
+     * Construktor untuk model History Order Customer
+     * @param id
+     * @param namaProvider
+     * @param status
+     * @param berat
+     * @param hargaTotal
+     */
     public Order(long id, String namaProvider, int status, double berat, double hargaTotal) {
         this.id = id;
         this.namaProvider = namaProvider;
@@ -38,8 +60,58 @@ public class Order {
         setColor();
     }
 
+    /**
+     * Construktor untuk model History Order Provider
+     * @param id
+     * @param idCustomer
+     * @param namaCustomer
+     * @param hargaTotal
+     * @param berat
+     * @param status
+     */
+    public Order(long id, long idCustomer, String namaCustomer, double hargaTotal, double berat, int status) {
+        this.id = id;
+        this.idCustomer = idCustomer;
+        this.namaCustomer = namaCustomer;
+        this.hargaTotal = hargaTotal;
+        this.berat = berat;
+        this.status = status;
+        setColor();
+    }
+
+    /**
+     * Construktor untuk model Change Order Provider
+     * @param id
+     * @param idCustomer
+     * @param namaCustomer
+     * @param status
+     * @param berat
+     */
+    public Order(long id,  long idCustomer, String namaCustomer, int status, double berat) {
+        this.id = id;
+        this.idCustomer = idCustomer;
+        this.namaCustomer = namaCustomer;
+        this.status = status;
+        this.berat = berat;
+        setColor();
+    }
+
+
+    public Order(long id,  long idCustomer, String namaCustomer, int status, double berat, String phone, double lat, double lng, String detil) {
+        this.id = id;
+        this.phone = phone;
+        this.idCustomer = idCustomer;
+        this.namaCustomer = namaCustomer;
+        this.status = status;
+        this.berat = berat;
+        this.lat = lat;
+        this.lng = lng;
+        this.detilLokasi = detil;
+        setColor();
+    }
+
+
     public void setColor() {
-        //TODO
         switch (status) {
             case 0:
                 color = "#FFC107";
@@ -172,5 +244,37 @@ public class Order {
 
     public String getStatusStr() {
         return statusStr[status];
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getDetilLokasi() {
+        return detilLokasi;
+    }
+
+    public void setDetilLokasi(String detilLokasi) {
+        this.detilLokasi = detilLokasi;
     }
 }

@@ -64,8 +64,6 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
         markers = new HashMap<>();
         mapFragment.getMapAsync(this);
 
-        getListLaundry();
-
 
     }
 
