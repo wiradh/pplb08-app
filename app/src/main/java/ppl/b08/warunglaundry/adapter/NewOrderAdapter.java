@@ -1,7 +1,6 @@
 package ppl.b08.warunglaundry.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import ppl.b08.warunglaundry.Entity.LProvider;
 import ppl.b08.warunglaundry.R;
@@ -51,7 +49,7 @@ public class NewOrderAdapter extends BaseAdapter {
 
         if(convertView == null) {
             // Inflate a new View every time a new row requires one.
-            convertView = LayoutInflater.from(context).inflate(R.layout.layout_new_order_adapter, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_new_order, parent, false);
         }
 
 

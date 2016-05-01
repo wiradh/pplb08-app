@@ -165,16 +165,16 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
 
     public void setListView(){
         Collection<LProvider> locations =  hashLaundry.values();
-        final ArrayList<LProvider> items = new ArrayList<>(locations);
+        ArrayList<LProvider> items = new ArrayList<>(locations);
 //        Log.e("SADSADSD", "setListView: " + items);
         //NewOrderAdapter adapter = new NewOrderAdapter( items);
-        NewOrderAdapter adapter = new NewOrderAdapter(OrderNewActivity.this, items);
+        final NewOrderAdapter adapter = new NewOrderAdapter(OrderNewActivity.this, items);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Marker a = markers.get(items.get(position).getNama());
+                Marker a = markers.get(((LProvider)adapter.getItem(position)).getNama());
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(a.getPosition()));
                 a.showInfoWindow();
             }

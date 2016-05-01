@@ -42,14 +42,16 @@ public class OrderFragment extends Fragment {
         historyOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                Intent intent = new Intent(getContext(), HistoryOrderActivity.class);
+                startActivity(intent);
             }
         });
 
         currentOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               
+                Intent intent = new Intent(getContext(), CurrentOrderActivity.class);
+                startActivity(intent);
             }
         });
 
