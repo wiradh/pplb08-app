@@ -11,6 +11,7 @@ public class C {
     public final static String MAP_KEY = "AIzaSyBe9V4dLUdlvPUolgDTww8owSuW7E82PEg";
     public static final int MY_PERMISSION_ACCESS_COURSE_LOCATION = 1000;
     public static final String KEY_LAUNDRY_ID = "LAUNDRY_ID";
+    public static final String KEY_ORDER = "ORDER";
 
     public final static boolean isValidEmail(CharSequence target) {
         if (TextUtils.isEmpty(target)) {
