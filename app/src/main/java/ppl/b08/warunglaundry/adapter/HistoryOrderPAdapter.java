@@ -56,7 +56,8 @@ public class HistoryOrderPAdapter extends BaseAdapter {
         convertView.setTag(holder);
 
         holder.status.setTextColor(Color.parseColor(items.get(position).getColor()));
-        holder.status.setText("Rp"+String.format("%.02f", items.get(position).getHargaTotal()));
+        String message = items.get(position).getHargaTotal()==0?"Canceled":"Rp"+String.format("%.02f", items.get(position).getHargaTotal());
+        holder.status.setText(message);
         String berat =  String.format("%.02f", items.get(position).getBerat())+" kg";
         holder.berat.setText(berat);
         holder.id.setText("Order - "+items.get(position).getId());

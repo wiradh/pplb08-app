@@ -1,5 +1,6 @@
 package ppl.b08.warunglaundry.view.penyedia;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import ppl.b08.warunglaundry.Entity.Order;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.adapter.ChangeOrderPAdapter;
+import ppl.b08.warunglaundry.business.C;
 
 public class ChangeOrderActivity extends AppCompatActivity {
 
@@ -28,6 +30,9 @@ public class ChangeOrderActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //TODO
+                Intent intent = new Intent(ChangeOrderActivity.this, ChangeOrderNextActivity.class);
+                intent.putExtra(C.KEY_ORDER, id);
+                startActivity(intent);
             }
         });
 
