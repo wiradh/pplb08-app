@@ -18,6 +18,8 @@ public class PreferencesManager {
     private static final String KEY_NAME = "NAME";
     private static final String KEY_EMAIL = "EMAIL";
     private static final String KEY_ROLE = "ROLE";
+    private static final String KEY_DETIL_ALAMAT = "DETIL_ALAMAT";
+    private static final String KEY_TOKEN = "TOKEN";
 
 
 
@@ -79,11 +81,25 @@ public class PreferencesManager {
         pref.edit().putInt(KEY_ROLE, role).apply();
     }
 
+    public String getAlamatValue() {
+        return pref.getString(KEY_DETIL_ALAMAT, "");
+    }
+
+    public void setAlamatValue(String alamat) {
+        pref.edit().putString(KEY_DETIL_ALAMAT, alamat).apply();
+    }
+
     public boolean clear() {
         return pref.edit()
                 .clear()
                 .commit();
     }
 
+    public String getToken() {
+        return pref.getString(KEY_TOKEN, "");
+    }
 
+    public void setToken(String tokon) {
+        pref.edit().putString(KEY_TOKEN, tokon).apply();
+    }
 }

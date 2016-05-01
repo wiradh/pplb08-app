@@ -1,5 +1,7 @@
 package ppl.b08.warunglaundry.Entity;
 
+import ppl.b08.warunglaundry.business.C;
+
 /**
  * Created by Andi Fajar on 30/04/2016.
  */
@@ -16,8 +18,23 @@ public class LProvider {
     private String email;
     private String detil;
     private String lastLogin;
+    private double jarak;
+    private String pengerjaan;
 
-    public LProvider(long id, double lon, double lat, String nama, double harga) {
+
+    public LProvider(long id, String nama, String lastLogin, String alamat, String telp, double harga, String pengerjaan, double jangkauan, double rate) {
+        this.id = id;
+        this.nama = nama;
+        this.lastLogin = lastLogin;
+        this.alamat = alamat;
+        this.telp = telp;
+        this.harga = harga;
+        this.pengerjaan = pengerjaan;
+        this.jangkauan = jangkauan;
+        this.rate = rate;
+    }
+
+    public LProvider(long id, double lat, double lon, String nama, double harga) {
         this.id = id;
         this.lat = lat;
         this.lon = lon;
@@ -25,6 +42,13 @@ public class LProvider {
         this.harga = harga;
     }
 
+    public String getPengerjaan() {
+        return pengerjaan;
+    }
+
+    public void setPengerjaan(String pengerjaan) {
+        this.pengerjaan = pengerjaan;
+    }
     public double getLon() {
         return lon;
     }
@@ -120,4 +144,17 @@ public class LProvider {
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }
+
+    public double getJarak() {
+        return jarak;
+    }
+
+    public void setJarak(double jarak) {
+        this.jarak = jarak;
+    }
+
+    public void calculateDistance(double lat, double lon) {
+        this.jarak=C.distFrom(lat,lon,this.lat,this.lon);
+    }
+
 }
