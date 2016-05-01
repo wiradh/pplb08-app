@@ -1,4 +1,4 @@
-package ppl.b08.warunglaundry.view.pengguna;
+package ppl.b08.warunglaundry.view.penyedia;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import ppl.b08.warunglaundry.Entity.Order;
 import ppl.b08.warunglaundry.R;
-import ppl.b08.warunglaundry.adapter.HistoryOrderCAdapter;
+import ppl.b08.warunglaundry.adapter.HistoryOrderPAdapter;
 
 public class HistoryOrderActivity extends AppCompatActivity {
 
@@ -19,12 +19,10 @@ public class HistoryOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history_order);
+        setContentView(R.layout.activity_history_order2);
         getSupportActionBar().setTitle("History Order");
 
         listView = (ListView) findViewById(R.id.list);
-
-        getAndSyncListView();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -32,23 +30,24 @@ public class HistoryOrderActivity extends AppCompatActivity {
 
             }
         });
+
+        getAndSyncListView();
     }
 
     public void getAndSyncListView(){
-        String[] namaLaundry = {"Sejahtera Laundry", "Clean Laundry", "Aishy Laundry", "Miku Laundry", "Wayang Laundry"};
-        double[] harga = {6000, 6500, 7000, 5000, 9000};
-        double[] berat = {3, 2, 4, 5, 1, 3};
-        String[] status = {"dilaporkan", "penjemputan", "dicuci", "pengeringan", "disetrika", "pengantaran","selesai"};
-        int[] pos1 = {0, 1, 0, 4, 3, 2};
-        int[] pos2 = {3, 1, 2, 4, 5, 3};
+        String[] namaPemesan = {"Bear ruang", "Wira DH", "Abdul Soclin", "Downy Wangkito", "Bang Kohir"};
+        double harga = 6000;
+        double[] berat = {3, 2, 0, 5, 0};
+        int[] status = {5,5,0,5,0};
 
         ArrayList<Order> items = new ArrayList<>();
 
-        for (int i = 0; i < 6; i++) {
-            items.add(new Order(6-i, namaLaundry[pos1[i]], 5, berat[pos2[i]], harga[pos1[i]] * berat[pos2[i]]));
+        for (int i = 0; i < 4; i++) {
+            items.add(new Order(i, i, namaPemesan[i], harga*berat[i], berat[i], status[i] ));
         }
 
-        HistoryOrderCAdapter adapter = new HistoryOrderCAdapter(items, this);
+        HistoryOrderPAdapter adapter = new HistoryOrderPAdapter(items, this);
         listView.setAdapter(adapter);
+
     }
 }
