@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import ppl.b08.warunglaundry.Entity.Order;
 import ppl.b08.warunglaundry.R;
+import ppl.b08.warunglaundry.adapter.CurrentOrderCAdapter;
 
 public class CurrentOrderActivity extends AppCompatActivity {
 
@@ -34,13 +35,20 @@ public class CurrentOrderActivity extends AppCompatActivity {
     public void getAndSyncListView() {
         String[] namaLaundry = {"Sejahtera Laundry", "Clean Laundry", "Aishy Laundry", "Miku Laundry", "Wayang Laundry"};
         double[] harga = {6000, 6500, 7000, 5000, 9000};
+        double[] berat = {4, 0, 3, 2, 6, 2};
         String[] status = {"dilaporkan", "penjemputan", "dicuci", "pengeringan", "disetrika", "pengantaran","selesai"};
+        int[] pos1 = {0, 1, 0, 4, 3, 2};
+        int[] pos2 = {3, 1, 2, 4, 5, 3};
 
         ArrayList<Order> items = new ArrayList<>();
 
+        items.add(new Order(6, "Aishy Laundry", "dilaporkan", 0));
         for (int i = 1; i < 7; i++) {
-
+            items.add(new Order(6-i, namaLaundry[pos1[i-1]], status[pos2[i-1]], berat[pos2[i-1]]));
         }
+
+        CurrentOrderCAdapter adapter = new CurrentOrderCAdapter(items, this);
+        listView.setAdapter(adapter);
 //
 //        hashLaundry.put("Sejahtera Laundry", new LProvider(1,-6.35628,106.83539,"Sejahtera Laundry",6000));
 //        hashLaundry.put("Clean Laundry", new LProvider(1,-6.36055,106.83329,"Clean Laundry",6500));

@@ -20,6 +20,14 @@ public class Order {
     private String namaProvider;
     private String color;
 
+    public Order(long id, String namaProvider, String status, double berat) {
+        this.id = id;
+        this.namaProvider = namaProvider;
+        this.status = status;
+        this.berat = berat;
+        setColor();
+    }
+
     public void setColor() {
         if ("dilaporkan".equalsIgnoreCase(status) ||  "penjemputan".equalsIgnoreCase(status)) {
             color = "#F44336";

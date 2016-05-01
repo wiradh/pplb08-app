@@ -74,7 +74,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
     }
 
     public void getAndSyncData() {
-        model = new LProvider(laundryId,"Aisha Laundry", "12 April 2016", "Apartemen Taman Melati lantai 1 nomer 31","08997677231", 9000,"1-2 hari",2000,8.7);
+        model = new LProvider(laundryId,"Aishy Laundry", "12 April 2016", "Apartemen Taman Melati lantai 1 nomer 31","08997677231", 7000,"1-2 hari",2000,8.7);
 
 
 
