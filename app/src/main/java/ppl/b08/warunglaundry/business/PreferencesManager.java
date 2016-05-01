@@ -19,6 +19,7 @@ public class PreferencesManager {
     private static final String KEY_EMAIL = "EMAIL";
     private static final String KEY_ROLE = "ROLE";
     private static final String KEY_DETIL_ALAMAT = "DETIL_ALAMAT";
+    private static final String KEY_TOKEN = "TOKEN";
 
 
 
@@ -94,5 +95,11 @@ public class PreferencesManager {
                 .commit();
     }
 
+    public String getToken() {
+        return pref.getString(KEY_TOKEN, "");
+    }
 
+    public void setToken(String tokon) {
+        pref.edit().putString(KEY_TOKEN, tokon).apply();
+    }
 }
