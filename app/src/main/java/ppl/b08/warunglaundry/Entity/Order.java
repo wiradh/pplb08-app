@@ -7,7 +7,7 @@ import android.graphics.Color;
  */
 public class Order {
     private long id;
-    private String status;
+    private int status;
     private String jamAmbil;
     private String jamAntar;
     private String tipe;
@@ -20,14 +20,16 @@ public class Order {
     private String namaProvider;
     private String color;
 
-    public Order(long id, String namaProvider, String status, double berat) {
+    public static final String[] statusStr = {"pending", "canceled", "accepted", "on-going", "done", "complete"};
+
+    public Order(long id, String namaProvider, int status, double berat) {
         this.id = id;
         this.namaProvider = namaProvider;
         this.status = status;
         this.berat = berat;
         setColor();
     }
-    public Order(long id, String namaProvider, String status, double berat, double hargaTotal) {
+    public Order(long id, String namaProvider, int status, double berat, double hargaTotal) {
         this.id = id;
         this.namaProvider = namaProvider;
         this.status = status;
@@ -37,11 +39,31 @@ public class Order {
     }
 
     public void setColor() {
-        if ("dilaporkan".equalsIgnoreCase(status) ||  "penjemputan".equalsIgnoreCase(status)) {
-            color = "#F44336";
-        } else if ("dicuci".equalsIgnoreCase(status) || "pengeringan".equalsIgnoreCase(status) || "disetrika".equalsIgnoreCase(status)){
-            color = "#0288D1";
-        } else color = "#4CAF50";
+        //TODO
+        switch (status) {
+            case 0:
+                color = "#FFC107";
+                break;
+            case 1:
+                color = "#F44336";
+                break;
+            case 2:
+                color = "#03A9F4";
+                break;
+            case 3:
+                color = "#0288D1";
+                break;
+            case 4:
+                color = "#4CAF50";
+                break;
+            case 5:
+                color = "#4CAF50";
+                break;
+            default:
+                color = "#4CAF50";
+                break;
+        }
+
     }
 
     public long getId() {
@@ -52,11 +74,11 @@ public class Order {
         this.id = id;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -146,5 +168,9 @@ public class Order {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getStatusStr() {
+        return statusStr[status];
     }
 }
