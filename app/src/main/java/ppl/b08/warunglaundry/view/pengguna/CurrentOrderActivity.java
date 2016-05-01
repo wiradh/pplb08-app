@@ -1,5 +1,6 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import ppl.b08.warunglaundry.Entity.Order;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.adapter.CurrentOrderCAdapter;
+import ppl.b08.warunglaundry.business.C;
 
 public class CurrentOrderActivity extends AppCompatActivity {
 
@@ -27,7 +29,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(CurrentOrderActivity.this, CurrentOrderDetailActivity.class);
+                intent.putExtra(C.KEY_ORDER, id);
+                startActivity(intent);
             }
         });
     }
