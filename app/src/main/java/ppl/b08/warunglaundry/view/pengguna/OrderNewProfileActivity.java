@@ -1,11 +1,15 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ppl.b08.warunglaundry.Entity.LProvider;
 import ppl.b08.warunglaundry.R;
@@ -86,9 +90,51 @@ public class OrderNewProfileActivity extends AppCompatActivity {
 
     public void order() {
         if (detilTxt.getText().toString().isEmpty()) {
-
+            Toast.makeText(OrderNewProfileActivity.this, "Isi detil alamat penjemputan terlebih dahulu", Toast.LENGTH_SHORT).show();
+            return;
         }
         //TODO
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Memesan Jasa Laundry ini?");
+        String message = "Nama : " + model.getNama() + "\nHarga per kg : Rp"+String.format("%.02f", model.getHarga())
+                +"\nRata-rata pengerjaan : "+model.getPengerjaan()+"\n\nDetil lokasi penjemputan : " +detilTxt.getText();
+        builder.setMessage(message);
+        builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.setPositiveButton("Pesan", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                kirimRequestOrder();
+            }
+        });
+        builder.show();
+
+    }
+
+    private void kirimRequestOrder() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Terima kasih");
+        String message = "Pesanan anda telah terkirim ke penyedia jasa laundry";
+        builder.setMessage(message);
+        
+        builder.setPositiveButton("Pesan", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Intent i = new Intent(OrderNewProfileActivity.this,HomeActivity.class);
+
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(i);
+                finish(); // to end the current activity
+                Toast.makeText(OrderNewProfileActivity.this, "Pesanan telah ditambahkan ke current order", Toast.LENGTH_LONG).show();
+
+            }
+        });
+        builder.show();
     }
 
     @Override
