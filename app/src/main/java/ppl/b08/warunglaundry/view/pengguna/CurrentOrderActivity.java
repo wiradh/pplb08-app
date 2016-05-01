@@ -19,7 +19,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_order);
-
+        getSupportActionBar().setTitle("Current Order");
         listView = (ListView) findViewById(R.id.list);
 
         getAndSyncListView();
@@ -35,16 +35,16 @@ public class CurrentOrderActivity extends AppCompatActivity {
     public void getAndSyncListView() {
         String[] namaLaundry = {"Sejahtera Laundry", "Clean Laundry", "Aishy Laundry", "Miku Laundry", "Wayang Laundry"};
         double[] harga = {6000, 6500, 7000, 5000, 9000};
-        double[] berat = {4, 0, 3, 2, 6, 2};
-        String[] status = {"dilaporkan", "penjemputan", "dicuci", "pengeringan", "disetrika", "pengantaran","selesai"};
+        double[] berat = {0, 4, 3, 2, 0, 2};
+        String[] status = {"pending", "canceled", "accepted", "on-going", "done", "complete"};
         int[] pos1 = {0, 1, 0, 4, 3, 2};
-        int[] pos2 = {3, 1, 2, 4, 5, 3};
+        int[] pos2 = {0, 4, 4, 3, 2, 3};
 
         ArrayList<Order> items = new ArrayList<>();
 
-        items.add(new Order(6, "Aishy Laundry", "dilaporkan", 0));
+        items.add(new Order(6, "Aishy Laundry", 0, 0));
         for (int i = 1; i < 7; i++) {
-            items.add(new Order(6-i, namaLaundry[pos1[i-1]], status[pos2[i-1]], berat[pos2[i-1]]));
+            items.add(new Order(6-i, namaLaundry[pos1[i-1]], pos2[i-1], berat[i-1]));
         }
 
         CurrentOrderCAdapter adapter = new CurrentOrderCAdapter(items, this);

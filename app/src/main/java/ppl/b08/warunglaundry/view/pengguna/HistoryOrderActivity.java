@@ -20,6 +20,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_order);
+        getSupportActionBar().setTitle("History Order");
 
         listView = (ListView) findViewById(R.id.list);
 
@@ -44,7 +45,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
         ArrayList<Order> items = new ArrayList<>();
 
         for (int i = 0; i < 6; i++) {
-            items.add(new Order(6-i, namaLaundry[pos1[i]], status[6], berat[pos2[i]], harga[pos1[i]] * berat[pos2[i]]));
+            items.add(new Order(6-i, namaLaundry[pos1[i]], 5, berat[pos2[i]], harga[pos1[i]] * berat[pos2[i]]));
         }
 
         HistoryOrderCAdapter adapter = new HistoryOrderCAdapter(items, this);
