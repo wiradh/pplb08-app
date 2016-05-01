@@ -27,6 +27,14 @@ public class Order {
         this.berat = berat;
         setColor();
     }
+    public Order(long id, String namaProvider, String status, double berat, double hargaTotal) {
+        this.id = id;
+        this.namaProvider = namaProvider;
+        this.status = status;
+        this.berat = berat;
+        this.hargaTotal = hargaTotal;
+        setColor();
+    }
 
     public void setColor() {
         if ("dilaporkan".equalsIgnoreCase(status) ||  "penjemputan".equalsIgnoreCase(status)) {
