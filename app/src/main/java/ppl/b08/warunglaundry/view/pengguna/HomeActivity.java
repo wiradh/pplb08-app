@@ -54,7 +54,10 @@ public class HomeActivity extends AppCompatActivity {
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
 
-
+                    case R.id.credits:
+                        Intent intent2 = new Intent(HomeActivity.this, CreditActivity.class);
+                        startActivity(intent2);
+                        return true;
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.order:
                         OrderFragment fragment = new OrderFragment();
