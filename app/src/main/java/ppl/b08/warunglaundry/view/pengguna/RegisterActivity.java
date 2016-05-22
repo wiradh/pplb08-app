@@ -17,7 +17,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -96,10 +98,49 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         String url = C.HOME_URL + "/register";
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject hasil = null;
+                try {
+                    hasil = new JSONObject(response);
+                    int status = hasil.getInt("status");
+                    if(status == 1){
+                        Log.e(TAG, "onResponse: sukses" );
+                        PreferencesManager.getInstance(RegisterActivity.this).setToken(hasil.getString("token"));
+                        PreferencesManager.getInstance(RegisterActivity.this).setRoleValue("CU");
+                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(RegisterActivity.this, "Email telah terdaftar", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(RegisterActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(RegisterActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "onErrorResponse: " + error.toString() );
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> input = new HashMap<>();
+                input.put("name",name);
+                input.put("password",pasword);
+                input.put("nomor_hp",noHP);
+                input.put("email",email);
+                return input;
+            }
+        };
 
         //TODO dummy
 
-     //VolleySingleton.getInstance(this).addToRequestQueue(request);
+     VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 
 
