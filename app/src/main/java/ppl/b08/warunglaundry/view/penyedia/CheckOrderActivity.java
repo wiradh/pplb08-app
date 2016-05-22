@@ -79,7 +79,7 @@ public class CheckOrderActivity extends AppCompatActivity {
                             if(!tmp.equals("")){
                                 harga = a.getDouble("harga");
                             }
-                            items.add(new Order(a.getLong("id"),a.getString("nama_laundry"),a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), 0, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi")));
+                            items.add(new Order(a.getLong("id"),a.getString("nama_laundry"),a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), 0, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
                         }
 
                         adapter = new ChangeOrderPAdapter(items, CheckOrderActivity.this);

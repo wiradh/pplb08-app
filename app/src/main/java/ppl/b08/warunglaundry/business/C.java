@@ -18,6 +18,7 @@ public class C {
     public static final String KEY_ORDER = "ORDER";
     public static final String KEY_LONG = "LONG";
     public static final String KEY_LAT = "LAT";
+    public static final String KONEKSI_GAGAL = "Kesalahan jaringan, silahkan coba lagi";
 
     public final static boolean isValidEmail(CharSequence target) {
         if (TextUtils.isEmpty(target)) {
