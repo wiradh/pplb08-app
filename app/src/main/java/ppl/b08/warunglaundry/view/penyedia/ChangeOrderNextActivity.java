@@ -147,19 +147,18 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
         if (status == 2) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Ubah status pesanan");
+            final int statusB = status;
             builder.setMessage("Silahkan pilih salah satu status pesanan");
             builder.setNegativeButton("Cancelled", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(ChangeOrderNextActivity.this, "Pesanan dibatalkan", Toast.LENGTH_SHORT).show();
-                    finish();
+                    ubahStatusAPI(statusB - 1);
                 }
             });
             builder.setPositiveButton("On Process", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah On Progress", Toast.LENGTH_SHORT).show();
-                    finish();
+                    ubahStatusAPI(statusB + 1);
                 }
             });
             builder.setNeutralButton("Kembali", new DialogInterface.OnClickListener() {
@@ -175,13 +174,13 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
         if (status == 3 || status == 4) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Ubah status pesanan");
+            final int statusB = status;
             final String next = status == 3 ? "done" : "complete";
             builder.setMessage("Silahkan pilih salah satu status pesanan");
             builder.setPositiveButton(next, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah "+ next, Toast.LENGTH_SHORT).show();
-                    finish();
+                    ubahStatusAPI(statusB + 1);
                 }
             });
             builder.setNeutralButton("Kembali", new DialogInterface.OnClickListener() {
@@ -193,5 +192,56 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
             builder.show();
 
         }
+    }
+    public void ubahStatusAPI(int a){
+        final String asd = "" + a;
+        String url = C.HOME_URL + "/changeOrder";
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject hasil = new JSONObject(response);
+                    int status = hasil.getInt("status");
+                    if (status == 1) {
+                        Log.e("CheckOrderActivity", "onResponse: sukses");
+                        int temp2 = Integer.parseInt(asd);
+                        if(temp2 == 1){
+                            Toast.makeText(ChangeOrderNextActivity.this, "Pesanan dibatalkan", Toast.LENGTH_SHORT).show();
+                        }else if(temp2 == 3){
+                            Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah On Progress", Toast.LENGTH_SHORT).show();
+                        }else if(temp2 == 4){
+                            Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah Done", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah Completed", Toast.LENGTH_SHORT).show();
+                        }
+                        finish();
+
+                    } else {
+                        Toast.makeText(ChangeOrderNextActivity.this, "Jaringan Error", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(ChangeOrderNextActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ChangeOrderNextActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
+                Log.e("volley", error.getMessage());
+            }
+        }) {
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> input = new HashMap<>();
+                String token = PreferencesManager.getInstance(ChangeOrderNextActivity.this).getToken();
+                input.put("token", token);
+                String tmp = "" + order.getId();
+                input.put("order_id", tmp);
+                input.put("status",asd);
+                return input;
+            }
+        };
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

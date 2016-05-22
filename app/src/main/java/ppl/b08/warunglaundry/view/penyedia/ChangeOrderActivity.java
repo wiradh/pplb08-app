@@ -59,11 +59,6 @@ public class ChangeOrderActivity extends AppCompatActivity {
 
     public void getAndSyncListView() {
         String url = C.HOME_URL + "/getOrderByPenyedia";
-//        String[] namaPemesan = {"Bear ruang", "Wira DH", "Abdul Soclin", "Downy Wangkito"};
-//        double[] harga = {6000, 6500, 7000, 5000, 9000};
-//        double[] berat = {0, 2, 4, 0};
-//        int[] status = {2,4,3,2};
-
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
             @Override
@@ -84,7 +79,9 @@ public class ChangeOrderActivity extends AppCompatActivity {
                             if(!tmp.equals("")){
                                 harga = a.getDouble("harga");
                             }
-                            items.add(new Order(a.getLong("id"),a.getString("nama_laundry"),a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), harga, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
+                            if(a.getInt("status") != 5) {
+                                items.add(new Order(a.getLong("id"), a.getString("nama_laundry"), a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), harga, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
+                            }
                         }
 
                         adapter = new ChangeOrderPAdapter(items, ChangeOrderActivity.this);
