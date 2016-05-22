@@ -11,10 +11,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import ppl.b08.warunglaundry.Entity.LProvider;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
+import ppl.b08.warunglaundry.business.VolleySingleton;
 
 public class OrderNewProfileActivity extends AppCompatActivity {
 
@@ -30,6 +43,8 @@ public class OrderNewProfileActivity extends AppCompatActivity {
 
     long laundryId;
     LProvider model;
+    double lng;
+    double lat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +68,18 @@ public class OrderNewProfileActivity extends AppCompatActivity {
         String detilAlamat = PreferencesManager.getInstance(this).getAlamatValue();
         if (!detilAlamat.isEmpty()) detilTxt.setText(detilAlamat);
 
-        laundryId = getIntent().getLongExtra(C.KEY_LAUNDRY_ID,-1);
-        if (laundryId == -1) finish();
+//        laundryId = getIntent().getLongExtra(C.KEY_LAUNDRY_ID,-1);
+//        if (laundryId == -1) finish();
+        model =(LProvider) getIntent().getSerializableExtra(C.KEY_LAUNDRY);
+        lng = getIntent().getDoubleExtra(C.KEY_LONG, Integer.MAX_VALUE);
+        lat = getIntent().getDoubleExtra(C.KEY_LAT, Integer.MAX_VALUE);
+
+        if (lng == Integer.MAX_VALUE) {
+            Toast.makeText(OrderNewProfileActivity.this, "Terjadi kesalahan, silahkan coba lagi", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+        if (model == null) finish();
         getAndSyncData();
 
 
@@ -74,16 +99,25 @@ public class OrderNewProfileActivity extends AppCompatActivity {
     }
 
     public void getAndSyncData() {
-        model = new LProvider(laundryId,"Aishy Laundry", "12 April 2016", "Apartemen Taman Melati lantai 1 nomer 31","08997677231", 7000,"1-2 hari",2000,8.7);
-
-
-
+//        "id": 2,
+//                "nama": "Sejahtera Laundry",
+//                "detail": "Laundry Bersih Sekali",
+//                "harga": "6000",
+//                "alamat": "Sekitar UI",
+//                "rate": "",
+//                "jangkauan": "3000",
+//                "longitude": "106.83539",
+//                "lattitude": "-6.35628",
+//                "telepon": "08123131",
+//                "last_login": "",
+//                "created_at": "2016-05-04 00:00:00",
+//                "updated_at": "2016-05-26 00:00:00"
         namaTxt.setText(model.getNama());
         lastLoginTxt.setText("Last login : "+model.getLastLogin());
         alamatTxt.setText(model.getAlamat());
         phoneTxt.setText(model.getTelp());
         hargaTxt.setText("Rp"+String.format("%.02f", model.getHarga()));
-        pengerjaanTxt.setText(model.getPengerjaan());
+        pengerjaanTxt.setText(model.getDetil());
         jangkauanTxt.setText(String.format("%.02f",model.getJangkauan())+" meter");
         ratingTxt.setText(String.format("%.02f", model.getRate())+"/10");
     }
@@ -97,7 +131,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Memesan Jasa Laundry ini?");
         String message = "Nama : " + model.getNama() + "\nHarga per kg : Rp"+String.format("%.02f", model.getHarga())
-                +"\nRata-rata pengerjaan : "+model.getPengerjaan()+"\n\nDetil lokasi penjemputan : " +detilTxt.getText();
+                +"\n\nDetil lokasi penjemputan : " +detilTxt.getText();
         builder.setMessage(message);
         builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
             @Override
@@ -121,12 +155,10 @@ public class OrderNewProfileActivity extends AppCompatActivity {
         String message = "Pesanan anda telah terkirim ke penyedia jasa laundry";
         builder.setMessage(message);
         
-        builder.setPositiveButton("Pesan", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Oke", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 Intent i = new Intent(OrderNewProfileActivity.this,HomeActivity.class);
-
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(i);
                 finish(); // to end the current activity
@@ -134,7 +166,47 @@ public class OrderNewProfileActivity extends AppCompatActivity {
 
             }
         });
-        builder.show();
+
+        String url = C.HOME_URL+"/order";
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    int status = object.getInt("status");
+                    if (status == 1) {
+                        builder.show();
+                    } else {
+                        Toast.makeText(OrderNewProfileActivity.this, "Tidak dapat melakukan order, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(OrderNewProfileActivity.this, "Terjadi kesalahan jaringan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OrderNewProfileActivity.this, "Terjadi kesalahan jaringan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> a = new HashMap<>();
+                a.put("token", PreferencesManager.getInstance(OrderNewProfileActivity.this).getToken());
+                a.put("longitude", lng+"");
+                a.put("latitude", lat+"");
+                a.put("id_penyedia", model.getId()+"");
+                a.put("jam_antar", "00.00");
+                a.put("jam_ambil", "00.00");
+                a.put("tipe","0");
+                a.put("harga","0");
+                a.put("detail_lokasi", detilTxt.getText().toString());
+                return a;
+            }
+        };
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 
     @Override

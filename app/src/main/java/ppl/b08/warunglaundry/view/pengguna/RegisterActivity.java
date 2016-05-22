@@ -109,6 +109,9 @@ public class RegisterActivity extends AppCompatActivity {
                         Log.e(TAG, "onResponse: sukses" );
                         PreferencesManager.getInstance(RegisterActivity.this).setToken(hasil.getString("token"));
                         PreferencesManager.getInstance(RegisterActivity.this).setRoleValue("CU");
+
+                        PreferencesManager.getInstance(RegisterActivity.this).setName(name);
+                        PreferencesManager.getInstance(RegisterActivity.this).setEmail(email);
                         Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();

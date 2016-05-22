@@ -7,6 +7,7 @@ import ppl.b08.warunglaundry.business.C;
 /**
  * Created by Andi Fajar on 30/04/2016.
  */
+@SuppressWarnings("serial")
 public class LProvider implements Serializable{
     private double lon;
     private double lat;
@@ -23,6 +24,19 @@ public class LProvider implements Serializable{
     private double jarak;
     private String pengerjaan;
 
+    public LProvider(long id, String nama, String detil, double harga, String alamat, double rate, double jangkauan, double lon, double lat, String telp, String lastLogin) {
+        this.id = id;
+        this.nama = nama;
+        this.detil = detil;
+        this.harga = harga;
+        this.alamat = alamat;
+        this.rate = rate;
+        this.jangkauan = jangkauan;
+        this.lon = lon;
+        this.lat = lat;
+        this.telp = telp;
+        this.lastLogin = lastLogin;
+    }
 
     public LProvider(long id, String nama, String lastLogin, String alamat, String telp, double harga, String pengerjaan, double jangkauan, double rate) {
         this.id = id;

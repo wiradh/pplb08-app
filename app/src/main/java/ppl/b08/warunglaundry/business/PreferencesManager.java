@@ -102,4 +102,20 @@ public class PreferencesManager {
     public void setToken(String tokon) {
         pref.edit().putString(KEY_TOKEN, tokon).apply();
     }
+
+    public String getName() {
+        return pref.getString(KEY_NAME, "");
+    }
+
+    public void setName(String tokon) {
+        pref.edit().putString(KEY_NAME, tokon).apply();
+    }
+
+    public String getEmail() {
+        return pref.getString(KEY_EMAIL, "");
+    }
+
+    public void setEmail(String tokon) {
+        pref.edit().putString(KEY_EMAIL, tokon).apply();
+    }
 }

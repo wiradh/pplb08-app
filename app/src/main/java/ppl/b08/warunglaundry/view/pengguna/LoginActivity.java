@@ -111,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
                         String role = ob.getString("role");
                         PreferencesManager.getInstance(LoginActivity.this).setToken(token);
                         PreferencesManager.getInstance(LoginActivity.this).setRoleValue(role);
+                        PreferencesManager.getInstance(LoginActivity.this).setName(ob.getString("name"));
+                        PreferencesManager.getInstance(LoginActivity.this).setEmail(ob.getString("email"));
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
