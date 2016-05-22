@@ -39,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText rePasswordEdt;
     private EditText noHPEdt;
     private CheckBox checkBox;
+    private String asd;
 
     private static final String TAG = "RegisterActivity";
 
