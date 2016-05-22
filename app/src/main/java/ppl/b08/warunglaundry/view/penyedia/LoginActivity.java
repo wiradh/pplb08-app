@@ -15,6 +15,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONObject;
 
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         PreferencesManager manager = PreferencesManager.getInstance(this);
-        if (manager.getToken() != null || !manager.getToken().isEmpty()) {
+        if (manager.getToken() != null && !manager.getToken().isEmpty()) {
             Intent intent = manager.getRoleValue().equalsIgnoreCase("CU")?
                     new Intent(this,ppl.b08.warunglaundry.view.pengguna.HomeActivity.class) :
                     new Intent(this, ppl.b08.warunglaundry.view.penyedia.HomeActivity.class);
@@ -48,17 +49,17 @@ public class LoginActivity extends AppCompatActivity {
 
         emailEt = (EditText) findViewById(R.id.email_txt);
         paswordEt = (EditText) findViewById(R.id.password_txt);
-        Button registerBtn = (Button) findViewById(R.id.register);
+        //Button registerBtn = (Button) findViewById(R.id.register);
         Button loginBtn = (Button) findViewById(R.id.login);
         TextView changeBtn = (TextView) findViewById(R.id.change_btn);
 
-        registerBtn.setOnClickListener(new View.OnClickListener() {
+        /*registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,15 +90,18 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         String url = C.HOME_URL + "/login";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
                 try {
-                    int r = response.getInt("status");
+                    JSONObject ob = new JSONObject(response);
+                    int r = ob.getInt("status");
                     if (r == 1) {
                         //TODO Sukses
-                        PreferencesManager.getInstance(LoginActivity.this).setToken(response.getString("token"));
-                        PreferencesManager.getInstance(LoginActivity.this).setRoleValue(response.getString("role"));
+                        PreferencesManager.getInstance(LoginActivity.this).setToken(ob.getString("token"));
+                        PreferencesManager.getInstance(LoginActivity.this).setRoleValue(ob.getString("role"));
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();

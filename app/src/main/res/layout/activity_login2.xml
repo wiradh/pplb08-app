@@ -48,15 +48,7 @@
             android:orientation="horizontal"
             android:layout_below="@id/password"
             android:gravity="center">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/register"
-                android:id="@+id/register"
-                android:background="@color/colorPrimary"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textColor="#FFF"/>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,6 +60,15 @@
         </LinearLayout>
 
 
+        <TextView
+            android:layout_below="@id/layout2"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:text="Ingin laundry anda terdaftar? silahkan hubungi \n admin@warung-laundry.com"
+            android:textAlignment="center"
+            />
     </RelativeLayout>
 
     <LinearLayout
@@ -75,7 +76,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/linearLayout">
 
         <TextView
