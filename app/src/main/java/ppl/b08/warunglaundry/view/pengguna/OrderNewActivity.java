@@ -18,6 +18,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -29,15 +34,21 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.LocationServices;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 import ppl.b08.warunglaundry.Entity.LProvider;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.adapter.NewOrderAdapter;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.MyLocation;
+import ppl.b08.warunglaundry.business.VolleySingleton;
 
 /**
  *
@@ -56,6 +67,11 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_order_new);
         getSupportActionBar().setTitle("New Order");
 
+        if (!C.isOnline(this)) {
+            Toast.makeText(OrderNewActivity.this, "Tidak terkoneksi internet!!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -69,14 +85,61 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
 
     public void getListLaundry() {
 
-        hashLaundry.put("Sejahtera Laundry", new LProvider(1,-6.35628,106.83539,"Sejahtera Laundry",6000));
-        hashLaundry.put("Clean Laundry", new LProvider(1,-6.36055,106.83329,"Clean Laundry",6500));
-        hashLaundry.put("Aishy Laundry", new LProvider(1,-6.35897,106.82355,"Aishy Laundry",7000));
-        hashLaundry.put("Miku Laundry", new LProvider(1,-6.35210,106.83303,"Miku Laundry",5000));
-        hashLaundry.put("Wayang Laundry", new LProvider(1,-6.34835,106.82955,"Wayang Laundry",9000));
+        String url = C.HOME_URL+"/getLaundry";
+        StringRequest req = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject hasil = new JSONObject(response);
 
-        getMyLocation();
+                    JSONArray arr = hasil.getJSONArray("laundry");
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject ob = (JSONObject) arr.get(i);
+                        long id = ob.getLong("id");
+                        String name = ob.getString("nama");
+                        String detil = ob.getString("detail");
+                        Double rate = ob.getDouble("rate");
+                        double harga = ob.getDouble("harga");
+                        double jangkauan =ob.getDouble("jangkauan");
+                        String alamat = ob.getString("alamat");
+                        double longitude = ob.getDouble("longitude");
+                        double latitude = ob.getDouble("latitude");
+                        String telp = ob.getString("telepon");
+                        String lastLogin = ob.getString("last_login");
+                        LProvider provider = new LProvider(id,name,detil,harga,alamat,rate,jangkauan,longitude,latitude,telp,lastLogin);
+                        hashLaundry.put(name, provider);
+                    }
+                    getMyLocation();
+                } catch (JSONException e) {
+                    Toast.makeText(OrderNewActivity.this, "Kesalahan jaringan, silahkan coba lagi", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(OrderNewActivity.this, "Kesalahan jaringan, silahkan coba lagi", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> a = new HashMap<>();
+                a.put("lattitude", "0");
+                a.put("longitude", "1");
+                return a;
+            }
+        };
 
+//        hashLaundry.put("Sejahtera Laundry", new LProvider(1,-6.35628,106.83539,"Sejahtera Laundry",6000));
+//        hashLaundry.put("Clean Laundry", new LProvider(1,-6.36055,106.83329,"Clean Laundry",6500));
+//        hashLaundry.put("Aishy Laundry", new LProvider(1,-6.35897,106.82355,"Aishy Laundry",7000));
+//        hashLaundry.put("Miku Laundry", new LProvider(1,-6.35210,106.83303,"Miku Laundry",5000));
+//        hashLaundry.put("Wayang Laundry", new LProvider(1,-6.34835,106.82955,"Wayang Laundry",9000));
+//
+//        getMyLocation();
+
+        VolleySingleton.getInstance(this).addToRequestQueue(req);
     }
 
     public void getMyLocation() {
@@ -146,6 +209,9 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
                // Toast.makeText(OrderNewActivity.this, "Harga laundry " + hashLaundry.get(marker.getTitle()).getHarga(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(OrderNewActivity.this, OrderNewProfileActivity.class);
                 intent.putExtra(C.KEY_LAUNDRY_ID, hashLaundry.get(marker.getTitle()).getId());
+                intent.putExtra(C.KEY_LAUNDRY, hashLaundry.get(marker.getTitle()));
+                intent.putExtra(C.KEY_LONG, myLoc.longitude);
+                intent.putExtra(C.KEY_LAT, myLoc.latitude);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(intent);
             }
