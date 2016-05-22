@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="phone"
                     android:hint="No Telp"
-                    android:text="0898987"
+                    android:text=""
                     android:cursorVisible="false"
                     android:clickable="false"
                     android:focusable="false"

@@ -2,10 +2,12 @@ package ppl.b08.warunglaundry.Entity;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
+
 /**
  * Created by Andi Fajar on 01/05/2016.
  */
-public class Order {
+public class Order implements Serializable{
     private long id;
     private int status;
     private String jamAmbil;
@@ -110,7 +112,7 @@ public class Order {
         setColor();
     }
 
-    public Order(long id, String namaProvider, String namaCustomer, long idProvider, long idCustomer, double berat, int status, String jamAmbil, String jamAntar, double hargaTotal, String detilLokasi) {
+    public Order(long id, String namaProvider, String namaCustomer, long idProvider, long idCustomer, double berat, int status, String jamAmbil, String jamAntar, double hargaTotal, String detilLokasi, double lat, double lng) {
         this.id = id;
         this.namaProvider = namaProvider;
         this.namaCustomer = namaCustomer;
@@ -122,6 +124,8 @@ public class Order {
         this.jamAntar = jamAntar;
         this.hargaTotal = hargaTotal;
         this.detilLokasi = detilLokasi;
+        this.lng = lng;
+        this.lat = lat;
         setColor();
     }
 
