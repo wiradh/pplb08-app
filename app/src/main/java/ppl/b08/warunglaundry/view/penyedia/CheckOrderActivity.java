@@ -88,7 +88,7 @@ public class CheckOrderActivity extends AppCompatActivity {
 
 
                     }else{
-                        Toast.makeText(CheckOrderActivity.this, "Jaringan Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckOrderActivity.this, "Order Kosong", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(CheckOrderActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
