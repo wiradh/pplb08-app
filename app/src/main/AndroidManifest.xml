@@ -78,9 +78,8 @@
         <activity android:name=".view.penyedia.ProfileActivity" />
         <activity android:name=".view.penyedia.CreditActivity" />
         <activity android:name=".view.pengguna.ProfileEditActivity" />
-        <activity android:name=".view.pengguna.ProfileEditPassActivity" />
-        <activity android:name=".view.penyedia.ProfileEditActivity" />
-        <activity android:name=".view.penyedia.ProfileEditPassActivity"></activity>
+        <activity android:name=".view.pengguna.HelpActivity" />
+        <activity android:name=".view.penyedia.HelpActivity"></activity>
     </application>
 
 </manifest>
