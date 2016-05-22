@@ -72,22 +72,6 @@
         </LinearLayout>
 
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/layout2"
-            android:layout_marginTop="5dp"
-            android:id="@+id/atau"
-            android:layout_marginBottom="5dp"
-            android:text="@string/atau"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Masuk dengan facebook"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/atau"/>
     </RelativeLayout>
 
     <LinearLayout

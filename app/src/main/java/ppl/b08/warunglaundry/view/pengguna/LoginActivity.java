@@ -44,8 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         PreferencesManager manager = PreferencesManager.getInstance(this);
-        if (manager.getIdValue() != -1) {
-            Intent intent = manager.getRoleValue() == 0 ?
+     //   Log.e("tojen", "onCreate: " + manager.getToken());
+        if (manager.getToken() != null && !manager.getToken().isEmpty()) {
+         //   Log.e("tojen", "onCreate: " + manager.getToken());
+            Intent intent = manager.getRoleValue().equalsIgnoreCase("CU") ?
                     new Intent(this, ppl.b08.warunglaundry.view.pengguna.HomeActivity.class) :
                     new Intent(this, ppl.b08.warunglaundry.view.penyedia.HomeActivity.class);
             startActivity(intent);
@@ -96,19 +98,25 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         String url = C.HOME_URL + "/login";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
+
                 try {
-                    int r = response.getInt("status");
+                    JSONObject ob = new JSONObject(response);
+                    int r = ob.getInt("status");
                     if (r == 1) {
-                        //TODO Sukses
-                        PreferencesManager.getInstance(LoginActivity.this).setIdValue(111);
+
+                        String token = ob.getString("token");
+                        String role = ob.getString("role");
+                        PreferencesManager.getInstance(LoginActivity.this).setToken(token);
+                        PreferencesManager.getInstance(LoginActivity.this).setRoleValue(role);
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
 
                     } else {
+                    //    Log.e("asd", "onResponse: asdds"+ ob.toString());
                         Toast.makeText(LoginActivity.this, "Email/password tidak sesuai", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
@@ -127,15 +135,11 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> re = new HashMap<>();
                 re.put("email", email);
-                re.put("pasword", pass);
+                re.put("password", pass);
                 return re;
             }
         };
 
-        //TODO delete this blok
-        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-        //VolleySingleton.getInstance(this).addToRequestQueue(request);
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }
