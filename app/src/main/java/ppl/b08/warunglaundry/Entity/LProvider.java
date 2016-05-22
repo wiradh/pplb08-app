@@ -1,11 +1,13 @@
 package ppl.b08.warunglaundry.Entity;
 
+import java.io.Serializable;
+
 import ppl.b08.warunglaundry.business.C;
 
 /**
  * Created by Andi Fajar on 30/04/2016.
  */
-public class LProvider {
+public class LProvider implements Serializable{
     private double lon;
     private double lat;
     private String telp;

@@ -1,9 +1,11 @@
 package ppl.b08.warunglaundry.Entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Andi Fajar on 30/04/2016.
  */
-public class LCustomer {
+public class LCustomer implements Serializable {
 
     private long id;
     private String nama;
