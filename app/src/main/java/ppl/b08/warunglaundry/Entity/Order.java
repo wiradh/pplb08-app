@@ -110,6 +110,20 @@ public class Order {
         setColor();
     }
 
+    public Order(long id, String namaProvider, String namaCustomer, long idProvider, long idCustomer, double berat, int status, String jamAmbil, String jamAntar, double hargaTotal, String detilLokasi) {
+        this.id = id;
+        this.namaProvider = namaProvider;
+        this.namaCustomer = namaCustomer;
+        this.idProvider = idProvider;
+        this.idCustomer = idCustomer;
+        this.berat = berat;
+        this.status = status;
+        this.jamAmbil = jamAmbil;
+        this.jamAntar = jamAntar;
+        this.hargaTotal = hargaTotal;
+        this.detilLokasi = detilLokasi;
+        setColor();
+    }
 
     public void setColor() {
         switch (status) {
