@@ -24,6 +24,7 @@ import java.util.Map;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
+import ppl.b08.warunglaundry.business.VolleySingleton;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         PreferencesManager manager = PreferencesManager.getInstance(this);
-        if (manager.getIdValue() != -1) {
-            Intent intent = manager.getRoleValue()==0 ?
+        if (manager.getToken() != null || !manager.getToken().isEmpty()) {
+            Intent intent = manager.getRoleValue().equalsIgnoreCase("CU")?
                     new Intent(this,ppl.b08.warunglaundry.view.pengguna.HomeActivity.class) :
                     new Intent(this, ppl.b08.warunglaundry.view.penyedia.HomeActivity.class);
             startActivity(intent);
@@ -95,7 +96,8 @@ public class LoginActivity extends AppCompatActivity {
                     int r = response.getInt("status");
                     if (r == 1) {
                         //TODO Sukses
-                        PreferencesManager.getInstance(LoginActivity.this).setIdValue(111);
+                        PreferencesManager.getInstance(LoginActivity.this).setToken(response.getString("token"));
+                        PreferencesManager.getInstance(LoginActivity.this).setRoleValue(response.getString("role"));
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
@@ -119,15 +121,12 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> re = new HashMap<>();
                 re.put("email", email);
-                re.put("pasword", pass);
+                re.put("password", pass);
                 return re;
             }
         };
 
-        //TODO delete this blok
-        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-        //VolleySingleton.getInstance(this).addToRequestQueue(request);
+
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

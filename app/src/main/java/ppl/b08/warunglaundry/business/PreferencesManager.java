@@ -73,12 +73,12 @@ public class PreferencesManager {
                 .apply();
     }
 
-    public int getRoleValue() {
-        return pref.getInt(KEY_ROLE, 1);
+    public String getRoleValue() {
+        return pref.getString(KEY_ROLE, "cu");
     }
 
-    public void setRoleValue(int role) {
-        pref.edit().putInt(KEY_ROLE, role).apply();
+    public void setRoleValue(String role) {
+        pref.edit().putString(KEY_ROLE, role).apply();
     }
 
     public String getAlamatValue() {

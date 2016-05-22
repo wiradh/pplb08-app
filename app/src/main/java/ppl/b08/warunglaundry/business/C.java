@@ -7,7 +7,7 @@ import android.text.TextUtils;
  * Untuk menyimpan konstanta variable
  */
 public class C {
-    public final static String HOME_URL = "www.lalala.com";
+    public final static String HOME_URL = "http://warung-laundry.com/api";
     public final static String MAP_KEY = "AIzaSyBe9V4dLUdlvPUolgDTww8owSuW7E82PEg";
     public static final int MY_PERMISSION_ACCESS_COURSE_LOCATION = 1000;
     public static final String KEY_LAUNDRY_ID = "LAUNDRY_ID";

@@ -75,7 +75,15 @@
         <activity android:name=".view.penyedia.ChangeOrderNextActivity" />
         <activity android:name=".view.pengguna.CurrentOrderDetailActivity" />
         <activity android:name=".view.pengguna.HistoryOrderDetailActivity" />
-        <activity android:name=".view.penyedia.HistoryOrderDetailActivity"></activity>
+        <activity android:name=".view.penyedia.HistoryOrderDetailActivity" />
+        <activity android:name=".view.pengguna.ProfileActivity" />
+        <activity android:name=".view.pengguna.CreditActivity" />
+        <activity android:name=".view.penyedia.ProfileActivity" />
+        <activity android:name=".view.penyedia.CreditActivity" />
+        <activity android:name=".view.pengguna.ProfileEditActivity" />
+        <activity android:name=".view.pengguna.ProfileEditPassActivity" />
+        <activity android:name=".view.penyedia.ProfileEditActivity" />
+        <activity android:name=".view.penyedia.ProfileEditPassActivity"></activity>
     </application>
 
 </manifest>

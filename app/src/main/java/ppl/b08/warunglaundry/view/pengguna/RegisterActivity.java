@@ -96,53 +96,10 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         String url = C.HOME_URL + "/register";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    int r = response.getInt("status");
-                    if (r == 1) {
-                        //TODO handle kalo sukses
-                        PreferencesManager.getInstance(RegisterActivity.this).setIdValue(123);
-
-                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                        finish();
-
-                    } else {
-                        Toast.makeText(RegisterActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(RegisterActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(RegisterActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onErrorResponse: " + error.getMessage());
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> re = new HashMap<>();
-                re.put("nama", name);
-                re.put("role", "0");
-                re.put("email", email);
-                re.put("pasword", pasword);
-                re.put("telepon", noHP);
-                return re;
-            }
-        };
 
         //TODO dummy
-        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-    //    VolleySingleton.getInstance(this).addToRequestQueue(request);
+
+     //VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 
 
