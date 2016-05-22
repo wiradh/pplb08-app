@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="phone"
                     android:hint="No Telp"
-                    android:text="0898987"
+                    android:text="-"
                     android:cursorVisible="false"
                     android:clickable="false"
                     android:focusable="false"
@@ -118,7 +118,7 @@
                 android:layout_marginTop="5dp"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="230dp"
                 android:layout_marginBottom="40dp"
                 />
 

@@ -63,43 +63,13 @@ public class CurrentOrderActivity extends AppCompatActivity {
                     JSONObject ob = new JSONObject(response);
                     JSONArray arr = ob.getJSONArray("pending");
                     ArrayList<Order> items = new ArrayList<>();
-                    for (int i = 0; i < arr.length(); i++) {
-                        JSONObject item = arr.getJSONObject(i);
-                        long id = item.getLong("id");
-                        int status = item.getInt("status");
-                        String jamAntar = item.getString("jam_antar");
-                        String jamAmbil = item.getString("jam_ambil");
-                        double lng = item.getDouble("longitude");
-                        double lat = item.getDouble("latitude");
-                        String detil = item.getString("detail_lokasi");
-                        double berat = 0;
-                        try {
-                            berat = Double.parseDouble(item.getString("berat"));
-                        } catch (Exception e){
-                        }
-                        double harga = item.getDouble("harga");
-                        long idPenyedia = item.getLong("id_penyedia");
-                        long idPelanggan = item.getLong("id_pelanggan");
-                        String namaPelanggan = item.getString("nama_pelanggan");
-                        String namaLaundry = item.getString("nama_laundry");
-                        Order order = new Order(id,namaLaundry,namaPelanggan,idPenyedia, idPelanggan,berat,status,jamAmbil,jamAntar,harga,detil,lat,lng);
-                        items.add(order);
-//                        "id": 6,
-//                                "status": "0",
-//                                "jam_antar": "00.00",
-//                                "jam_ambil": "00.00",
-//                                "longitude": "106.828978",
-//                                "latitude": "-6.3641789",
-//                                "detail_lokasi": "Fasilkom UI",
-//                                "tipe": "",
-//                                "berat": "",
-//                                "harga": "0",
-//                                "id_penyedia": "3",
-//                                "id_pelanggan": "1",
-//                                "nama_pelanggan": "wiradh",
-//                                "nama_laundry": "Clean Laundry",
-                    }
-
+                    items.addAll(parseJSONArray(arr));
+                    arr = ob.getJSONArray("accepted");
+                    items.addAll(parseJSONArray(arr));
+                    arr = ob.getJSONArray("ongoing");
+                    items.addAll(parseJSONArray(arr));
+                    arr = ob.getJSONArray("done");
+                    items.addAll(parseJSONArray(arr));
                     adapter =  new CurrentOrderCAdapter(items, CurrentOrderActivity.this);
                     listView.setAdapter(adapter);
                 } catch (JSONException e) {
@@ -145,5 +115,32 @@ public class CurrentOrderActivity extends AppCompatActivity {
 //        hashLaundry.put("Miku Laundry", new LProvider(1,-6.35210,106.83303,"Miku Laundry",5000));
 //        hashLaundry.put("Wayang Laundry", new LProvider(1,-6.34835,106.82955,"Wayang Laundry",9000));
 
+    }
+
+    public ArrayList<Order> parseJSONArray(JSONArray arr) throws JSONException {
+        ArrayList<Order> items = new ArrayList<>();
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject item = arr.getJSONObject(i);
+            long id = item.getLong("id");
+            int status = item.getInt("status");
+            String jamAntar = item.getString("jam_antar");
+            String jamAmbil = item.getString("jam_ambil");
+            double lng = item.getDouble("longitude_laundry");
+            double lat = item.getDouble("latitude_laundry");
+            String detil = item.getString("detail_lokasi");
+            double berat = 0;
+            try {
+                berat = Double.parseDouble(item.getString("berat"));
+            } catch (Exception e) {
+            }
+            double harga = item.getDouble("harga");
+            long idPenyedia = item.getLong("id_penyedia");
+            long idPelanggan = item.getLong("id_pelanggan");
+            String namaPelanggan = item.getString("nama_pelanggan");
+            String namaLaundry = item.getString("nama_laundry");
+            Order order = new Order(id, namaLaundry, namaPelanggan, idPenyedia, idPelanggan, berat, status, jamAmbil, jamAntar, harga, detil, lat, lng);
+            items.add(order);
+        }
+        return items;
     }
 }

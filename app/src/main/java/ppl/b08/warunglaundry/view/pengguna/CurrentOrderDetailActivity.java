@@ -62,8 +62,8 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
         getOrder();
 
         LatLng place = new LatLng(order.getLat(),order.getLng());
-        mMap.addMarker(new MarkerOptions().position(place).title(order.getNamaCustomer()).snippet("Lokasi customer").flat(true));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, zoom));
+        mMap.addMarker(new MarkerOptions().position(place).title(order.getNamaProvider()).snippet("Lokasi penyedia laundry").flat(true));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place, zoom));
 
     }
 
