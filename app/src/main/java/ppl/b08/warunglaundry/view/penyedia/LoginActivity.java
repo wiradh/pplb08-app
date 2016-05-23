@@ -100,8 +100,14 @@ public class LoginActivity extends AppCompatActivity {
                     int r = ob.getInt("status");
                     if (r == 1) {
                         //TODO Sukses
+                        if (ob.getString("role").equalsIgnoreCase("CU")) {
+                            Toast.makeText(LoginActivity.this, "Anda adalah pengguna laundry silahkan login pada halaman pengguna", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         PreferencesManager.getInstance(LoginActivity.this).setToken(ob.getString("token"));
                         PreferencesManager.getInstance(LoginActivity.this).setRoleValue(ob.getString("role"));
+                        PreferencesManager.getInstance(LoginActivity.this).setName(ob.getString("name"));
+                        PreferencesManager.getInstance(LoginActivity.this).setEmail(ob.getString("email"));
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();

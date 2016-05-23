@@ -109,6 +109,10 @@ public class LoginActivity extends AppCompatActivity {
 
                         String token = ob.getString("token");
                         String role = ob.getString("role");
+                        if (!role.equalsIgnoreCase("CU")) {
+                            Toast.makeText(LoginActivity.this, "Anda adalah penyedia jasa laundry silahkan login pada halaman penyedia jasa", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         PreferencesManager.getInstance(LoginActivity.this).setToken(token);
                         PreferencesManager.getInstance(LoginActivity.this).setRoleValue(role);
                         PreferencesManager.getInstance(LoginActivity.this).setName(ob.getString("name"));

@@ -196,6 +196,10 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
     public void ubahStatusAPI(int a){
         final String asd = "" + a;
         String url = C.HOME_URL + "/changeOrder";
+        double berat = 0;
+        if (a == 3) {
+
+        }
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
             @Override

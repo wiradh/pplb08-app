@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ppl.b08.warunglaundry.R;
@@ -36,6 +37,17 @@ public class HomeActivity extends AppCompatActivity {
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
+
+
+        View header = navigationView.inflateHeaderView(R.layout.header_customer_drawer);
+        TextView name = (TextView) header.findViewById(R.id.name_txt);
+        TextView email = (TextView) header.findViewById(R.id.email_txt);
+
+        String nameStr = PreferencesManager.getInstance(this).getName();
+        String emailStr = PreferencesManager.getInstance(this).getEmail();
+        name.setText(nameStr);
+        email.setText(emailStr);
+
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
