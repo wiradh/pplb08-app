@@ -1,10 +1,9 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -62,7 +61,12 @@ public class HomeActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.frame,fragment);
                         fragmentTransaction.commit();
                         return true;
-
+                    case R.id.help:
+                        //Closing drawer on item click
+                        drawerLayout.closeDrawers();
+                        Intent intent2 = new Intent(HomeActivity.this, HelpActivity.class);
+                        startActivity(intent2);
+                        return true;
                     case R.id.logout:
                         if (PreferencesManager.getInstance(HomeActivity.this).clear()) {
                             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
