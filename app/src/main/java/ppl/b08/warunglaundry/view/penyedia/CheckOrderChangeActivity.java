@@ -170,7 +170,7 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
         String message = "Pesanan ini telah ditambahkan ke order.";
         builder.setMessage(message);
 
-        builder.setPositiveButton("Pesan", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Oke", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -183,6 +183,45 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
 
             }
         });
-        builder.show();
+
+        String url = C.HOME_URL+"/changeOrder";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject a = new JSONObject(response);
+                    int status = a.getInt("status");
+                    if (status == 1) {
+                        builder.show();
+                    } else {
+                        Toast.makeText(CheckOrderChangeActivity.this, "Maaf, pengambilan order gagal", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(CheckOrderChangeActivity.this, C.KONEKSI_GAGAL, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(CheckOrderChangeActivity.this, C.KONEKSI_GAGAL, Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> a = new HashMap<>();
+                a.put("token", PreferencesManager.getInstance(CheckOrderChangeActivity.this).getToken());
+                a.put("status", 2+"");
+                a.put("order_id", order.getId()+"");
+
+                return a;
+            }
+        };
+
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 }

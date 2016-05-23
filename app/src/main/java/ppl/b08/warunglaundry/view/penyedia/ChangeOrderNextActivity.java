@@ -155,7 +155,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
                     ubahStatusAPI(statusB - 1);
                 }
             });
-            builder.setPositiveButton("On Process", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("On Going", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     ubahStatusAPI(statusB + 1);
@@ -209,7 +209,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
                         if(temp2 == 1){
                             Toast.makeText(ChangeOrderNextActivity.this, "Pesanan dibatalkan", Toast.LENGTH_SHORT).show();
                         }else if(temp2 == 3){
-                            Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah On Progress", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah On Going", Toast.LENGTH_SHORT).show();
                         }else if(temp2 == 4){
                             Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah Done", Toast.LENGTH_SHORT).show();
                         }else {

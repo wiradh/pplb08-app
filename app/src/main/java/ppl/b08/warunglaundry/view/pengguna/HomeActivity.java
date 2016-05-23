@@ -73,7 +73,10 @@ public class HomeActivity extends AppCompatActivity {
                             finish();
                         };
                         return true;
-
+                    case R.id.help:
+                        HelpFragment fragmentHelp = new HelpFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame,fragmentHelp).commit();
+                        return true;
                     // For rest of the options we just show a toast on click
 
 

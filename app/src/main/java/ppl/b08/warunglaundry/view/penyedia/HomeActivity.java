@@ -74,6 +74,10 @@ public class HomeActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         };
+                    case R.id.help:
+                        HelpFragment fragmentHelp = new HelpFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame,fragmentHelp).commit();
+                        return true;
 
 
                     default:
