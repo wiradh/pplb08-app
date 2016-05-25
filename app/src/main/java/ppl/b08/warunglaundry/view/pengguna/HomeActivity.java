@@ -1,15 +1,16 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ppl.b08.warunglaundry.R;
@@ -31,11 +32,31 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Initializing NavigationView
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View header = navigationView.inflateHeaderView(R.layout.header_customer_drawer);
+        ImageView image2 = (ImageView) header.findViewById(R.id.profile_image);
+       image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //testing
+                //Toast.makeText(HomeActivity.this,
+                  //      "The favorite list would appear on clicking this icon",
+                    //    Toast.LENGTH_LONG).show();
+                Intent intent2 = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(intent2);
+            }
+        });
+        TextView text1 = (TextView) header.findViewById(R.id.name_txt);
+        text1.setText("bearmiku");
+        TextView text = (TextView) header.findViewById(R.id.email_txt);
+        text.setText("bearmiku@bear.com");
         OrderFragment fragment = new OrderFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
+        //View header = navigationView.inflateHeaderView(R.layout.header_customer_drawer);
+        //TextView text = (TextView) header.findViewById(R.id.email_txt);
+       // text.setText("bearmiku@bear.com");
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -103,6 +124,10 @@ public class HomeActivity extends AppCompatActivity {
                 // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
 
                 super.onDrawerOpened(drawerView);
+                //View header = LayoutInflater.from(this).inflate(R.layout.header_customer_drawer, null);
+               // TextView text = (TextView) header.findViewById(R.id.email_txt);
+                //text.setText("HELLO");
+
             }
         };
 

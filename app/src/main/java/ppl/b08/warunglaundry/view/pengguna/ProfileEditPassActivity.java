@@ -10,19 +10,19 @@ import android.widget.Toast;
 
 import ppl.b08.warunglaundry.R;
 
-public class ProfileEditActivity extends AppCompatActivity {
+public class ProfileEditPassActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_edit);
+        setContentView(R.layout.activity_profile_edit_pass);
         Button updateBtn = (Button) findViewById(R.id.update1);
 
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Toast toast = Toast.makeText(getApplicationContext(), "Profile Has Been Updated", Toast.LENGTH_SHORT);
+                final Toast toast = Toast.makeText(getApplicationContext(), "Password Has Been Updated", Toast.LENGTH_SHORT);
                 toast.show();
 
                 Handler handler = new Handler();
@@ -43,7 +43,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                     }
                 }, 600);
 
-                Intent intent = new Intent(ProfileEditActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(ProfileEditPassActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
