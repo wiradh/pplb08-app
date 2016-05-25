@@ -1,15 +1,16 @@
 package ppl.b08.warunglaundry.view.penyedia;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ppl.b08.warunglaundry.R;
@@ -30,7 +31,25 @@ public class HomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+//Initializing NavigationView
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View header = navigationView.inflateHeaderView(R.layout.header_provider_drawer);
+        ImageView image2 = (ImageView) header.findViewById(R.id.profile_image);
+        image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //testing
+                //Toast.makeText(HomeActivity.this,
+                //      "The favorite list would appear on clicking this icon",
+                //    Toast.LENGTH_LONG).show();
+                Intent intent2 = new Intent(HomeActivity.this, ppl.b08.warunglaundry.view.penyedia.ProfileActivity.class);
+                startActivity(intent2);
+            }
+        });
+        TextView text1 = (TextView) header.findViewById(R.id.name_txt);
+        text1.setText("bearmiku");
+        TextView text = (TextView) header.findViewById(R.id.email_txt);
+        text.setText("bearmiku@bear.com");
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         OrderFragment fragment = new OrderFragment();

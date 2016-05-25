@@ -157,7 +157,7 @@
                 android:backgroundTint="@color/colorPrimaryDark"
 
                 android:textColor="#FFFFFF"
-                android:id="@+id/update1"
+                android:id="@+id/change1"
                 android:layout_below="@+id/telpon1"
                 android:layout_centerHorizontal="true"
                 />
