@@ -33,8 +33,6 @@ public class ProfileEditActivity extends AppCompatActivity {
     private EditText noHPEdt;
     private EditText emailEdt;
     private EditText passEdt;
-    Button kembali = (Button) findViewById(R.id.back_btn);
-    final Button update = (Button) findViewById(R.id.updt_btn);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +42,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         noHPEdt = (EditText) findViewById(R.id.phone_txt);
         passEdt = (EditText) findViewById(R.id.password_txt);
         emailEdt = (EditText) findViewById(R.id.email_txt);
+        Button kembali = (Button) findViewById(R.id.back_btn);
+        final Button update = (Button) findViewById(R.id.updt_btn);
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
