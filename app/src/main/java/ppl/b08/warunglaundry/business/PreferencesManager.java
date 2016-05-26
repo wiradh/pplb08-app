@@ -17,6 +17,7 @@ public class PreferencesManager {
     private static final String KEY_ID = "ID";
     private static final String KEY_NAME = "NAME";
     private static final String KEY_EMAIL = "EMAIL";
+    private static final String KEY_PHONE = "PHONE";
     private static final String KEY_ROLE = "ROLE";
     private static final String KEY_DETIL_ALAMAT = "DETIL_ALAMAT";
     private static final String KEY_TOKEN = "TOKEN";
@@ -103,9 +104,7 @@ public class PreferencesManager {
         pref.edit().putString(KEY_TOKEN, tokon).apply();
     }
 
-    public String getName() {
-        return pref.getString(KEY_NAME, "");
-    }
+    public String getName() { return pref.getString(KEY_NAME, ""); }
 
     public void setName(String tokon) {
         pref.edit().putString(KEY_NAME, tokon).apply();
@@ -117,5 +116,11 @@ public class PreferencesManager {
 
     public void setEmail(String tokon) {
         pref.edit().putString(KEY_EMAIL, tokon).apply();
+    }
+
+    public String getPhone() {return pref.getString(KEY_PHONE, ""); }
+
+    public void setPhone(String tokon) {
+        pref.edit().putString(KEY_PHONE, tokon).apply();
     }
 }

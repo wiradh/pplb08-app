@@ -6,10 +6,12 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import ppl.b08.warunglaundry.R;
+import ppl.b08.warunglaundry.business.PreferencesManager;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -17,11 +19,14 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        TextView namaEdt = (TextView) findViewById(R.id.name1);
+        TextView emailEdt = (TextView) findViewById(R.id.email1);
+        TextView noHPEdt = (TextView) findViewById(R.id.telpon1);
         Button updateBtn = (Button) findViewById(R.id.ubah_btn);
         Button kembali = (Button) findViewById(R.id.back_btn);
-        ImageView Btn1 = (ImageView) findViewById(R.id.profileimage1);
-
-
+        namaEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getName());
+        emailEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getEmail());
+        noHPEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getPhone());
 
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override

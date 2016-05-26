@@ -48,7 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         namaEdt = (EditText) findViewById(R.id.name_txt);
         emailEdt = (EditText) findViewById(R.id.email_txt);
         passwordEdt = (EditText) findViewById(R.id.password_txt);
@@ -109,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Log.e(TAG, "onResponse: sukses" );
                         PreferencesManager.getInstance(RegisterActivity.this).setToken(hasil.getString("token"));
                         PreferencesManager.getInstance(RegisterActivity.this).setRoleValue("CU");
-
+                        PreferencesManager.getInstance(RegisterActivity.this).setPhone(noHP);
                         PreferencesManager.getInstance(RegisterActivity.this).setName(name);
                         PreferencesManager.getInstance(RegisterActivity.this).setEmail(email);
                         Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
@@ -145,6 +144,4 @@ public class RegisterActivity extends AppCompatActivity {
 
      VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
-
-
 }

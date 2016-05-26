@@ -31,8 +31,7 @@
                 android:clickable="true"
                 android:id="@+id/profileimage1"
                 android:src="@drawable/laundry_ico"
-                android:layout_marginBottom="0px"
-                />
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="100dp"
