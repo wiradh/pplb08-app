@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 import ppl.b08.warunglaundry.R;
-import ppl.b08.warunglaundry.business.C;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,7 +27,7 @@ public class HelpFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_help, container, false);
         WebView browser = (WebView) v.findViewById(R.id.webview);
-        browser.loadUrl("http://warung-laundry.com/page/help");
+        browser.loadUrl("http://warung-laundry.com/land/#");
         return v;
     }
 

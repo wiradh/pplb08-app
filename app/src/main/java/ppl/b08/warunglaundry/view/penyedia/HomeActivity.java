@@ -47,9 +47,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         TextView text1 = (TextView) header.findViewById(R.id.name_txt);
-        text1.setText("bearmiku");
+        text1.setText("Aishy");
         TextView text = (TextView) header.findViewById(R.id.email_txt);
-        text.setText("bearmiku@bear.com");
+        text.setText("ais@gmail.com");
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         OrderFragment fragment = new OrderFragment();

@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Initializing NavigationView
-        final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View header = navigationView.inflateHeaderView(R.layout.header_customer_drawer);
         ImageView image2 = (ImageView) header.findViewById(R.id.profile_image);
        image2.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +47,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         TextView text1 = (TextView) header.findViewById(R.id.name_txt);
-        text1.setText("bearmiku");
+        text1.setText("wiradh");
         TextView text = (TextView) header.findViewById(R.id.email_txt);
-        text.setText("bearmiku@bear.com");
+        text.setText("wira@wira.com");
         OrderFragment fragment = new OrderFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);

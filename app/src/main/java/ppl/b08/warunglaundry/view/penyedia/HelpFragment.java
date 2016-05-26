@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 import ppl.b08.warunglaundry.R;
 
@@ -27,7 +26,7 @@ public class HelpFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_help, container, false);
         WebView browser = (WebView) v.findViewById(R.id.webview);
-        browser.loadUrl("http://warung-laundry.com/page/help");
+        browser.loadUrl("http://warung-laundry.com/land/#");
         return v;
     }
 

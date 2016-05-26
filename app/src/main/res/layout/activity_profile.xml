@@ -78,7 +78,7 @@
                 android:layout_below="@+id/profileimage1"
                 android:layout_toRightOf="@id/name2"
                 android:id="@+id/name1"
-                android:text="Bear Miku" />
+                android:text="wiradh" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
@@ -115,7 +115,7 @@
                 android:clickable="false"
                 android:elevation="10dp"
                 android:padding="5dp"
-                android:text="BearMiku@Bear.com" />
+                android:text="wira@wira.com" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
@@ -145,7 +145,7 @@
                 android:layout_toRightOf="@+id/telpon2"
                 android:id="@+id/telpon1"
                 android:padding="5dp"
-                android:text="0857-xxxx-xxx" />
+                android:text="0812345678" />
 
 
             <Button

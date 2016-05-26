@@ -78,7 +78,7 @@
                 android:layout_below="@+id/profileimage1"
                 android:layout_toRightOf="@id/name2"
                 android:id="@+id/name1"
-                android:text="Bear Miku" />
+                android:text="wiradh" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
@@ -157,7 +157,7 @@
                 android:backgroundTint="@color/colorPrimaryDark"
 
                 android:textColor="#FFFFFF"
-                android:id="@+id/change1"
+                android:id="@+id/update1"
                 android:layout_below="@+id/telpon1"
                 android:layout_centerHorizontal="true"
                 />
