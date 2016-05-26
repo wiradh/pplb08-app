@@ -75,12 +75,17 @@ public class ChangeOrderActivity extends AppCompatActivity {
                         for (int i = 0; i < arr.length(); i++) {
                             JSONObject a = arr.getJSONObject(i);
                             double harga = 0;
+                            double berat = 0;
                             String tmp = a.getString("harga");
+                            String tmp2 = a.getString("berat");
                             if(!tmp.equals("")){
                                 harga = a.getDouble("harga");
                             }
+                            if(!tmp2.equals("")){
+                                berat = a.getDouble("berat");
+                            }
                             if(a.getInt("status") != 5) {
-                                items.add(new Order(a.getLong("id"), a.getString("nama_laundry"), a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), harga, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
+                                items.add(new Order(a.getLong("id"), a.getString("nama_laundry"), a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), berat, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
                             }
                         }
 
@@ -111,5 +116,21 @@ public class ChangeOrderActivity extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstance(this).addToRequestQueue(request);
+    }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+////        adapter.notify();
+//        adapter.notifyDataSetChanged();
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//
+//    }
+
+    @Override
+    protected void onResume() {
+//        adapter.notify();
+       getAndSyncListView();
+        super.onResume();
     }
 }

@@ -76,22 +76,30 @@ public class HistoryOrderActivity extends AppCompatActivity {
                         for (int i = 0; i < arr.length(); i++) {
                             JSONObject a = arr.getJSONObject(i);
                             double harga = 0;
+                            double berat = 0;
                             String tmp = a.getString("harga");
+                            String tmp2 = a.getString("berat");
                             if(!tmp.equals("")){
                                 harga = a.getDouble("harga");
                             }
-
-                            items.add(new Order(a.getLong("id"),a.getString("nama_laundry"),a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), harga, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
+                            if(!tmp2.equals("")){
+                                berat = a.getDouble("berat");
+                            }
+                            items.add(new Order(a.getLong("id"),a.getString("nama_laundry"),a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), berat, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
                         }
                         for (int i = 0; i < arr2.length(); i++) {
                             JSONObject a = arr2.getJSONObject(i);
                             double harga = 0;
+                            double berat = 0;
                             String tmp = a.getString("harga");
+                            String tmp2 = a.getString("berat");
                             if(!tmp.equals("")){
                                 harga = a.getDouble("harga");
                             }
-
-                            items.add(new Order(a.getLong("id"),a.getString("nama_laundry"),a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), harga, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
+                            if(!tmp2.equals("")){
+                                berat = a.getDouble("berat");
+                            }
+                            items.add(new Order(a.getLong("id"),a.getString("nama_laundry"),a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), berat, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
                         }
 
                         adapter = new HistoryOrderPAdapter(items, HistoryOrderActivity.this);
@@ -110,7 +118,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(HistoryOrderActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
-                Log.e("volley", error.getMessage());
+//                Log.e("volley", error.getMessage());
             }
         }) {
             protected Map<String, String> getParams() throws AuthFailureError {

@@ -115,4 +115,10 @@ public class CheckOrderActivity extends AppCompatActivity {
 
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
+
+    @Override
+    protected void onResume() {
+        getAndSyncListView();
+        super.onResume();
+    }
 }

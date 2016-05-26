@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +45,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
     static final float zoom = 15;
     long orderId;
     Order order;
+    private String berat = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,11 +197,9 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
     }
     public void ubahStatusAPI(int a){
         final String asd = "" + a;
-        String url = C.HOME_URL + "/changeOrder";
-        double berat = 0;
-        if (a == 3) {
+        final String url = C.HOME_URL + "/changeOrder";
+        berat = "0";
 
-        }
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
             @Override
@@ -219,6 +219,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
                         }else {
                             Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah Completed", Toast.LENGTH_SHORT).show();
                         }
+                        setResult(0);
                         finish();
 
                     } else {
@@ -246,6 +247,82 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
                 return input;
             }
         };
-        VolleySingleton.getInstance(this).addToRequestQueue(request);
+        if (a == 3) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Masukkan berat laundry (dalam kg)");
+
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+            builder.setView(input);
+
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    berat = input.getText().toString();
+                    StringRequest request2 = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject hasil = new JSONObject(response);
+                                int status = hasil.getInt("status");
+                                if (status == 1) {
+                                    Log.e("CheckOrderActivity", "onResponse: sukses");
+                                    int temp2 = Integer.parseInt(asd);
+                                    if(temp2 == 1){
+                                        Toast.makeText(ChangeOrderNextActivity.this, "Pesanan dibatalkan", Toast.LENGTH_SHORT).show();
+                                    }else if(temp2 == 3){
+                                        Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah On Going", Toast.LENGTH_SHORT).show();
+                                    }else if(temp2 == 4){
+                                        Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah Done", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        Toast.makeText(ChangeOrderNextActivity.this, "Status pesanan berubah Completed", Toast.LENGTH_SHORT).show();
+                                    }
+                                    setResult(0);
+                                    finish();
+
+                                } else {
+                                    Toast.makeText(ChangeOrderNextActivity.this, "Jaringan Error", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                Toast.makeText(ChangeOrderNextActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(ChangeOrderNextActivity.this, "Kesalahan jaringan, coba kembali nanti", Toast.LENGTH_SHORT).show();
+                            Log.e("volley", error.getMessage());
+                        }
+                    }) {
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            HashMap<String, String> input = new HashMap<>();
+                            String token = PreferencesManager.getInstance(ChangeOrderNextActivity.this).getToken();
+                            input.put("token", token);
+                            String tmp = "" + order.getId();
+                            input.put("order_id", tmp);
+                            input.put("status",asd);
+                            input.put("berat", berat);
+                            Log.e("asd", "getParams: "+berat );
+                            return input;
+                        }
+                    };
+                    VolleySingleton.getInstance(ChangeOrderNextActivity.this).addToRequestQueue(request2);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+        }
+        if (a!=3) VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }
