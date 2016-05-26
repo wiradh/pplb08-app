@@ -1,13 +1,13 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -26,14 +26,27 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
 
+        setContentView(R.layout.activity_home);
+        final TextView updateName = (TextView) findViewById(R.id.name_txt);
+        final TextView updateAlamat = (TextView) findViewById(R.id.email_txt);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+       // TextView a = (TextView) toolbar.findViewById(R.id.name_txt);
+       // a.setText("A");
 
         //Initializing NavigationView
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         OrderFragment fragment = new OrderFragment();
+
+        //testing
+        //NavigationView navigationView = (NavigationView) findViewById(R.id.header_customer);
+       // View v = navigationView.getHeaderView(0);
+        //TextView avatarContainer = (TextView ) v.findViewById(R.id.imgAvatar);
+        View navView = LayoutInflater.from(this).inflate(R.layout.header_customer_drawer, null); //navigation header menu layout
+        TextView StudentNameView = (TextView)   navView.findViewById(R.id.name_txt);
+        StudentNameView.setText("Test");
+        //
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
@@ -66,8 +79,11 @@ public class HomeActivity extends AppCompatActivity {
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
 
+
+
+                    //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.credits:
-                        Intent intent2 = new Intent(HomeActivity.this, CreditActivity.class);
+                        Intent intent2 = new Intent(HomeActivity.this, ProfileActivity.class);
                         startActivity(intent2);
                         return true;
                     //Replacing the main content with ContentFragment Which is our Inbox View;

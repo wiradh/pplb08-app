@@ -5,7 +5,135 @@
     android:layout_height="match_parent"
 
     tools:context="ppl.b08.warunglaundry.view.pengguna.ProfileActivity">
+    <LinearLayout
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
 
+        android:layout_height="match_parent">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context="ppl.b08.warunglaundry.view.pengguna.ProfileActivity">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:id="@+id/profileimage1"
+                android:src="@drawable/laundry_ico"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+
+                android:padding="20dp"
+
+                android:textColor="#FFFFFF"
+                android:background="@color/colorPrimary"
+                android:clickable="false"
+                android:elevation="10dp"
+                android:id="@+id/name2"
+
+                android:text="Name"
+                android:layout_above="@+id/email2"
+                android:layout_alignLeft="@+id/email2" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+
+                android:layout_margin="1dp"
+                android:background="#fff"
+                android:clickable="true"
+                android:elevation="10dp"
+                android:layout_marginTop="50dp"
+                android:padding="5dp"
+                android:textColor="#FFA500"
+                android:layout_below="@+id/profileimage1"
+                android:layout_toRightOf="@id/name2"
+                android:id="@+id/name1"
+                android:text="Bear Miku" />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+
+                android:layout_marginTop="50dp"
+                android:padding="20dp"
+
+
+                android:layout_margin="1dp"
+
+
+                android:id="@+id/email2"
+                android:elevation="10dp"
+                android:clickable="false"
+                android:textColor="#FFFFFF"
+
+                android:background="@color/colorPrimary"
+
+
+                android:layout_below="@id/name1"
+                android:text="email" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_margin="1dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:layout_below="@+id/name2"
+                android:layout_toRightOf="@id/email2"
+                android:id="@+id/email1"
+                android:textColor="#FFA500"
+                android:clickable="false"
+                android:elevation="10dp"
+                android:padding="5dp"
+                android:text="BearMiku@Bear.com" />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_margin="1dp"
+                android:layout_marginTop="50dp"
+
+
+                android:textColor="#FFFFFF"
+
+                android:background="@color/colorPrimary"
+                android:clickable="false"
+                android:elevation="10dp"
+                android:layout_below="@+id/email1"
+                android:id="@+id/telpon2"
+                android:padding="10dp"
+                android:text="No.Hp/Telepon" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_margin="1dp"
+
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="10dp"
+                android:textColor="#FFA500"
+                android:layout_below="@+id/email1"
+                android:layout_toRightOf="@+id/telpon2"
+                android:id="@+id/telpon1"
+                android:padding="5dp"
+                android:text="0857-xxxx-xxx" />
+        </RelativeLayout>
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,51 +158,4 @@
             android:id="@+id/ubah_btn"
             android:layout_height="match_parent" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/data"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_above="@id/button_panel"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/name_txt"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Nama Pengguna"
-                style="@style/Base.TextAppearance.AppCompat.Large"/>
-            <View android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/phone_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:hint="No Telp"
-                    android:text="0857"
-                    android:cursorVisible="false"
-                    android:clickable="false"
-                    android:focusable="false"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
 </RelativeLayout>

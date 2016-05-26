@@ -1,34 +1,44 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import ppl.b08.warunglaundry.R;
+import ppl.b08.warunglaundry.business.PreferencesManager;
 
 public class ProfileActivity extends AppCompatActivity {
-
-    private EditText nameEdt;
-    private EditText noHPEdt;
-    Button kembali = (Button) findViewById(R.id.back_btn);
-    final Button ubah = (Button) findViewById(R.id.ubah_btn);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        nameEdt = (EditText) findViewById(R.id.name_txt);
-        noHPEdt = (EditText) findViewById(R.id.phone_txt);
+        TextView namaEdt = (TextView) findViewById(R.id.name1);
+        TextView emailEdt = (TextView) findViewById(R.id.email1);
+        TextView noHPEdt = (TextView) findViewById(R.id.telpon1);
+        Button updateBtn = (Button) findViewById(R.id.ubah_btn);
+        Button kembali = (Button) findViewById(R.id.back_btn);
+        namaEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getName());
+        emailEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getEmail());
+        noHPEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getPhone());
+
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                finish();
+            public void onClick(View v) {finish();
             }
         });
-
-
-
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, ProfileEditActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

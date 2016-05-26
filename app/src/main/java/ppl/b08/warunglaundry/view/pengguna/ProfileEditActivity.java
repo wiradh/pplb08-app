@@ -14,6 +14,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
@@ -33,6 +34,10 @@ public class ProfileEditActivity extends AppCompatActivity {
     private EditText noHPEdt;
     private EditText emailEdt;
     private EditText passEdt;
+    String name;
+    String noHP;
+    String email;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +64,12 @@ public class ProfileEditActivity extends AppCompatActivity {
     }
 
     private void update() {
-        final String name = nameEdt.getText().toString();
-        final String noHP = noHPEdt.getText().toString();
-        final String email = emailEdt.getText().toString();
-        final String pasword = passEdt.getText().toString();
+        name = nameEdt.getText().toString();
+        noHP = noHPEdt.getText().toString();
+        email = emailEdt.getText().toString();
+        password = passEdt.getText().toString();
 
-        if (name.isEmpty() || email.isEmpty() || pasword.isEmpty() || noHP.isEmpty()) {
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || noHP.isEmpty()) {
             Toast.makeText(ProfileEditActivity.this, "Semua data harus diisi", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -96,7 +101,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     private void kirimRequestUpdate() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Informasi");
-        String message = "Data anda sudah diperbaharui";
+        String message = "Data anda sudah diperbaharui dengan";
         builder.setMessage(message);
 
         builder.setPositiveButton("Oke", new DialogInterface.OnClickListener() {
@@ -113,13 +118,17 @@ public class ProfileEditActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                JSONObject hasil = null;
                 try {
-                    JSONObject object = new JSONObject(response);
-                    int status = object.getInt("status");
+                    hasil = new JSONObject(response);
+                    int status = hasil.getInt("status");
                     if (status == 1) {
+                        PreferencesManager.getInstance(ProfileEditActivity.this).setName(name);
+                        PreferencesManager.getInstance(ProfileEditActivity.this).setEmail(email);
+                        PreferencesManager.getInstance(ProfileEditActivity.this).setPhone(noHP);
                         builder.show();
                     } else {
-                        Toast.makeText(ProfileEditActivity.this, "Tidak dapat melakukan perubahan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileEditActivity.this, "Email sudah terdaftar, silahkan coba kembali", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(ProfileEditActivity.this, "Terjadi kesalahan jaringan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
@@ -138,6 +147,10 @@ public class ProfileEditActivity extends AppCompatActivity {
                 HashMap<String, String> input = new HashMap<>();
                 String token = PreferencesManager.getInstance(ProfileEditActivity.this).getToken();
                 input.put("token", token);
+                input.put("name", name);
+                input.put("password", password);
+                input.put("email",email);
+                input.put("nomor_hp", noHP);
                 return input;
             }
         };

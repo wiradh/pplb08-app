@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         if (pass.isEmpty()) {
-            Toast.makeText(this, "Passeord wajib diisi", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Password wajib diisi", Toast.LENGTH_SHORT).show();
             return;
         }
         String url = C.HOME_URL + "/login";
