@@ -61,6 +61,9 @@ public class ProfileEditActivity extends AppCompatActivity {
                 update();
             }
         });
+        nameEdt.setText(PreferencesManager.getInstance(ProfileEditActivity.this).getName());
+        emailEdt.setText(PreferencesManager.getInstance(ProfileEditActivity.this).getEmail());
+        
     }
 
     private void update() {
@@ -125,7 +128,6 @@ public class ProfileEditActivity extends AppCompatActivity {
                     if (status == 1) {
                         PreferencesManager.getInstance(ProfileEditActivity.this).setName(name);
                         PreferencesManager.getInstance(ProfileEditActivity.this).setEmail(email);
-                        PreferencesManager.getInstance(ProfileEditActivity.this).setPhone(noHP);
                         builder.show();
                     } else {
                         Toast.makeText(ProfileEditActivity.this, "Email sudah terdaftar, silahkan coba kembali", Toast.LENGTH_SHORT).show();

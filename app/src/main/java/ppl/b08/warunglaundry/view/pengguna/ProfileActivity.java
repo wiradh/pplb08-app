@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
         Button kembali = (Button) findViewById(R.id.back_btn);
         namaEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getName());
         emailEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getEmail());
-        noHPEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getPhone());
+        noHPEdt.setText("0815765626221");
 
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override
