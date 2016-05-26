@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ScrollView01"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:scrollbars="none" >
 
-    <LinearLayout android:layout_width="match_parent"
+    tools:context="ppl.b08.warunglaundry.view.pengguna.ProfileActivity">
+    <LinearLayout
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+
         android:layout_height="match_parent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,28 +24,11 @@
             android:backgroundTint="@color/colorPrimaryDark"
             android:paddingTop="@dimen/activity_vertical_margin"
             tools:context="ppl.b08.warunglaundry.view.pengguna.ProfileActivity">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginBottom="0px"
-                android:gravity="center_horizontal"
-                android:text="Profile Pengguna Laundry"
-                android:id="@+id/textView2"
 
-                android:layout_centerHorizontal="true"
-
-                android:textSize="20dp"
-                android:background="@color/colorPrimaryDark"
-                android:backgroundTint="@color/colorPrimary"
-                android:textColor="#FFFFFF"
-                />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:layout_below="@+id/textView2"
                 android:id="@+id/profileimage1"
                 android:src="@drawable/laundry_ico"
                 android:layout_marginBottom="0px"
@@ -51,21 +38,20 @@
                 android:layout_width="100dp"
                 android:layout_height="60dp"
 
-                android:layout_marginTop="50dp"
                 android:padding="20dp"
 
                 android:textColor="#FFFFFF"
-                android:layout_margin="1dp"
                 android:background="@color/colorPrimary"
                 android:clickable="false"
                 android:elevation="10dp"
                 android:id="@+id/name2"
-                android:layout_below="@+id/profileimage1"
 
-                android:text="Name"/>
+                android:text="Name"
+                android:layout_above="@+id/email2"
+                android:layout_alignLeft="@+id/email2" />
 
             <TextView
-                android:layout_width="250dp"
+                android:layout_width="fill_parent"
                 android:layout_height="60dp"
 
                 android:layout_margin="1dp"
@@ -146,39 +132,31 @@
                 android:id="@+id/telpon1"
                 android:padding="5dp"
                 android:text="0857-xxxx-xxx" />
-
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Update Profile"
-                android:backgroundTint="@color/colorPrimaryDark"
-android:layout_marginTop="100dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/update1"
-                android:layout_below="@+id/telpon1"
-                android:layout_centerHorizontal="false"
-                />
-            <Button
-                style="?android:attr/buttonStyleSmall"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Change Password"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:layout_marginTop="100dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/change1"
-                android:layout_below="@+id/telpon1"
-                android:layout_toRightOf="@id/update1"
-
-                android:layout_centerHorizontal="true"
-                />
-
-
         </RelativeLayout>
 
     </LinearLayout>
-</ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_panel"
+        android:layout_alignParentBottom="true"
+        android:weightSum="10"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:text="Kembali"
+            android:background="@color/colorAccent"
+            android:textColor="#FFF"
+            android:id="@+id/back_btn"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#FFF"
+            android:text="UBAH PROFILE"
+            android:id="@+id/ubah_btn"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</RelativeLayout>

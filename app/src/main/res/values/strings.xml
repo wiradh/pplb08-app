@@ -10,6 +10,21 @@
     <string name="pengguna_laundry">Seorang pengguna jasa laundry?</string>
     <string name="closeDrawer">Navigation View</string>
     <string name="openDrawer">Navigation View Closed</string>
+    <string name="about"> Warung Laundry Merupakan aplikasi yang membantu memudahkan proses transaksi
+    antar jemput pemesanan Laundry bagi daerah di sekitar kampus UI.\n
+
+    Tim pengembang Warung Laundry:\n\n
+     Andi Fajar Nur Ismail\n
+
+            Bayu Rahman\n
+
+            Bimo Prasetyo\n
+            M Risky Negoro P\n
+            Putu Wira Asthika\n
+            Tegar Aldina\n
+
+\n
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

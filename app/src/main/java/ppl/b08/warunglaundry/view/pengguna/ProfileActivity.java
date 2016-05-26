@@ -17,74 +17,23 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-
-
-
-
-        Button updateBtn = (Button) findViewById(R.id.update1);
-        Button changeBtn = (Button) findViewById(R.id.change1);
+        Button updateBtn = (Button) findViewById(R.id.ubah_btn);
+        Button kembali = (Button) findViewById(R.id.back_btn);
         ImageView Btn1 = (ImageView) findViewById(R.id.profileimage1);
 
+
+
+        kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {finish();
+            }
+        });
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Toast toast = Toast.makeText(getApplicationContext(), "Redirected", Toast.LENGTH_SHORT);
-                toast.show();
-
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        toast.cancel();
-                    }
-                }, 600);
-                final Toast toast2 = Toast.makeText(getApplicationContext(), "Redirected", Toast.LENGTH_SHORT);
-                toast.show();
-
-                Handler handler2 = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        toast.cancel();
-                    }
-                }, 600);
-
                 Intent intent = new Intent(ProfileActivity.this, ProfileEditActivity.class);
                 startActivity(intent);
             }
         });
-
-
-        changeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Toast toast = Toast.makeText(getApplicationContext(), "Password Has Been Changed", Toast.LENGTH_SHORT);
-                toast.show();
-
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        toast.cancel();
-                    }
-                }, 600);
-                final Toast toast2 = Toast.makeText(getApplicationContext(), "Redirected", Toast.LENGTH_SHORT);
-                toast.show();
-
-                Handler handler2 = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        toast.cancel();
-                    }
-                }, 600);
-
-                Intent intent = new Intent(ProfileActivity.this, ProfileEditPassActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }
