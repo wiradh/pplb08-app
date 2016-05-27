@@ -44,6 +44,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
         getSupportActionBar().setTitle("Ubah Profil");
+        Intent i = getIntent();
+        Bundle data = i.getExtras();
         nameEdt = (EditText) findViewById(R.id.name_txt);
         noHPEdt = (EditText) findViewById(R.id.phone_txt);
         passEdt = (EditText) findViewById(R.id.password_txt);
@@ -62,8 +64,10 @@ public class ProfileEditActivity extends AppCompatActivity {
                 update();
             }
         });
-        nameEdt.setText(PreferencesManager.getInstance(ProfileEditActivity.this).getName());
-        emailEdt.setText(PreferencesManager.getInstance(ProfileEditActivity.this).getEmail());
+
+        nameEdt.setText(data.getString("nama"));
+        emailEdt.setText(data.getString("email"));
+        noHPEdt.setText(data.getString("noHp"));
         
     }
 
@@ -73,8 +77,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         email = emailEdt.getText().toString();
         password = passEdt.getText().toString();
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || noHP.isEmpty()) {
-            Toast.makeText(ProfileEditActivity.this, "Semua data harus diisi", Toast.LENGTH_SHORT).show();
+        if (name.isEmpty() || email.isEmpty() || noHP.isEmpty()) {
+            Toast.makeText(ProfileEditActivity.this, "Nama, Email, dan No. Hp harus dalam keadaan terisi", Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -11,15 +11,11 @@ public class LCustomer implements Serializable {
     private String nama;
     private String email;
     private String telp;
-    private String detil;
-    private String alamat;
 
-    public LCustomer(long id, String nama, String email, String telp, String detil, String alamat) {
+    public LCustomer(long id, String nama, String email, String telp) {
         this.id = id;
         this.nama = nama;
         this.email = email;
         this.telp = telp;
-        this.detil = detil;
-        this.alamat = alamat;
     }
 }
