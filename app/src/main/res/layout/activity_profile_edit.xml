@@ -25,7 +25,7 @@
             android:layout_weight="5"
             android:background="@color/colorPrimaryDark"
             android:textColor="#FFF"
-            android:text="UPDATE PROFILE"
+            android:text="UPDATE PROFIL"
             android:id="@+id/updt_btn"
             android:layout_height="match_parent" />
     </LinearLayout>

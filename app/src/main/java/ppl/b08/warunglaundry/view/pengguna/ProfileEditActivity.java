@@ -43,6 +43,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
+        getSupportActionBar().setTitle("Ubah Profil");
         nameEdt = (EditText) findViewById(R.id.name_txt);
         noHPEdt = (EditText) findViewById(R.id.phone_txt);
         passEdt = (EditText) findViewById(R.id.password_txt);

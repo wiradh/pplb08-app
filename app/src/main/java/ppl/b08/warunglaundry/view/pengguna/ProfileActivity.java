@@ -19,14 +19,19 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getSupportActionBar().setTitle("Profil Pengguna");
         TextView namaEdt = (TextView) findViewById(R.id.name1);
         TextView emailEdt = (TextView) findViewById(R.id.email1);
         TextView noHPEdt = (TextView) findViewById(R.id.telpon1);
         Button updateBtn = (Button) findViewById(R.id.ubah_btn);
         Button kembali = (Button) findViewById(R.id.back_btn);
-        namaEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getName());
+        namaEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getToken());
         emailEdt.setText(PreferencesManager.getInstance(ProfileActivity.this).getEmail());
         noHPEdt.setText("0815765626221");
+
+
+
+
 
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override

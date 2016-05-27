@@ -154,7 +154,7 @@
             android:layout_weight="5"
             android:background="@color/colorPrimaryDark"
             android:textColor="#FFF"
-            android:text="UBAH PROFILE"
+            android:text="UBAH PROFIL"
             android:id="@+id/ubah_btn"
             android:layout_height="match_parent" />
     </LinearLayout>
