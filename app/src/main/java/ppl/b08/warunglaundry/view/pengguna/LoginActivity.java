@@ -1,7 +1,6 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,13 +14,10 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (r == 1) {
 
                         String token = ob.getString("token");
+                      //  token2 = token;
                         String role = ob.getString("role");
                         PreferencesManager.getInstance(LoginActivity.this).setToken(token);
                         PreferencesManager.getInstance(LoginActivity.this).setRoleValue(role);

@@ -17,7 +17,7 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 
 /**
- * Created by Andi Fajar on 07/04/2016.
+ * Created by Andi Fajar , Edit by M Risky Negoro P 07/04/2016, 26/05/2016.
  */
 public class HomeActivity extends AppCompatActivity {
 
@@ -47,9 +47,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         TextView text1 = (TextView) header.findViewById(R.id.name_txt);
-        text1.setText("wiradh");
+       // text1.setText("wiradh");
+        text1.setText(PreferencesManager.getInstance(HomeActivity.this).getName());
+
         TextView text = (TextView) header.findViewById(R.id.email_txt);
-        text.setText("wira@wira.com");
+        text.setText(PreferencesManager.getInstance(HomeActivity.this).getEmail());
+       // text.setText("wira@wira.com");
         OrderFragment fragment = new OrderFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);

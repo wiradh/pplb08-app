@@ -78,7 +78,7 @@
                 android:layout_below="@+id/profileimage1"
                 android:layout_toRightOf="@id/name2"
                 android:id="@+id/name1"
-                android:text="wiradh" />
+                android:text="" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
@@ -115,7 +115,7 @@
                 android:clickable="false"
                 android:elevation="10dp"
                 android:padding="5dp"
-                android:text="wira@wira.com" />
+                android:text="" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
@@ -145,37 +145,33 @@
                 android:layout_toRightOf="@+id/telpon2"
                 android:id="@+id/telpon1"
                 android:padding="5dp"
-                android:text="0812345678" />
+                android:text="" />
 
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Update Profile"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:layout_marginTop="100dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/update1"
-                android:layout_below="@+id/telpon1"
-                android:layout_centerHorizontal="false"
-                />
-            <Button
-                style="?android:attr/buttonStyleSmall"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Change Password"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:layout_marginTop="100dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/change1"
-                android:layout_below="@+id/telpon1"
-                android:layout_toRightOf="@id/update1"
-
-                android:layout_centerHorizontal="true"
-                />
+                android:id="@+id/button_panel"
+                android:layout_alignParentBottom="true"
+                android:weightSum="10"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:text="Kembali"
+                    android:background="@color/colorAccent"
+                    android:textColor="#FFF"
+                    android:id="@+id/change1"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="#FFF"
+                    android:text="UBAH PROFIL"
+                    android:id="@+id/update1"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
 
         </RelativeLayout>

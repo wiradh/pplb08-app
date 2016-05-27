@@ -1,8 +1,8 @@
 package ppl.b08.warunglaundry.view.penyedia;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +14,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONObject;
@@ -102,6 +101,10 @@ public class LoginActivity extends AppCompatActivity {
                         //TODO Sukses
                         PreferencesManager.getInstance(LoginActivity.this).setToken(ob.getString("token"));
                         PreferencesManager.getInstance(LoginActivity.this).setRoleValue(ob.getString("role"));
+                       //edited
+                        PreferencesManager.getInstance(LoginActivity.this).setName(ob.getString("name"));
+                        PreferencesManager.getInstance(LoginActivity.this).setEmail(ob.getString("email"));
+
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
