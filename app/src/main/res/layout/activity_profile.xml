@@ -38,14 +38,14 @@
                 android:textColor="#FFFFFF"
                 />
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:layout_below="@+id/textView2"
-                android:id="@+id/profileimage1"
-                android:src="@drawable/laundry_ico"
-                android:layout_marginBottom="0px"
-                />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_below="@+id/textView2"
+            android:id="@+id/profileimage1"
+            android:src="@drawable/laundry_ico"
+            android:layout_marginBottom="0px"
+            />
 
             <TextView
                 android:layout_width="100dp"
