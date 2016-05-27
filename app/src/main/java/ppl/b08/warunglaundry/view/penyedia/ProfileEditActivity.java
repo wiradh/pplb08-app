@@ -26,7 +26,7 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-import ppl.b08.warunglaundry.view.pengguna.HomeActivity;
+import ppl.b08.warunglaundry.view.penyedia.HomeActivity;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
