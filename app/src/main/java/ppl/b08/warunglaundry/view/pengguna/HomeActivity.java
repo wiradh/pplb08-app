@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,11 +56,19 @@ public class HomeActivity extends AppCompatActivity {
         View header = navigationView.inflateHeaderView(R.layout.header_customer_drawer);
         TextView name = (TextView) header.findViewById(R.id.name_txt);
         TextView email = (TextView) header.findViewById(R.id.email_txt);
+        ImageView rolePic = (ImageView) header.findViewById(R.id.profile_image) ;
 
         String nameStr = PreferencesManager.getInstance(this).getName();
         String emailStr = PreferencesManager.getInstance(this).getEmail();
         name.setText(nameStr);
         email.setText(emailStr);
+        rolePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -83,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.credits:
-                        Intent intent2 = new Intent(HomeActivity.this, ProfileActivity.class);
+                        Intent intent2 = new Intent(HomeActivity.this, CreditActivity.class);
                         startActivity(intent2);
                         return true;
                     //Replacing the main content with ContentFragment Which is our Inbox View;
