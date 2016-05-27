@@ -267,11 +267,19 @@
         android:orientation="horizontal">
         <Button
             android:layout_width="0dp"
-            android:layout_weight="10"
+            android:layout_weight="5"
             android:text="Kembali"
             android:background="@color/colorAccent"
             android:textColor="#FFF"
             android:id="@+id/back_btn"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#FFF"
+            android:text="UBAH PASSWORD"
+            android:id="@+id/ubah_btn"
             android:layout_height="match_parent" />
     </LinearLayout>
 </RelativeLayout>

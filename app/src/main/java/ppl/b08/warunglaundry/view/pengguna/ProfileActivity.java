@@ -23,7 +23,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import ppl.b08.warunglaundry.Entity.LProvider;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
