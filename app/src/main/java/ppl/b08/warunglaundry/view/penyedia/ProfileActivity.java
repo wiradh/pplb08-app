@@ -24,7 +24,6 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-import ppl.b08.warunglaundry.view.penyedia.ProfileEditActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     String id;
@@ -46,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, ProfileEditActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, PasswordEditActivity.class);
                 Bundle data = new Bundle();
                 data.putString("nama", (String) namaEdt.getText());
                 data.putString("email", (String) emailEdt.getText());

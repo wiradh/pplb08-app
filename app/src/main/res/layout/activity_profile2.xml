@@ -45,7 +45,7 @@
                 android:elevation="10dp"
                 android:id="@+id/name2"
 
-                android:text="Name"
+                android:text="Nama :"
                 android:layout_above="@+id/email2"
                 android:layout_alignLeft="@+id/email2" />
 
@@ -63,7 +63,7 @@
                 android:layout_below="@+id/profileimage1"
                 android:layout_toRightOf="@id/name2"
                 android:id="@+id/name1"
-                android:text="Bear Miku" />
+                android:text="NAMA" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="35dp"
@@ -84,7 +84,7 @@
 
 
                 android:layout_below="@id/name1"
-                android:text="email" />
+                android:text="Email :" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -100,7 +100,7 @@
                 android:clickable="false"
                 android:elevation="10dp"
                 android:padding="5dp"
-                android:text="BearMiku@Bear.com" />
+                android:text="EMAIL" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="35dp"
@@ -116,7 +116,7 @@
                 android:layout_below="@+id/email1"
                 android:id="@+id/telpon2"
                 android:padding="10dp"
-                android:text="Telepon" />
+                android:text="Telepon :" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="35dp"
@@ -130,7 +130,7 @@
                 android:layout_toRightOf="@+id/telpon2"
                 android:id="@+id/telpon1"
                 android:padding="5dp"
-                android:text="0857-xxxx-xxx" />
+                android:text="NO. TELEPON" />
 
             <TextView
                 android:layout_width="100dp"
@@ -147,7 +147,7 @@
                 android:layout_below="@+id/telpon1"
                 android:id="@+id/alamat2"
                 android:padding="10dp"
-                android:text="Alamat" />
+                android:text="Alamat :" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
@@ -161,7 +161,7 @@
                 android:layout_toRightOf="@+id/alamat2"
                 android:id="@+id/alamat1"
                 android:padding="5dp"
-                android:text="Ehek" />
+                android:text="ALAMAT" />
 
             <TextView
                 android:layout_width="100dp"
@@ -178,7 +178,7 @@
                 android:layout_below="@+id/alamat1"
                 android:id="@+id/harga2"
                 android:padding="10dp"
-                android:text="Harga/Kg" />
+                android:text="Harga/Kg :" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="37dp"
@@ -192,7 +192,7 @@
                 android:layout_toRightOf="@+id/harga2"
                 android:id="@+id/harga1"
                 android:padding="5dp"
-                android:text="6500" />
+                android:text="HAEGA/KILO" />
 
             <TextView
                 android:layout_width="100dp"
@@ -209,7 +209,7 @@
                 android:layout_below="@+id/harga1"
                 android:id="@+id/jangkauan2"
                 android:padding="10dp"
-                android:text="Jangkauan" />
+                android:text="Jangkauan :" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="37dp"
@@ -223,7 +223,7 @@
                 android:layout_toRightOf="@+id/jangkauan2"
                 android:id="@+id/jangkauan1"
                 android:padding="5dp"
-                android:text="5000" />
+                android:text="JANGKAUAN" />
 
             <TextView
                 android:layout_width="100dp"
@@ -240,7 +240,7 @@
                 android:layout_below="@+id/jangkauan1"
                 android:id="@+id/rate2"
                 android:padding="10dp"
-                android:text="Rate" />
+                android:text="Rate :" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="35dp"
@@ -254,7 +254,7 @@
                 android:layout_toRightOf="@+id/rate2"
                 android:id="@+id/rate1"
                 android:padding="5dp"
-                android:text="0" />
+                android:text="RATING" />
         </RelativeLayout>
 
     </LinearLayout>

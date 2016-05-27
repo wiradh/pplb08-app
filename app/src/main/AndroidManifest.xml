@@ -78,7 +78,7 @@
         <activity android:name=".view.penyedia.ProfileActivity" />
         <activity android:name=".view.penyedia.CreditActivity" />
         <activity android:name=".view.pengguna.ProfileEditActivity" />
-        <activity android:name=".view.penyedia.ProfileEditActivity" />
+        <activity android:name=".view.penyedia.PasswordEditActivity" />
         <activity android:name=".view.pengguna.HelpActivity" />
     </application>
 

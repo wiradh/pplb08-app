@@ -26,9 +26,8 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-import ppl.b08.warunglaundry.view.penyedia.HomeActivity;
 
-public class ProfileEditActivity extends AppCompatActivity {
+public class PasswordEditActivity extends AppCompatActivity {
 
     private EditText nameEdt;
     private EditText noHPEdt;
@@ -42,7 +41,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_edit2);
+        setContentView(R.layout.activity_password_edit2);
         getSupportActionBar().setTitle("Ubah Password");
         Intent i = getIntent();
         Bundle data = i.getExtras();
@@ -70,6 +69,10 @@ public class ProfileEditActivity extends AppCompatActivity {
     private void update() {
         password = passEdt.getText().toString();
 
+        if (password.isEmpty()) {
+            Toast.makeText(PasswordEditActivity.this, "Password harus dalam keadaan terisi", Toast.LENGTH_SHORT).show();
+            return;
+        }
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Konfirmasi perubahan");
         String message = "Apakah anda yakin ingin melakukan perubahan ini?";
@@ -98,7 +101,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         builder.setPositiveButton("Oke", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent(ProfileEditActivity.this, HomeActivity.class);
+                Intent i = new Intent(PasswordEditActivity.this, HomeActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(i);
                 finish(); // to end the current activity
@@ -116,24 +119,24 @@ public class ProfileEditActivity extends AppCompatActivity {
                     if (status == 1) {
                         builder.show();
                     } else {
-                        Toast.makeText(ProfileEditActivity.this, "Email sudah terdaftar, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PasswordEditActivity.this, "Email sudah terdaftar, silahkan coba kembali", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(ProfileEditActivity.this, "Terjadi kesalahan jaringan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PasswordEditActivity.this, "Terjadi kesalahan jaringan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ProfileEditActivity.this, "Terjadi kesalahan jaringan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PasswordEditActivity.this, "Terjadi kesalahan jaringan, silahkan coba kembali", Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> input = new HashMap<>();
-                String token = PreferencesManager.getInstance(ProfileEditActivity.this).getToken();
+                String token = PreferencesManager.getInstance(PasswordEditActivity.this).getToken();
                 input.put("token", token);
                 input.put("name", name);
                 input.put("password", password);

@@ -45,7 +45,7 @@
                 android:elevation="10dp"
                 android:id="@+id/name2"
 
-                android:text="Name"
+                android:text="Nama :"
                 android:layout_above="@+id/email2"
                 android:layout_alignLeft="@+id/email2" />
 
@@ -84,7 +84,7 @@
 
 
                 android:layout_below="@id/name1"
-                android:text="email" />
+                android:text="Email :" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -116,7 +116,7 @@
                 android:layout_below="@+id/email1"
                 android:id="@+id/telpon2"
                 android:padding="10dp"
-                android:text="No.Hp/Telepon" />
+                android:text="No.Hp/Telepon :" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
