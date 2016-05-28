@@ -34,10 +34,12 @@ public class ProfileEditActivity extends AppCompatActivity {
     private EditText noHPEdt;
     private EditText emailEdt;
     private EditText passEdt;
+    private EditText rePassEdt;
     String name;
     String noHP;
     String email;
     String password;
+    String repassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         nameEdt = (EditText) findViewById(R.id.name_txt);
         noHPEdt = (EditText) findViewById(R.id.phone_txt);
         passEdt = (EditText) findViewById(R.id.password_txt);
+        rePassEdt = (EditText) findViewById(R.id.repassword_txt);
         emailEdt = (EditText) findViewById(R.id.email_txt);
         Button kembali = (Button) findViewById(R.id.back_btn);
         final Button update = (Button) findViewById(R.id.updt_btn);
@@ -67,7 +70,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         nameEdt.setText(data.getString("nama"));
         emailEdt.setText(data.getString("email"));
         noHPEdt.setText(data.getString("noHp"));
-        
+
     }
 
     private void update() {
@@ -75,6 +78,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         noHP = noHPEdt.getText().toString();
         email = emailEdt.getText().toString();
         password = passEdt.getText().toString();
+        repassword = rePassEdt.getText().toString();
 
         if (name.isEmpty() || email.isEmpty() || noHP.isEmpty()) {
             Toast.makeText(ProfileEditActivity.this, "Nama, Email, dan No. Hp harus dalam keadaan terisi", Toast.LENGTH_SHORT).show();
@@ -83,6 +87,11 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         if (!C.isValidEmail(email)) {
             Toast.makeText(ProfileEditActivity.this, "Email tidak valid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!password.equals(repassword) && !(password.isEmpty() && repassword.isEmpty())) {
+            Toast.makeText(ProfileEditActivity.this, "Password tidak sesuai", Toast.LENGTH_SHORT).show();
             return;
         }
 
