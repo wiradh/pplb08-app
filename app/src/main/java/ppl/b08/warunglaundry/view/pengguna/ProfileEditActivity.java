@@ -2,9 +2,9 @@ package ppl.b08.warunglaundry.view.pengguna;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +14,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
@@ -22,26 +23,23 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
+import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.VolleySingleton;
 
-/**
- * Created By M Risky and Bimo Prasetyo
- *
- *
- * */
 public class ProfileEditActivity extends AppCompatActivity {
 
     private EditText nameEdt;
     private EditText noHPEdt;
     private EditText emailEdt;
     private EditText passEdt;
+    private EditText rePassEdt;
     String name;
     String noHP;
     String email;
     String password;
+    String repassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +51,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         nameEdt = (EditText) findViewById(R.id.name_txt);
         noHPEdt = (EditText) findViewById(R.id.phone_txt);
         passEdt = (EditText) findViewById(R.id.password_txt);
+        rePassEdt = (EditText) findViewById(R.id.repassword_txt);
         emailEdt = (EditText) findViewById(R.id.email_txt);
         Button kembali = (Button) findViewById(R.id.back_btn);
         final Button update = (Button) findViewById(R.id.updt_btn);
@@ -71,7 +70,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         nameEdt.setText(data.getString("nama"));
         emailEdt.setText(data.getString("email"));
         noHPEdt.setText(data.getString("noHp"));
-        
+
     }
 
     private void update() {
@@ -79,6 +78,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         noHP = noHPEdt.getText().toString();
         email = emailEdt.getText().toString();
         password = passEdt.getText().toString();
+        repassword = rePassEdt.getText().toString();
 
         if (name.isEmpty() || email.isEmpty() || noHP.isEmpty()) {
             Toast.makeText(ProfileEditActivity.this, "Nama, Email, dan No. Hp harus dalam keadaan terisi", Toast.LENGTH_SHORT).show();
@@ -87,6 +87,11 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         if (!C.isValidEmail(email)) {
             Toast.makeText(ProfileEditActivity.this, "Email tidak valid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!password.equals(repassword) && !(password.isEmpty() && repassword.isEmpty())) {
+            Toast.makeText(ProfileEditActivity.this, "Password tidak sesuai", Toast.LENGTH_SHORT).show();
             return;
         }
 

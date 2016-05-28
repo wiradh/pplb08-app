@@ -7,13 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 import ppl.b08.warunglaundry.R;
-/**
- * Created Activity By and Fixed Layout M Risky on 22/05/2016
- * Created Webview by Putu Wira and Bayu Rahman
- *
- * */
+
 /**
  * A simple {@link Fragment} subclass.
  */

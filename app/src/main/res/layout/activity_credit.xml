@@ -10,29 +10,10 @@
     tools:context="ppl.b08.warunglaundry.view.pengguna.CreditActivity">
 
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0px"
-        android:gravity="center_horizontal"
-        android:text="Credits"
-        android:id="@+id/textView2"
-
-        android:layout_centerHorizontal="true"
-
-        android:textSize="20dp"
-        android:background="@color/colorPrimaryDark"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="#FFFFFF"
-        />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:layout_below="@+id/textView2"
         android:id="@+id/profileimage1"
         android:src="@drawable/laundry_ico"
         android:layout_marginBottom="0px"
