@@ -31,6 +31,7 @@
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         android:layout_gravity="start"
+
         app:menu="@menu/drawer_customer"
         />
 </android.support.v4.widget.DrawerLayout>

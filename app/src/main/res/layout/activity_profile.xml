@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
 
-    tools:context="ppl.b08.warunglaundry.view.pengguna.ProfileActivity">
-    <LinearLayout
-        android:id="@+id/data"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -24,33 +20,52 @@
             android:backgroundTint="@color/colorPrimaryDark"
             android:paddingTop="@dimen/activity_vertical_margin"
             tools:context="ppl.b08.warunglaundry.view.pengguna.ProfileActivity">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0px"
+                android:gravity="center_horizontal"
+                android:text="Profile Pengguna Laundry"
+                android:id="@+id/textView2"
 
+                android:layout_centerHorizontal="true"
+
+                android:textSize="20dp"
+                android:background="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="#FFFFFF"
+                />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:layout_below="@+id/textView2"
                 android:id="@+id/profileimage1"
                 android:src="@drawable/laundry_ico"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="0px"
+                />
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
 
+                android:layout_marginTop="50dp"
                 android:padding="20dp"
 
                 android:textColor="#FFFFFF"
+                android:layout_margin="1dp"
                 android:background="@color/colorPrimary"
                 android:clickable="false"
                 android:elevation="10dp"
                 android:id="@+id/name2"
+                android:layout_below="@+id/profileimage1"
 
-                android:text="Nama :"
-                android:layout_above="@+id/email2"
-                android:layout_alignLeft="@+id/email2" />
+                android:text="Name"/>
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="250dp"
                 android:layout_height="60dp"
 
                 android:layout_margin="1dp"
@@ -63,7 +78,7 @@
                 android:layout_below="@+id/profileimage1"
                 android:layout_toRightOf="@id/name2"
                 android:id="@+id/name1"
-                android:text="NAMA" />
+                android:text="" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
@@ -84,7 +99,7 @@
 
 
                 android:layout_below="@id/name1"
-                android:text="Email :" />
+                android:text="email" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -100,7 +115,7 @@
                 android:clickable="false"
                 android:elevation="10dp"
                 android:padding="5dp"
-                android:text="EMAIL" />
+                android:text="" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="60dp"
@@ -116,7 +131,7 @@
                 android:layout_below="@+id/email1"
                 android:id="@+id/telpon2"
                 android:padding="10dp"
-                android:text="No.Hp/Telepon :" />
+                android:text="No.Hp/Telepon" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
@@ -130,32 +145,36 @@
                 android:layout_toRightOf="@+id/telpon2"
                 android:id="@+id/telpon1"
                 android:padding="5dp"
-                android:text="NO.TELP" />
+                android:text="" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_panel"
+                android:layout_alignParentBottom="true"
+                android:weightSum="10"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:text="Kembali"
+                    android:background="@color/colorAccent"
+                    android:textColor="#FFF"
+                    android:id="@+id/change1"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="#FFF"
+                    android:text="UBAH PROFIL"
+                    android:id="@+id/update1"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
         </RelativeLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_panel"
-        android:layout_alignParentBottom="true"
-        android:weightSum="10"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="5"
-            android:text="Kembali"
-            android:background="@color/colorAccent"
-            android:textColor="#FFF"
-            android:id="@+id/back_btn"
-            android:layout_height="match_parent" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="5"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="#FFF"
-            android:text="UBAH PROFIL"
-            android:id="@+id/ubah_btn"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-</RelativeLayout>
+</ScrollView>

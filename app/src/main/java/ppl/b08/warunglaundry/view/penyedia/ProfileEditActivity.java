@@ -1,4 +1,4 @@
-package ppl.b08.warunglaundry.view.pengguna;
+package ppl.b08.warunglaundry.view.penyedia;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -46,14 +46,11 @@ public class ProfileEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_edit);
-        getSupportActionBar().setTitle("Ubah Profil");
+        setContentView(R.layout.activity_profile_edit2);
+        getSupportActionBar().setTitle("Ubah Password");
         Intent i = getIntent();
         Bundle data = i.getExtras();
-        nameEdt = (EditText) findViewById(R.id.name_txt);
-        noHPEdt = (EditText) findViewById(R.id.phone_txt);
         passEdt = (EditText) findViewById(R.id.password_txt);
-        emailEdt = (EditText) findViewById(R.id.email_txt);
         Button kembali = (Button) findViewById(R.id.back_btn);
         final Button update = (Button) findViewById(R.id.updt_btn);
         kembali.setOnClickListener(new View.OnClickListener() {
@@ -68,27 +65,14 @@ public class ProfileEditActivity extends AppCompatActivity {
                 update();
             }
         });
-        nameEdt.setText(data.getString("nama"));
-        emailEdt.setText(data.getString("email"));
-        noHPEdt.setText(data.getString("noHp"));
-        
+        name = data.getString("nama");
+        email = data.getString("email");
+        noHP = data.getString("noHp");
+
     }
 
     private void update() {
-        name = nameEdt.getText().toString();
-        noHP = noHPEdt.getText().toString();
-        email = emailEdt.getText().toString();
         password = passEdt.getText().toString();
-
-        if (name.isEmpty() || email.isEmpty() || noHP.isEmpty()) {
-            Toast.makeText(ProfileEditActivity.this, "Nama, Email, dan No. Hp harus dalam keadaan terisi", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (!C.isValidEmail(email)) {
-            Toast.makeText(ProfileEditActivity.this, "Email tidak valid", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Konfirmasi perubahan");
@@ -134,8 +118,6 @@ public class ProfileEditActivity extends AppCompatActivity {
                     hasil = new JSONObject(response);
                     int status = hasil.getInt("status");
                     if (status == 1) {
-                        PreferencesManager.getInstance(ProfileEditActivity.this).setName(name);
-                        PreferencesManager.getInstance(ProfileEditActivity.this).setEmail(email);
                         builder.show();
                     } else {
                         Toast.makeText(ProfileEditActivity.this, "Email sudah terdaftar, silahkan coba kembali", Toast.LENGTH_SHORT).show();
