@@ -1,9 +1,10 @@
 package ppl.b08.warunglaundry.view.penyedia;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +19,6 @@ import ppl.b08.warunglaundry.business.PreferencesManager;
 
 /**
  * Created by Andi Fajar on 07/04/2016.
- * Fixed it by M Riskyt on 27/05/2016
  */
 public class HomeActivity extends AppCompatActivity {
 
@@ -32,36 +32,31 @@ public class HomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//Initializing NavigationView
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        View header = navigationView.inflateHeaderView(R.layout.header_provider_drawer);
-        ImageView image2 = (ImageView) header.findViewById(R.id.profile_image);
-        image2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //testing
-                //Toast.makeText(HomeActivity.this,
-                //      "The favorite list would appear on clicking this icon",
-                //    Toast.LENGTH_LONG).show();
-                Intent intent2 = new Intent(HomeActivity.this, ppl.b08.warunglaundry.view.penyedia.ProfileActivity.class);
-                startActivity(intent2);
-            }
-        });
-        TextView text1 = (TextView) header.findViewById(R.id.name_txt);
-        //text1.setText("Aishy");
-        TextView text = (TextView) header.findViewById(R.id.email_txt);
-        //text.setText("ais@gmail.com");
 
-        text1.setText(PreferencesManager.getInstance(HomeActivity.this).getName());
-
-        //TextView text = (TextView) header.findViewById(R.id.email_txt);
-        text.setText(PreferencesManager.getInstance(HomeActivity.this).getEmail());
         //Initializing NavigationView
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         OrderFragment fragment = new OrderFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
+
+        View header = navigationView.inflateHeaderView(R.layout.header_provider_drawer);
+        TextView name = (TextView) header.findViewById(R.id.name_txt);
+        TextView email = (TextView) header.findViewById(R.id.email_txt);
+        ImageView rolePic = (ImageView) header.findViewById(R.id.profile_image) ;
+
+        String nameStr = PreferencesManager.getInstance(this).getName();
+        String emailStr = PreferencesManager.getInstance(this).getEmail();
+        name.setText(nameStr);
+        email.setText(emailStr);
+        rolePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -136,8 +131,6 @@ public class HomeActivity extends AppCompatActivity {
 
         //calling sync state is necessay or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-
-
 
     }
 }

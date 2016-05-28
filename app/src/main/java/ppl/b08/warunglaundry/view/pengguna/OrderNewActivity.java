@@ -130,15 +130,6 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
                 return a;
             }
         };
-
-//        hashLaundry.put("Sejahtera Laundry", new LProvider(1,-6.35628,106.83539,"Sejahtera Laundry",6000));
-//        hashLaundry.put("Clean Laundry", new LProvider(1,-6.36055,106.83329,"Clean Laundry",6500));
-//        hashLaundry.put("Aishy Laundry", new LProvider(1,-6.35897,106.82355,"Aishy Laundry",7000));
-//        hashLaundry.put("Miku Laundry", new LProvider(1,-6.35210,106.83303,"Miku Laundry",5000));
-//        hashLaundry.put("Wayang Laundry", new LProvider(1,-6.34835,106.82955,"Wayang Laundry",9000));
-//
-//        getMyLocation();
-
         VolleySingleton.getInstance(this).addToRequestQueue(req);
     }
 

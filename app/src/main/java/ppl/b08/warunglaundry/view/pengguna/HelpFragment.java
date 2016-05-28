@@ -9,11 +9,8 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 import ppl.b08.warunglaundry.R;
-/**
- * Created Activity By and Fixed Layout M Risky on 22/05/2016
- * Created Webview by Putu Wira and Bayu Rahman
- *
- * */
+import ppl.b08.warunglaundry.business.C;
+
 /**
  * A simple {@link Fragment} subclass.
  */

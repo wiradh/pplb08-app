@@ -33,10 +33,12 @@ public class PasswordEditActivity extends AppCompatActivity {
     private EditText noHPEdt;
     private EditText emailEdt;
     private EditText passEdt;
+    private EditText rePassEdt;
     String name;
     String noHP;
     String email;
     String password;
+    String repassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class PasswordEditActivity extends AppCompatActivity {
         Intent i = getIntent();
         Bundle data = i.getExtras();
         passEdt = (EditText) findViewById(R.id.password_txt);
+        rePassEdt = (EditText) findViewById(R.id.repassword_txt);
         Button kembali = (Button) findViewById(R.id.back_btn);
         final Button update = (Button) findViewById(R.id.updt_btn);
         kembali.setOnClickListener(new View.OnClickListener() {
@@ -68,11 +71,18 @@ public class PasswordEditActivity extends AppCompatActivity {
 
     private void update() {
         password = passEdt.getText().toString();
+        repassword = rePassEdt.getText().toString();
 
-        if (password.isEmpty()) {
-            Toast.makeText(PasswordEditActivity.this, "Password harus dalam keadaan terisi", Toast.LENGTH_SHORT).show();
+        if (password.isEmpty() || repassword.isEmpty()) {
+            Toast.makeText(PasswordEditActivity.this, "Semua data harus dalam keadaan terisi", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (!password.equals(repassword)) {
+            Toast.makeText(PasswordEditActivity.this, "Password tidak sesuai", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Konfirmasi perubahan");
         String message = "Apakah anda yakin ingin melakukan perubahan ini?";
