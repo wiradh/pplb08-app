@@ -6,5 +6,5 @@ Mobile app repository. Fast, nice, beautiful android apps. Build natively with j
 #### Main Contributor : 
 
 1. Andi Fajar Nur Ismail (1306381894)
-2. ... (tulis sendiri ya)
-3. ...
+2. Bimo Prasetyo Sigit (1106087673)
+3. M. Risky Negoro Putro
