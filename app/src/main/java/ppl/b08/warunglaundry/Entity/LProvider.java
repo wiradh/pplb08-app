@@ -6,6 +6,7 @@ import ppl.b08.warunglaundry.business.C;
 
 /**
  * Created by Andi Fajar on 30/04/2016.
+ * Model for Laundry Provider
  */
 @SuppressWarnings("serial")
 public class LProvider implements Serializable{

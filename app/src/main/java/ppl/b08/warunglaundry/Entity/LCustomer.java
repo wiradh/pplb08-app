@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by Andi Fajar on 30/04/2016.
+ * Model for laundry customer
  */
 public class LCustomer implements Serializable {
 

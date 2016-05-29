@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Created by Andi Fajar on 01/05/2016.
+ * Model for Order
  */
 public class Order implements Serializable{
     private long id;
