@@ -35,6 +35,7 @@ import ppl.b08.warunglaundry.business.VolleySingleton;
 
 /**
  * Created by Andi Fajar on 29/04/2016.
+ * Updated by Bimo Prasetyo
  * View for Current Order
  */
 public class CurrentOrderDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -42,9 +43,7 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
 
     private GoogleMap mMap;
     SupportMapFragment mapFragment;
-    LatLng myLoc;
     static final float zoom = 15;
-    long orderId;
     Order order;
 
     @Override

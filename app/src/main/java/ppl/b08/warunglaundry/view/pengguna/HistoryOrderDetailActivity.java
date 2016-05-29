@@ -19,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,13 +31,15 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ * Updated by Bimo Prasetyo
+ * View for Order Detail in History
+ */
 public class HistoryOrderDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     SupportMapFragment mapFragment;
-    LatLng myLoc;
     static final float zoom = 15;
-    long orderId;
     Order order;
 
     @Override
@@ -64,38 +67,45 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     }
 
     public void getOrder() {
-        // request created
-        String url = C.HOME_URL + "/getDetails";
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        // create request
+        String url = C.HOME_URL+"/getLaundry";
+        StringRequest req = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject ob = new JSONObject(response);
-                    ob = ob.getJSONObject("user");
-                    String no = ob.getString("nomor_hp");
-                    gantiNoHP(no);
+                    JSONObject hasil = new JSONObject(response);
+
+                    JSONArray arr = hasil.getJSONArray("laundry");
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject laundry = (JSONObject) arr.get(i);
+                        if (order.getNamaProvider().equals(laundry.getString("nama"))){
+                            EditText phoneTxt = (EditText) findViewById(R.id.phone_txt);
+                            phoneTxt.setText(laundry.getString("telepon"));
+                            return;
+                        }
+                    }
                 } catch (JSONException e) {
-                    Toast.makeText(HistoryOrderDetailActivity.this, C.KONEKSI_GAGAL, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HistoryOrderDetailActivity.this, "Kesalahan jaringan, silahkan coba lagi", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HistoryOrderDetailActivity.this, C.KONEKSI_GAGAL, Toast.LENGTH_SHORT).show();
+                Toast.makeText(HistoryOrderDetailActivity.this, "Kesalahan jaringan, silahkan coba lagi", Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> a = new HashMap<>();
-                a.put("token", PreferencesManager.getInstance(HistoryOrderDetailActivity.this).getToken());
-                a.put("id", order.getIdProvider()+"");
+                HashMap<String, String> a = new HashMap<>();
+                a.put("lattitude", "0");
+                a.put("longitude", "1");
                 return a;
             }
         };
-        // sent request
-        VolleySingleton.getInstance(this).addToRequestQueue(request);
+        // send request
+        VolleySingleton.getInstance(this).addToRequestQueue(req);
 
         // inflate every view
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
@@ -117,12 +127,4 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
 
     }
 
-    /**
-     * Change no HP
-     * @param no
-     */
-    private void gantiNoHP(String no) {
-        EditText phoneTxt = (EditText) findViewById(R.id.phone_txt);
-        phoneTxt.setText(no);
-    }
 }

@@ -38,6 +38,7 @@ import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
 /**
  * Created by Andi Fajar and Tegar
+ * Updated by Bimo Prasetyo
  */
 public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapReadyCallback {
 

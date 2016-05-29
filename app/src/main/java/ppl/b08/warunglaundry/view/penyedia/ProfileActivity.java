@@ -25,7 +25,9 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Bimo Prasetyo & M. Risky Negoro Putro
+ */
 public class ProfileActivity extends AppCompatActivity {
     String id;
     String nama;

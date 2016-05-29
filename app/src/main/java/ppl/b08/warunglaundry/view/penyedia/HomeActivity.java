@@ -19,6 +19,7 @@ import ppl.b08.warunglaundry.business.PreferencesManager;
 
 /**
  * Created by Andi Fajar on 07/04/2016.
+ * Updated by Bimo Prasetyo & M. Risky Negoro Putro
  */
 public class HomeActivity extends AppCompatActivity {
 

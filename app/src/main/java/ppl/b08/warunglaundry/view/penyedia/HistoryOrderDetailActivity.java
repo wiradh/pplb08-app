@@ -34,6 +34,7 @@ import ppl.b08.warunglaundry.business.VolleySingleton;
 /**
  * Created by Andi Fajar on 29/04/2016.
  * contributor tegar
+ * Updated by Bimo Prasetyo
  */
 public class HistoryOrderDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -90,8 +91,8 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
         String message = order.getBerat()==0?"-":String.format("%.02f", order.getBerat())+" kg";
         berat.setText(message);
         double harga = order.getHargaTotal();
-        hargaSatuan.setText(String.format("%.02f", harga));
-        hargaTxt.setText(String.format("%.02f", harga*order.getBerat()));
+        hargaSatuan.setText(String.format("%.02f", harga/order.getBerat()));
+        hargaTxt.setText(String.format("%.02f", harga));
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
             @Override
