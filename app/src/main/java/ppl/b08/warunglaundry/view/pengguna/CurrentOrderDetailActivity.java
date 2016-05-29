@@ -20,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,42 +69,46 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
     }
 
     public void getOrder() {
-       // order = new Order(orderId, 1, "Aishy Laundry", 0, 0,"08996222482", -6.3656374,106.8409036, "Rumah warna kuning, pager hijau nomer 41");
-      //  double harga = 7000;
-        String url = C.HOME_URL + "/getDetails";
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        String url = C.HOME_URL+"/getLaundry";
+        StringRequest req = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject ob = new JSONObject(response);
-                    ob = ob.getJSONObject("user");
-                    String no = ob.getString("nomor_hp");
-                    gantiNoHP(no);
+                    JSONObject hasil = new JSONObject(response);
+
+                    JSONArray arr = hasil.getJSONArray("laundry");
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject laundry = (JSONObject) arr.get(i);
+                        if (order.getNamaProvider().equals(laundry.getString("nama"))){
+                            EditText phoneTxt = (EditText) findViewById(R.id.phone_txt);
+                            phoneTxt.setText(laundry.getString("telepon"));
+                            return;
+                        }
+                    }
                 } catch (JSONException e) {
-                    Toast.makeText(CurrentOrderDetailActivity.this, C.KONEKSI_GAGAL, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CurrentOrderDetailActivity.this, "Kesalahan jaringan, silahkan coba lagi", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(CurrentOrderDetailActivity.this, C.KONEKSI_GAGAL, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CurrentOrderDetailActivity.this, "Kesalahan jaringan, silahkan coba lagi", Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> a = new HashMap<>();
-                a.put("token", PreferencesManager.getInstance(CurrentOrderDetailActivity.this).getToken());
-                a.put("id", order.getIdProvider()+"");
+                HashMap<String, String> a = new HashMap<>();
+                a.put("lattitude", "0");
+                a.put("longitude", "1");
                 return a;
             }
         };
-        VolleySingleton.getInstance(this).addToRequestQueue(request);
+        VolleySingleton.getInstance(this).addToRequestQueue(req);
 
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
         TextView status = (TextView) findViewById(R.id.status_txt);
-
 
         EditText detil = (EditText) findViewById(R.id.detil_txt);
         EditText berat = (EditText) findViewById(R.id.berat_txt);
@@ -123,8 +128,4 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
         hargaTxt.setText(String.format("%.02f", order.getHargaTotal()));
     }
 
-    private void gantiNoHP(String ho) {
-        EditText phoneTxt = (EditText) findViewById(R.id.phone_txt);
-        phoneTxt.setText(ho);
-    }
 }

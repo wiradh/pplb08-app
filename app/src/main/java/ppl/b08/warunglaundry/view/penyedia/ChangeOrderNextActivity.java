@@ -97,8 +97,8 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
         String message = order.getBerat()==0?"-":String.format("%.02f", order.getBerat())+" kg";
         berat.setText(message);
         double harga = order.getHargaTotal();
-        hargaSatuan.setText(String.format("%.02f", harga));
-        hargaTxt.setText(String.format("%.02f", harga*order.getBerat()));
+        hargaSatuan.setText(String.format("%.02f", harga/order.getBerat()));
+        hargaTxt.setText(String.format("%.02f", harga));
         String url = C.HOME_URL + "/getDetails";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 

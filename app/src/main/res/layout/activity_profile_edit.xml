@@ -5,6 +5,114 @@
     android:layout_height="match_parent"
 
     tools:context="ppl.b08.warunglaundry.view.pengguna.ProfileEditActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/data"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_above="@id/button_panel"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Rubah Data"
+                    style="@style/Base.TextAppearance.AppCompat.Large"/>
+
+                <View android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimaryDark" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+                    <EditText
+                        android:id="@+id/email_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:hint="Email"
+                        />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/name_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:hint="Nama"
+                        />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/phone_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:inputType="phone"
+                        android:hint="No Telp"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Rubah Password"
+                    style="@style/Base.TextAppearance.AppCompat.Large"/>
+
+                <View android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorPrimaryDark" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/password_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:hint="Password Baru"
+                        />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/repassword_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:hint="Isi Ulang Password"
+                        />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,103 +137,5 @@
             android:id="@+id/updt_btn"
             android:layout_height="match_parent" />
     </LinearLayout>
-    <RelativeLayout
-        android:id="@+id/data"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_above="@id/button_panel"
-        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Rubah Data"
-                style="@style/Base.TextAppearance.AppCompat.Large"/>
-
-            <View android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-                <EditText
-                    android:id="@+id/email_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="Email"
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/name_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
-                    android:hint="Nama"
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/phone_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:inputType="phone"
-                    android:hint="No Telp"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Rubah Password"
-                style="@style/Base.TextAppearance.AppCompat.Large"/>
-
-            <View android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/colorPrimaryDark" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/password_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="Password Baru"
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/repassword_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="Isi Ulang Password"
-                    />
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
-
-    </RelativeLayout>
 </RelativeLayout>
