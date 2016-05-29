@@ -15,12 +15,18 @@ import ppl.b08.warunglaundry.R;
 
 /**
  * Created by Andi Fajar on 01/05/2016.
+ * Adapter for History Order Activity
  */
 public class HistoryOrderCAdapter extends BaseAdapter {
 
     ArrayList<Order> items;
     Context context;
 
+    /**
+     *
+     * @param items list of Order
+     * @param context running activity
+     */
     public HistoryOrderCAdapter(ArrayList<Order> items, Context context) {
         this.items = items;
         this.context = context;
@@ -48,6 +54,7 @@ public class HistoryOrderCAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_current_order, parent, false);
         }
 
+        // Inflate every sub view
         ViewHolder holder = new ViewHolder();
         holder.nama = (TextView) convertView.findViewById(R.id.nama_txt);
         holder.berat = (TextView) convertView.findViewById(R.id.berat_txt);
@@ -55,6 +62,7 @@ public class HistoryOrderCAdapter extends BaseAdapter {
         holder.id = (TextView) convertView.findViewById(R.id.id_txt);
         convertView.setTag(holder);
 
+        // Bind with order
         holder.status.setTextColor(Color.parseColor(items.get(position).getColor()));
         String message = items.get(position).getHargaTotal()==0?"Canceled":"Rp"+String.format("%.02f", items.get(position).getHargaTotal());
         holder.status.setText(message);
@@ -67,6 +75,9 @@ public class HistoryOrderCAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Sub View Holder
+     */
     static class ViewHolder {
         public TextView nama;
         public TextView id;

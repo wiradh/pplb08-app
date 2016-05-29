@@ -16,12 +16,18 @@ import ppl.b08.warunglaundry.R;
 
 /**
  * Created by Andi Fajar on 01/05/2016.
+ * Adapter for Custommer Change Order
  */
 public class CurrentOrderCAdapter extends BaseAdapter {
 
     ArrayList<Order> items;
     Context context;
 
+    /**
+     *
+     * @param items list of Order
+     * @param context running Activity
+     */
     public CurrentOrderCAdapter(ArrayList<Order> items, Context context) {
         this.items = items;
         this.context = context;
@@ -49,6 +55,7 @@ public class CurrentOrderCAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_current_order, parent, false);
         }
 
+        // Inflate every subview
         ViewHolder holder = new ViewHolder();
         holder.nama = (TextView) convertView.findViewById(R.id.nama_txt);
         holder.berat = (TextView) convertView.findViewById(R.id.berat_txt);
@@ -56,6 +63,7 @@ public class CurrentOrderCAdapter extends BaseAdapter {
         holder.id = (TextView) convertView.findViewById(R.id.id_txt);
         convertView.setTag(holder);
 
+        //Bind with Order
         holder.status.setTextColor(Color.parseColor(items.get(position).getColor()));
         holder.status.setText(items.get(position).getStatusStr());
         String berat = items.get(position).getBerat() == 0 ? "-" : String.format("%.02f", items.get(position).getBerat())+" kg";
@@ -67,6 +75,9 @@ public class CurrentOrderCAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Sub View Holder
+     */
     static class ViewHolder {
         public TextView nama;
         public TextView id;

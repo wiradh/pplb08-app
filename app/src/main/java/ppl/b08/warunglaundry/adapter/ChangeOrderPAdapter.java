@@ -15,12 +15,18 @@ import ppl.b08.warunglaundry.R;
 
 /**
  * Created by Andi Fajar on 01/05/2016.
+ * Adapter untuk change order activoty
  */
 public class ChangeOrderPAdapter extends BaseAdapter {
 
     ArrayList<Order> items;
     Context context;
 
+    /**
+     *
+     * @param items list Order
+     * @param context running activity
+     */
     public ChangeOrderPAdapter(ArrayList<Order> items, Context context) {
         this.items = items;
         this.context = context;
@@ -48,6 +54,7 @@ public class ChangeOrderPAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_current_order, parent, false);
         }
 
+        //Inflate every subview
         ViewHolder holder = new ViewHolder();
         holder.nama = (TextView) convertView.findViewById(R.id.nama_txt);
         holder.berat = (TextView) convertView.findViewById(R.id.berat_txt);
@@ -55,6 +62,7 @@ public class ChangeOrderPAdapter extends BaseAdapter {
         holder.id = (TextView) convertView.findViewById(R.id.id_txt);
         convertView.setTag(holder);
 
+        //Bind subview with data in Order
         holder.status.setTextColor(Color.parseColor(items.get(position).getColor()));
         holder.status.setText(items.get(position).getStatusStr());
         String berat = items.get(position).getBerat() == 0 ? "-" : String.format("%.02f", items.get(position).getBerat())+" kg";
@@ -66,6 +74,9 @@ public class ChangeOrderPAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Subview Holder
+     */
     static class ViewHolder {
         public TextView nama;
         public TextView id;

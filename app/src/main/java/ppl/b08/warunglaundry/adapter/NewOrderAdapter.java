@@ -14,15 +14,26 @@ import ppl.b08.warunglaundry.R;
 
 /**
  * Created by Andi Fajar on 30/04/2016.
+ * Adapter for New Order Activity
  */
 public class NewOrderAdapter extends BaseAdapter {
 
     ArrayList<LProvider> items;
     Context context;
 
+    /**
+     *
+     * @param items list of item
+     */
     public NewOrderAdapter(ArrayList<LProvider> items) {
         this.items = items;
     }
+
+    /**
+     *
+     * @param context running activity
+     * @param items list of LProvider Model
+     */
     public NewOrderAdapter(Context context, ArrayList<LProvider> items) {
         this.context = context;
         this.items =  items;
@@ -52,8 +63,7 @@ public class NewOrderAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_new_order, parent, false);
         }
 
-
-
+        // Subview inflater
         ViewHolder holder = new ViewHolder();
         holder.nama = (TextView) convertView.findViewById(R.id.nama_txt);
         holder.jarak = (TextView) convertView.findViewById(R.id.jarak_txt);
@@ -61,6 +71,7 @@ public class NewOrderAdapter extends BaseAdapter {
         holder.position = position;
         convertView.setTag(holder);
 
+        //Bind with model
         holder.nama.setText(items.get(position).getNama());
         holder.jarak.setText(String.format("%.02f", items.get(position).getJarak())+" meter");
         holder.harga.setText("Rp"+String.format("%.02f", items.get(position).getHarga()));
