@@ -84,7 +84,7 @@ public class ChangeOrderActivity extends AppCompatActivity {
                             if(!tmp2.equals("")){
                                 berat = a.getDouble("berat");
                             }
-                            if((a.getInt("status") != 5)&&(a.getInt("status") != 1)) {
+                            if((a.getInt("status") != 5)&&(a.getInt("status") != 1)&&(a.getInt("status") != 0)) {
                                 items.add(new Order(a.getLong("id"), a.getString("nama_laundry"), a.getString("nama_pelanggan"), a.getLong("id_penyedia"), a.getLong("id_pelanggan"), berat, a.getInt("status"), a.getString("jam_ambil"), a.getString("jam_antar"), harga, a.getString("detail_lokasi"), a.getDouble("latitude"), a.getDouble("longitude")));
                             }
                         }
