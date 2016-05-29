@@ -25,14 +25,16 @@ public class HelpFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_help, container, false);
-        Button newOrderBtn = (Button) v.findViewById(R.id.aboutfaq);
-        Button historyOrderBtn = (Button) v.findViewById(R.id.tutorial);
-        Button currentOrderBtn = (Button) v.findViewById(R.id.aboutus);
+        //membuat variable button untuk dapat diakses melalui layout fragment_help
+        Button faqBtn = (Button) v.findViewById(R.id.aboutfaq);
+        Button tutorialBtn = (Button) v.findViewById(R.id.tutorial);
+        Button aboutusBtn = (Button) v.findViewById(R.id.aboutus);
         //Initializing NavigationView
 
 
+//jika button ini diklik, akan memidahkan activity ke halaman faq
 
-        newOrderBtn.setOnClickListener(new View.OnClickListener() {
+        faqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), HelpFragmentFAQActivity.class);
@@ -40,16 +42,17 @@ public class HelpFragment extends android.support.v4.app.Fragment {
             // v = inflater.inflate(R.layout.fragment, container, false);
             }
         });
+//jika button ini diklik, akan memidahkan activity ke halaman tutorial
 
-        historyOrderBtn.setOnClickListener(new View.OnClickListener() {
+        tutorialBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), HelpFragmentTutorialActivity.class);
                 startActivity(intent);
             }
         });
-
-        currentOrderBtn.setOnClickListener(new View.OnClickListener() {
+//jika button ini diklik, akan memidahkan activity ke halaman aboutus
+        aboutusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), HelpFragmentWarungLaundryActivity.class);

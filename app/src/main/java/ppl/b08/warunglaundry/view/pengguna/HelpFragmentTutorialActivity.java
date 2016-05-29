@@ -14,8 +14,10 @@ public class HelpFragmentTutorialActivity extends AppCompatActivity {
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    //set halaman layout
     setContentView(R.layout.activity_help_tutorial);
     WebView browser = (WebView) findViewById(R.id.webview);
+    //akan menampilkan tampilan webview tutorial
     browser.loadUrl("http://warung-laundry.com/land/tutorial");
 }
 }

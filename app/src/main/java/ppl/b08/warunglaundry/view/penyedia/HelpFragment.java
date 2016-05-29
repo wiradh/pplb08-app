@@ -28,15 +28,17 @@ public class HelpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //set halaman layout aktifitas ini
         View v = inflater.inflate(R.layout.fragment_help, container, false);
-        Button newOrderBtn = (Button) v.findViewById(R.id.aboutfaq);
-        Button historyOrderBtn = (Button) v.findViewById(R.id.tutorial);
-        Button currentOrderBtn = (Button) v.findViewById(R.id.aboutus);
+        //memberikan definisi button berdasarkan button yang ada pada halaman layout agar bisa diakses
+        Button faqBtn = (Button) v.findViewById(R.id.aboutfaq);
+        Button tutorialBtn = (Button) v.findViewById(R.id.tutorial);
+        Button aboutusBtn = (Button) v.findViewById(R.id.aboutus);
         //Initializing NavigationView
 
 
-
-        newOrderBtn.setOnClickListener(new View.OnClickListener() {
+//jika button ini diklik, pindah ke halaman faq
+        faqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ppl.b08.warunglaundry.view.penyedia.HelpFragmentFAQActivity.class);
@@ -44,16 +46,16 @@ public class HelpFragment extends Fragment {
                 // v = inflater.inflate(R.layout.fragment, container, false);
             }
         });
-
-        historyOrderBtn.setOnClickListener(new View.OnClickListener() {
+//jika button ini diklik, pindah ke halaman tutorial
+        tutorialBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), HelpFragmentTutorialActivity.class);
                 startActivity(intent);
             }
         });
-
-        currentOrderBtn.setOnClickListener(new View.OnClickListener() {
+//jika button ini diklik, pindah ke halaman about us
+        aboutusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), HelpFragmentWarungLaundryActivity.class);

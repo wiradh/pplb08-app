@@ -14,8 +14,10 @@ public class HelpFragmentWarungLaundryActivity extends AppCompatActivity {
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    //set halaman layout
     setContentView(R.layout.activity_help_aboutwarunglaundry);
     WebView browser = (WebView) findViewById(R.id.webview);
+    //akan menampilkan tampilan web aboutus
     browser.loadUrl("http://warung-laundry.com/land/#");
 }
 }
