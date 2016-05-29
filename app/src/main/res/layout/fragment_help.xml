@@ -4,10 +4,41 @@
     android:layout_height="match_parent"
     tools:context="ppl.b08.warunglaundry.view.pengguna.HelpFragment">
 
-    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/webview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        />
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="250dp"
+        android:layout_height="match_parent">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="F.A.Q"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#FFF"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/aboutfaq"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Tutorial"
+            android:textColor="#FFF"
+            android:background="@color/colorPrimaryDark"
+            android:id="@+id/tutorial"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FFF"
+            android:background="@color/colorPrimaryDark"
+            android:id="@+id/aboutus"/>
+
+    </LinearLayout>
 
 </FrameLayout>

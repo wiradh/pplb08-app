@@ -40,4 +40,6 @@
         android:layout_below="@+id/credit2"
         android:textSize="50dp"
         android:text="0"/>
+
+
 </RelativeLayout>

@@ -41,6 +41,30 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".view.penyedia.HelpFragmentWarungLaundryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.penyedia.HelpFragmentTutorialActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.penyedia.HelpFragmentFAQActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.pengguna.HelpFragmentWarungLaundryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.pengguna.HelpFragmentTutorialActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.pengguna.HelpFragmentFAQActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".view.penyedia.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -79,7 +103,8 @@
         <activity android:name=".view.penyedia.CreditActivity" />
         <activity android:name=".view.pengguna.ProfileEditActivity" />
         <activity android:name=".view.penyedia.PasswordEditActivity" />
-        <activity android:name=".view.pengguna.HelpActivity" />
+
+
     </application>
 
 </manifest>

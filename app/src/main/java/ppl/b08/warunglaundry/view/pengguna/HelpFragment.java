@@ -1,22 +1,19 @@
 package ppl.b08.warunglaundry.view.pengguna;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+import android.widget.Button;
 
 import ppl.b08.warunglaundry.R;
-import ppl.b08.warunglaundry.business.C;
 
 /**
- * Create by Andi Fajar
- * A simple {@link Fragment} subclass.
+ * Create by M Risky
  */
-public class HelpFragment extends Fragment {
-
+public class HelpFragment extends android.support.v4.app.Fragment {
 
     public HelpFragment() {
         // Required empty public constructor
@@ -24,13 +21,44 @@ public class HelpFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_help, container, false);
-        WebView browser = (WebView) v.findViewById(R.id.webview);
-        browser.loadUrl("http://warung-laundry.com/page/help");
+        Button newOrderBtn = (Button) v.findViewById(R.id.aboutfaq);
+        Button historyOrderBtn = (Button) v.findViewById(R.id.tutorial);
+        Button currentOrderBtn = (Button) v.findViewById(R.id.aboutus);
+        //Initializing NavigationView
+
+
+
+        newOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), HelpFragmentFAQActivity.class);
+                startActivity(intent);
+            // v = inflater.inflate(R.layout.fragment, container, false);
+            }
+        });
+
+        historyOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), HelpFragmentTutorialActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        currentOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), HelpFragmentWarungLaundryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         return v;
     }
-
 }
