@@ -18,7 +18,7 @@ public class HelpFragmentFAQActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_faq);
         WebView browser = (WebView) findViewById(R.id.webview);
-        browser.loadUrl("http://warung-laundry.com/land/#");
+        browser.loadUrl("http://warung-laundry.com/land/faq");
     }
 
 

@@ -16,6 +16,6 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_help_tutorial);
     WebView browser = (WebView) findViewById(R.id.webview);
-    browser.loadUrl("http://warung-laundry.com/land/#");
+    browser.loadUrl("http://warung-laundry.com/land/tutorial");
 }
 }
