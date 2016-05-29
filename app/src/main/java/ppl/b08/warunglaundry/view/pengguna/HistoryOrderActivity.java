@@ -56,7 +56,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
             }
         });
     }
-
+//menampilkan listview
     public void getAndSyncListView(){
         // create request
         String url = C.HOME_URL + "/getCompletedOrder";
@@ -104,6 +104,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
      * @return
      * @throws JSONException
      */
+    //menampilkan list order
     public ArrayList<Order> parseJSONArray(JSONArray arr) throws JSONException {
         ArrayList<Order> items = new ArrayList<>();
         for (int i = 0; i < arr.length(); i++) {

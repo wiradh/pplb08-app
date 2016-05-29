@@ -7,7 +7,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         View header = navigationView.inflateHeaderView(R.layout.header_customer_drawer);
         name = (TextView) header.findViewById(R.id.name_txt);
         email = (TextView) header.findViewById(R.id.email_txt);
+        //membuat header dapat diklik
         ImageView rolePic = (ImageView) header.findViewById(R.id.profile_image) ;
         updateData();
         rolePic.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.frame,fragment);
                         fragmentTransaction.commit();
                         return true;
-
+//jika button ditekan, logout aplikasi, jalankan method finish()
                     case R.id.logout:
                         if (PreferencesManager.getInstance(HomeActivity.this).clear()) {
                             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
@@ -93,6 +93,7 @@ public class HomeActivity extends AppCompatActivity {
                             finish();
                         };
                         return true;
+                    //jika button ditekan, memunculkan fragment_help
                     case R.id.help:
                         HelpFragment fragmentHelp = new HelpFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame,fragmentHelp).commit();

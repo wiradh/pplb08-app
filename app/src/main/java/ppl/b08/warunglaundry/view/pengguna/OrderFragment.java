@@ -28,10 +28,12 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_order, container, false);
+        //mendefinisikan button dengan value berdasarkan layout fragment_order
         Button newOrderBtn = (Button) v.findViewById(R.id.new_order_btn);
         Button historyOrderBtn = (Button) v.findViewById(R.id.history_order_btn);
         Button currentOrderBtn = (Button) v.findViewById(R.id.current_order_btn);
 
+        //jika button ini ditekan, akan menampilkan tampilan OrderNewActivity
         newOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +41,7 @@ public class OrderFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        //jika button ini ditekan, akan menampilkan tampilan HistoryOrderActivity
         historyOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +49,7 @@ public class OrderFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        //jika button ini ditekan, akan menampilkan tampilan CurrentOrderActivity
         currentOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

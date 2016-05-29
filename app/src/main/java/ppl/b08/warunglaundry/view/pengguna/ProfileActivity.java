@@ -2,7 +2,6 @@ package ppl.b08.warunglaundry.view.pengguna;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -43,11 +42,14 @@ public class ProfileActivity extends AppCompatActivity {
         Button kembali = (Button) findViewById(R.id.back_btn);
         getData();
 
+        //jika button ini ditekan, akan kembali ke home
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {finish();
             }
         });
+        //jika button ini ditekan, akan intent dari profileActivity ke ProfileEditActivity
+        // putExtras akan mengirimkan bundle data ke ProfileEditActivity
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +63,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+    //method ini mengembalikan id beserta nama user
+    //id berguna untuk proses data lainnya
     public void getData() {
 
         String url = C.HOME_URL+"/getData/"+PreferencesManager.getInstance(ProfileActivity.this).getToken();
@@ -86,6 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
         VolleySingleton.getInstance(this).addToRequestQueue(req);
     }
 
+    // akan mengembalikan detail user berdasarkan API getDetails
     public void getDetails() {
 
         String url = C.HOME_URL+"/getDetails";
@@ -96,6 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
                     JSONObject hasil = new JSONObject(response);
                     int status = hasil.getInt("status");
                     if (status == 1 ){
+
                     JSONObject user = hasil.getJSONObject("user");
                         namaEdt.setText(user.getString("name"));
                         noHPEdt.setText(user.getString("nomor_hp"));

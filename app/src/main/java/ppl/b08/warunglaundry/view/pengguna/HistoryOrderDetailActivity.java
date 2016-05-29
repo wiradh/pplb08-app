@@ -63,6 +63,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
 
     }
 
+    //menampilkan history order
     public void getOrder() {
         // request created
         String url = C.HOME_URL + "/getDetails";
