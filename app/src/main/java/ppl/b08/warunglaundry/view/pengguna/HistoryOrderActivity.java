@@ -28,7 +28,9 @@ import ppl.b08.warunglaundry.adapter.HistoryOrderCAdapter;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ */
 public class HistoryOrderActivity extends AppCompatActivity {
 
     ListView listView;
@@ -39,11 +41,12 @@ public class HistoryOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_order);
         getSupportActionBar().setTitle("History Order");
-
+        //inflate view
         listView = (ListView) findViewById(R.id.list);
-
+        // sync with server
         getAndSyncListView();
 
+        // set on click listerner
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -55,7 +58,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
     }
 
     public void getAndSyncListView(){
-
+        // create request
         String url = C.HOME_URL + "/getCompletedOrder";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -89,24 +92,18 @@ public class HistoryOrderActivity extends AppCompatActivity {
             }
         };
 
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
-//
-//        String[] namaLaundry = {"Sejahtera Laundry", "Clean Laundry", "Aishy Laundry", "Miku Laundry", "Wayang Laundry"};
-//        double[] harga = {6000, 6500, 7000, 5000, 9000};
-//        double[] berat = {3, 2, 4, 5, 1, 3};
-//        String[] status = {"dilaporkan", "penjemputan", "dicuci", "pengeringan", "disetrika", "pengantaran","selesai"};
-//        int[] pos1 = {0, 1, 0, 4, 3, 2};
-//        int[] pos2 = {3, 1, 2, 4, 5, 3};
-//
-//        ArrayList<Order> items = new ArrayList<>();
-//
-//        for (int i = 0; i < 6; i++) {
-//            items.add(new Order(6-i, namaLaundry[pos1[i]], 5, berat[pos2[i]], harga[pos1[i]] * berat[pos2[i]]));
-//        }
-//
-//        HistoryOrderCAdapter adapter = new HistoryOrderCAdapter(items, this);
+
         listView.setAdapter(adapter);
     }
+
+    /**
+     * Parse JSON to Model
+     * @param arr
+     * @return
+     * @throws JSONException
+     */
     public ArrayList<Order> parseJSONArray(JSONArray arr) throws JSONException {
         ArrayList<Order> items = new ArrayList<>();
         for (int i = 0; i < arr.length(); i++) {

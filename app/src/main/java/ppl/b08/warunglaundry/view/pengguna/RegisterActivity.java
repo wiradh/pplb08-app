@@ -48,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        // inflate every view
         namaEdt = (EditText) findViewById(R.id.name_txt);
         emailEdt = (EditText) findViewById(R.id.email_txt);
         passwordEdt = (EditText) findViewById(R.id.password_txt);
@@ -67,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private void register() {
-
+        // get text string
         final String name = namaEdt.getText().toString();
         final String email = emailEdt.getText().toString();
         final String pasword = passwordEdt.getText().toString();
@@ -95,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(RegisterActivity.this, "Silahkan centang bahwa data yang dimasukkan telah benar", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        // create request
         String url = C.HOME_URL + "/register";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -139,8 +140,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         };
 
-        //TODO dummy
 
+        // sent request
      VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

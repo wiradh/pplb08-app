@@ -28,7 +28,9 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ */
 public class OrderNewProfileActivity extends AppCompatActivity {
 
     TextView namaTxt;
@@ -52,9 +54,9 @@ public class OrderNewProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_new_profile);
         getSupportActionBar().setTitle("Detil Laundry");
 
+        // inflate every subview
         Button kembali = (Button) findViewById(R.id.back_btn);
         final Button pesan = (Button) findViewById(R.id.pesan_btn);
-
         namaTxt = (TextView) findViewById(R.id.nama_txt);
         lastLoginTxt = (TextView) findViewById(R.id.last_login_txt);
         alamatTxt = (EditText) findViewById(R.id.alamat_txt);
@@ -65,6 +67,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
         ratingTxt = (EditText) findViewById(R.id.rating_txt);
         detilTxt = (EditText) findViewById(R.id.detil_alamat_txt);
 
+        // get alamat from local database
         String detilAlamat = PreferencesManager.getInstance(this).getAlamatValue();
         if (!detilAlamat.isEmpty()) detilTxt.setText(detilAlamat);
 
@@ -80,6 +83,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
         }
 
         if (model == null) finish();
+        // sync data with server
         getAndSyncData();
 
 
@@ -99,19 +103,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
     }
 
     public void getAndSyncData() {
-//        "id": 2,
-//                "nama": "Sejahtera Laundry",
-//                "detail": "Laundry Bersih Sekali",
-//                "harga": "6000",
-//                "alamat": "Sekitar UI",
-//                "rate": "",
-//                "jangkauan": "3000",
-//                "longitude": "106.83539",
-//                "lattitude": "-6.35628",
-//                "telepon": "08123131",
-//                "last_login": "",
-//                "created_at": "2016-05-04 00:00:00",
-//                "updated_at": "2016-05-26 00:00:00"
+        // bind with our model
         namaTxt.setText(model.getNama());
         lastLoginTxt.setText("Last login : "+model.getLastLogin());
         alamatTxt.setText(model.getAlamat());
@@ -127,7 +119,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
             Toast.makeText(OrderNewProfileActivity.this, "Isi detil alamat penjemputan terlebih dahulu", Toast.LENGTH_SHORT).show();
             return;
         }
-        //TODO
+        // finish the allert dialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Memesan Jasa Laundry ini?");
         String message = "Nama : " + model.getNama() + "\nHarga per kg : Rp"+String.format("%.02f", model.getHarga())
@@ -166,7 +158,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
 
             }
         });
-
+        // create requset
         String url = C.HOME_URL+"/order";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -206,6 +198,7 @@ public class OrderNewProfileActivity extends AppCompatActivity {
                 return a;
             }
         };
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 

@@ -46,7 +46,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
-
+        // get information from previus intent
         order = (Order) getIntent().getSerializableExtra(C.KEY_ORDER);
         if (order == null) finish();
         mapFragment.getMapAsync(this);
@@ -56,7 +56,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         getOrder();
-
+        // set GMaps marker
         LatLng place = new LatLng(order.getLat(),order.getLng());
         mMap.addMarker(new MarkerOptions().position(place).title(order.getNamaCustomer()).snippet("Lokasi penyedia laundry").flat(true));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place, zoom));
@@ -64,8 +64,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     }
 
     public void getOrder() {
-//        order = new Order(orderId, 1, "Aishy Laundry", 5, 4,"08996222482", -6.3656374,106.8409036, "Rumah warna kuning, pager hijau nomer 41");
-//        double harga = 7000;
+        // request created
         String url = C.HOME_URL + "/getDetails";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -95,17 +94,17 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
                 return a;
             }
         };
-
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
 
+        // inflate every view
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
         TextView status = (TextView) findViewById(R.id.status_txt);
-
         EditText detil = (EditText) findViewById(R.id.detil_txt);
         EditText berat = (EditText) findViewById(R.id.berat_txt);
         EditText hargaSatuan = (EditText) findViewById(R.id.harga_satuan_txt);
         EditText hargaTxt = (EditText) findViewById(R.id.harga_txt);
-
+        // bind view
         namaTxt.setText(order.getNamaProvider());
         detil.setText(order.getDetilLokasi());
         status.setText("Status : "+order.getStatusStr());
@@ -113,14 +112,16 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
         String message = order.getBerat()==0?"-":String.format("%.02f", order.getBerat())+" kg";
         berat.setText(message);
         double tmp = order.getBerat()==0? 0 : order.getHargaTotal()/order.getBerat();
-
         hargaSatuan.setText(String.format("%.02f", tmp));
         hargaTxt.setText(String.format("%.02f", order.getHargaTotal()));
 
     }
 
+    /**
+     * Change no HP
+     * @param no
+     */
     private void gantiNoHP(String no) {
-
         EditText phoneTxt = (EditText) findViewById(R.id.phone_txt);
         phoneTxt.setText(no);
     }

@@ -28,7 +28,10 @@ import ppl.b08.warunglaundry.adapter.CurrentOrderCAdapter;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ * View for current order
+ */
 public class CurrentOrderActivity extends AppCompatActivity {
 
     ListView listView;
@@ -41,8 +44,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Current Order");
         listView = (ListView) findViewById(R.id.list);
 
+        //sync view with server
         getAndSyncListView();
 
+        //set list view on click
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -54,7 +59,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
     }
 
     public void getAndSyncListView() {
-
+        // create a request
         String url = C.HOME_URL+"/getActiveOrder";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -91,32 +96,18 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 return a;
             }
         };
-//
-//        String[] namaLaundry = {"Sejahtera Laundry", "Clean Laundry", "Aishy Laundry", "Miku Laundry", "Wayang Laundry"};
-//        double[] harga = {6000, 6500, 7000, 5000, 9000};
-//        double[] berat = {0, 4, 3, 2, 0, 2};
-//        String[] status = {"pending", "canceled", "accepted", "on-going", "done", "complete"};
-//        int[] pos1 = {0, 1, 0, 4, 3, 2};
-//        int[] pos2 = {0, 4, 4, 3, 2, 3};
-//
-//        ArrayList<Order> items = new ArrayList<>();
-//
-//        items.add(new Order(6, "Aishy Laundry", 0, 0));
-//        for (int i = 1; i < 7; i++) {
-//            items.add(new Order(6-i, namaLaundry[pos1[i-1]], pos2[i-1], berat[i-1]));
-//        }
-//
-//         adapter = new CurrentOrderCAdapter(items, this);
+
+        //send request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
-//
-//        hashLaundry.put("Sejahtera Laundry", new LProvider(1,-6.35628,106.83539,"Sejahtera Laundry",6000));
-//        hashLaundry.put("Clean Laundry", new LProvider(1,-6.36055,106.83329,"Clean Laundry",6500));
-//        hashLaundry.put("Aishy Laundry", new LProvider(1,-6.35897,106.82355,"Aishy Laundry",7000));
-//        hashLaundry.put("Miku Laundry", new LProvider(1,-6.35210,106.83303,"Miku Laundry",5000));
-//        hashLaundry.put("Wayang Laundry", new LProvider(1,-6.34835,106.82955,"Wayang Laundry",9000));
 
     }
 
+    /**
+     * parse JSON to my model
+     * @param arr
+     * @return
+     * @throws JSONException
+     */
     public ArrayList<Order> parseJSONArray(JSONArray arr) throws JSONException {
         ArrayList<Order> items = new ArrayList<>();
         for (int i = 0; i < arr.length(); i++) {

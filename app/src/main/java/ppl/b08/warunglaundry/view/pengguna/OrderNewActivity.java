@@ -51,7 +51,7 @@ import ppl.b08.warunglaundry.business.MyLocation;
 import ppl.b08.warunglaundry.business.VolleySingleton;
 
 /**
- *
+ * Created by Andi Fajar on 29/04/2016.
  */
 public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -84,7 +84,7 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     public void getListLaundry() {
-
+        // create request
         String url = C.HOME_URL+"/getLaundry";
         StringRequest req = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -130,6 +130,7 @@ public class OrderNewActivity extends AppCompatActivity implements OnMapReadyCal
                 return a;
             }
         };
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(req);
     }
 

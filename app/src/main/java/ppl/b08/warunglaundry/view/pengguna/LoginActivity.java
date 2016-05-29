@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Get saved token in local database
         PreferencesManager manager = PreferencesManager.getInstance(this);
      //   Log.e("tojen", "onCreate: " + manager.getToken());
         if (manager.getToken() != null && !manager.getToken().isEmpty()) {
@@ -54,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
+        // inflate
         emailEt = (EditText) findViewById(R.id.email_txt);
         paswordEt = (EditText) findViewById(R.id.password_txt);
         Button registerBtn = (Button) findViewById(R.id.register);
@@ -97,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Password wajib diisi", Toast.LENGTH_SHORT).show();
             return;
         }
+        // create request
         String url = C.HOME_URL + "/login";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -146,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
+        // send request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

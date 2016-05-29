@@ -33,6 +33,10 @@ import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
 
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ * View for Current Order
+ */
 public class CurrentOrderDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
 
@@ -48,10 +52,12 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_order_detail);
 
+        // get map fragment
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
 
+        // get order from previus intent
         order = (Order) getIntent().getSerializableExtra(C.KEY_ORDER);
         if (order == null) finish();
         mapFragment.getMapAsync(this);
@@ -61,7 +67,7 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         getOrder();
-
+        // set marker
         LatLng place = new LatLng(order.getLat(),order.getLng());
         mMap.addMarker(new MarkerOptions().position(place).title(order.getNamaProvider()).snippet("Lokasi penyedia laundry").flat(true));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place, zoom));
@@ -69,6 +75,7 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
     }
 
     public void getOrder() {
+        // create request
         String url = C.HOME_URL+"/getLaundry";
         StringRequest req = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -105,25 +112,25 @@ public class CurrentOrderDetailActivity extends AppCompatActivity implements OnM
                 return a;
             }
         };
+        // send request
         VolleySingleton.getInstance(this).addToRequestQueue(req);
 
+        // inflate view
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
         TextView status = (TextView) findViewById(R.id.status_txt);
-
         EditText detil = (EditText) findViewById(R.id.detil_txt);
         EditText berat = (EditText) findViewById(R.id.berat_txt);
         EditText hargaSatuan = (EditText) findViewById(R.id.harga_satuan_txt);
         EditText hargaTxt = (EditText) findViewById(R.id.harga_txt);
 
+        // bind view
         namaTxt.setText(order.getNamaProvider());
-
         detil.setText(order.getDetilLokasi());
         status.setText("Status : "+order.getStatusStr());
         status.setTextColor(Color.parseColor(order.getColor()));
         String message = order.getBerat()==0?"-":String.format("%.02f", order.getBerat())+" kg";
         berat.setText(message);
         double tmp = order.getBerat()==0? 0 : order.getHargaTotal()/order.getBerat();
-
         hargaSatuan.setText(String.format("%.02f", tmp));
         hargaTxt.setText(String.format("%.02f", order.getHargaTotal()));
     }

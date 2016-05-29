@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 import ppl.b08.warunglaundry.R;
 
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ * View for Credits
+ */
 public class CreditActivity extends AppCompatActivity {
 
     @Override

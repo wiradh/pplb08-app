@@ -12,6 +12,7 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 
 /**
+ * Create by Andi Fajar
  * A simple {@link Fragment} subclass.
  */
 public class HelpFragment extends Fragment {
