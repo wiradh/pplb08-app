@@ -46,6 +46,10 @@ public class PreferencesManager {
         return instance;
     }
 
+    /**
+     *
+     * @param thePreferences current preseference
+     */
     private static void checkPreferences(SharedPreferences thePreferences) {
         final double oldVersion = thePreferences.getInt(KEY_PREFERENCES_VERSION, 1);
         int currentVersion = BuildConfig.VERSION_CODE;

@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 
 /**
  * Created by Andi Fajar on 29/04/2016.
+ * Get My Current Locatioin
  */
 public class MyLocation {
     Timer timer1;

@@ -20,6 +20,11 @@ public class C {
     public static final String KEY_LAT = "LAT";
     public static final String KONEKSI_GAGAL = "Kesalahan jaringan, silahkan coba lagi";
 
+    /**
+     *
+     * @param target target string
+     * @return true if valid email
+     */
     public final static boolean isValidEmail(CharSequence target) {
         if (TextUtils.isEmpty(target)) {
             return false;
@@ -28,6 +33,14 @@ public class C {
         }
     }
 
+    /**
+     * Calculate distance
+     * @param lat1 latitide 1
+     * @param lng1 longitude 1
+     * @param lat2 latitude 2
+     * @param lng2 longitude 2
+     * @return distance in metre
+     */
     public static double distFrom(double lat1, double lng1, double lat2, double lng2) {
         double earthRadius = 6371000; //meters
         double dLat = Math.toRadians(lat2-lat1);
@@ -41,6 +54,11 @@ public class C {
         return dist;
     }
 
+    /**
+     * Check device is online
+     * @param context running activity
+     * @return true if online
+     */
     public static boolean isOnline(Context context) {
 
         ConnectivityManager cm =
