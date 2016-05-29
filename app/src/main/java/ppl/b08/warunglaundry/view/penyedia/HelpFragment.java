@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import ppl.b08.warunglaundry.R;
 
 /**
+ * Create by Andi
  * A simple {@link Fragment} subclass.
  */
 public class HelpFragment extends Fragment {

@@ -25,11 +25,13 @@ public class OrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // inflate view
         View v = inflater.inflate(R.layout.fragment_order2, container, false);
         Button checkOrderBtn = (Button) v.findViewById(R.id.check_order_btn);
         Button historyOrderBtn = (Button) v.findViewById(R.id.history_order_btn);
         Button changeOrderStatusBtn = (Button) v.findViewById(R.id.change_status_btn);
 
+        // set listener
         checkOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +39,7 @@ public class OrderFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        // set listener
         historyOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +47,7 @@ public class OrderFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        // set listener
         changeOrderStatusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -31,7 +31,10 @@ import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
 import ppl.b08.warunglaundry.view.pengguna.*;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ * contributor Tegar
+ */
 public class HistoryOrderActivity extends AppCompatActivity {
 
     ListView listView;
@@ -41,9 +44,9 @@ public class HistoryOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_order2);
         getSupportActionBar().setTitle("History Order");
-
+        // inflate view
         listView = (ListView) findViewById(R.id.list);
-
+        // set listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -53,11 +56,12 @@ public class HistoryOrderActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        // sync from server
         getAndSyncListView();
     }
 
     public void getAndSyncListView(){
+        // create request
         String url = C.HOME_URL + "/getCompletedOrderByPenyedia";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -128,6 +132,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
                 return input;
             }
         };
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
 //        String[] namaPemesan = {"Bear ruang", "Wira DH", "Abdul Soclin", "Downy Wangkito", "Bang Kohir"};
 //        double harga = 6000;

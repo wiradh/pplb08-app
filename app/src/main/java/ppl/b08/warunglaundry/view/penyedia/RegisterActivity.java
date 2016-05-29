@@ -24,7 +24,9 @@ import java.util.Map;
 import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
@@ -41,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
-
+        // inflate view
         namaEdt = (EditText) findViewById(R.id.name_txt);
         emailEdt = (EditText) findViewById(R.id.email_txt);
         passwordEdt = (EditText) findViewById(R.id.password_txt);
@@ -142,7 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         };
 
-        //TODO dummy
+        //sent request
         Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();

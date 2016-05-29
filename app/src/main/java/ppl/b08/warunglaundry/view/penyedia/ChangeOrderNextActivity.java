@@ -36,7 +36,9 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar and Tegar
+ */
 public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -51,7 +53,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_order_next);
-
+        // get map fragmant
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         final Button ubah = (Button) findViewById(R.id.ubah_btn);
@@ -63,6 +65,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
             }
         });
 
+        // get Order from previus activity
         order = (Order) getIntent().getSerializableExtra(C.KEY_ORDER);
         if (order == null) {
             Toast.makeText(ChangeOrderNextActivity.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
@@ -74,7 +77,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         getOrder();
-
+        // set marker
         LatLng place = new LatLng(order.getLat(),order.getLng());
         mMap.addMarker(new MarkerOptions().position(place).title(order.getNamaCustomer()).snippet("Lokasi customer").flat(true));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, zoom));
@@ -82,6 +85,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
     }
 
     public void getOrder() {
+        // inflate view
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
         TextView status = (TextView) findViewById(R.id.status_txt);
 
@@ -89,7 +93,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
         EditText berat = (EditText) findViewById(R.id.berat_txt);
         EditText hargaSatuan = (EditText) findViewById(R.id.harga_satuan_txt);
         EditText hargaTxt = (EditText) findViewById(R.id.harga_txt);
-
+        // bind view
         namaTxt.setText(order.getNamaCustomer());
         detil.setText(order.getDetilLokasi());
         status.setText("Status : "+order.getStatusStr());
@@ -99,6 +103,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
         double harga = order.getHargaTotal();
         hargaSatuan.setText(String.format("%.02f", harga/order.getBerat()));
         hargaTxt.setText(String.format("%.02f", harga));
+        // create request
         String url = C.HOME_URL + "/getDetails";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -135,6 +140,7 @@ public class ChangeOrderNextActivity extends AppCompatActivity implements OnMapR
                 return input;
             }
         };
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
     public void ubahNomorHP(String nomorHP){
