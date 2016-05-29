@@ -26,7 +26,9 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ */
 public class LoginActivity extends AppCompatActivity {
 
     EditText emailEt;
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-
+        // get data from local database
         PreferencesManager manager = PreferencesManager.getInstance(this);
         if (manager.getToken() != null && !manager.getToken().isEmpty()) {
             Intent intent = manager.getRoleValue().equalsIgnoreCase("CU")?
@@ -46,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
+        // inflate view
         emailEt = (EditText) findViewById(R.id.email_txt);
         paswordEt = (EditText) findViewById(R.id.password_txt);
         //Button registerBtn = (Button) findViewById(R.id.register);
@@ -99,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                     JSONObject ob = new JSONObject(response);
                     int r = ob.getInt("status");
                     if (r == 1) {
-                        //TODO Sukses
+                        //save to local database
                         if (ob.getString("role").equalsIgnoreCase("CU")) {
                             Toast.makeText(LoginActivity.this, "Anda adalah pengguna laundry silahkan login pada halaman pengguna", Toast.LENGTH_SHORT).show();
                             return;
@@ -136,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

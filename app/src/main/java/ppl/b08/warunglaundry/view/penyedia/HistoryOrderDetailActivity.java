@@ -31,7 +31,10 @@ import ppl.b08.warunglaundry.R;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ * contributor tegar
+ */
 public class HistoryOrderDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -45,11 +48,11 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_order_detail2);
-
+        // get map fragment
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
-
+        // get information from previous intent
         order = (Order) getIntent().getSerializableExtra(C.KEY_ORDER);
         if (order == null) {
             Toast.makeText(HistoryOrderDetailActivity.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
@@ -61,7 +64,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         getOrder();
-
+        // set marker
         LatLng place = new LatLng(order.getLat(),order.getLng());
         mMap.addMarker(new MarkerOptions().position(place).title(order.getNamaCustomer()).snippet("Lokasi customer").flat(true));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, zoom));
@@ -69,6 +72,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
     }
 
     public void getOrder() {
+        // create request
         String url = C.HOME_URL + "/getDetails";
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
         TextView status = (TextView) findViewById(R.id.status_txt);
@@ -123,6 +127,7 @@ public class HistoryOrderDetailActivity extends AppCompatActivity implements OnM
                 return input;
             }
         };
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
     public void ubahNomorHP(String nomorHP){

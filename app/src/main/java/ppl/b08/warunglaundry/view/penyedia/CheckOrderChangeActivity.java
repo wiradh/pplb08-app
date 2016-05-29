@@ -42,7 +42,9 @@ import ppl.b08.warunglaundry.adapter.ChangeOrderPAdapter;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar on 29/04/2016.
+ */
 public class CheckOrderChangeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -56,13 +58,13 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_order_change);
-
+        //get map fragment
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-
+        //inflate view
         Button kembali = (Button) findViewById(R.id.back_btn);
         final Button pesan = (Button) findViewById(R.id.ambil_btn);
-
+        // set listener
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +92,7 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
                 builder.show();
             }
         });
-
+        // get data from previous intent
         order = (Order) getIntent().getSerializableExtra(C.KEY_ORDER);
         if (order == null) {
             Toast.makeText(CheckOrderChangeActivity.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
@@ -103,7 +105,7 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         getOrder();
-
+        // set marker gmaps
         LatLng place = new LatLng(order.getLat(), order.getLng());
         mMap.addMarker(new MarkerOptions().position(place).title(order.getNamaCustomer()).snippet("Lokasi customer").flat(true));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, zoom));
@@ -111,6 +113,7 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
     }
 
     public void getOrder() {
+        // create request
         String url = C.HOME_URL + "/getDetails";
         TextView namaTxt = (TextView) findViewById(R.id.nama_txt);
 
@@ -150,6 +153,7 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
                 return input;
             }
         };
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
 
 
@@ -183,7 +187,7 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
 
             }
         });
-
+        // create request
         String url = C.HOME_URL+"/changeOrder";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -221,7 +225,7 @@ public class CheckOrderChangeActivity extends AppCompatActivity implements OnMap
                 return a;
             }
         };
-
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 }

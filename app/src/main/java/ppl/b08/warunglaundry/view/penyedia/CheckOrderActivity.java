@@ -30,7 +30,9 @@ import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
 import ppl.b08.warunglaundry.view.pengguna.*;
-
+/**
+ * Created by Andi Fajar and Tegar.
+ */
 public class CheckOrderActivity extends AppCompatActivity {
 
     ListView listView;
@@ -41,9 +43,9 @@ public class CheckOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_order);
         getSupportActionBar().setTitle("Check Order");
-
+        //inflate view
         listView = (ListView) findViewById(R.id.list);
-
+        // sync with server
         getAndSyncListView();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,6 +61,7 @@ public class CheckOrderActivity extends AppCompatActivity {
     }
 
     public void getAndSyncListView() {
+        // create request url
         String url = C.HOME_URL + "/getPendingOrder";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -112,7 +115,7 @@ public class CheckOrderActivity extends AppCompatActivity {
 //        String[] namaPemesan = {"Bear ruang", "Wira DH", "Abdul Soclin", "Downy Wangkito"};
 //        double harga = 6000;
 //        double[] berat = {0, 0, 0, 0};
-
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 

@@ -14,6 +14,7 @@ import ppl.b08.warunglaundry.view.pengguna.HelpFragmentTutorialActivity;
 import ppl.b08.warunglaundry.view.pengguna.HelpFragmentWarungLaundryActivity;
 
 /**
+ * Create by Andi
  * A simple {@link Fragment} subclass.
  */
 public class HelpFragment extends Fragment {

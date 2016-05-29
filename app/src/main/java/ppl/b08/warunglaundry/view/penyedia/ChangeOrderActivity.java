@@ -29,7 +29,9 @@ import ppl.b08.warunglaundry.adapter.ChangeOrderPAdapter;
 import ppl.b08.warunglaundry.business.C;
 import ppl.b08.warunglaundry.business.PreferencesManager;
 import ppl.b08.warunglaundry.business.VolleySingleton;
-
+/**
+ * Created by Andi Fajar and Tegar Aldina.
+ */
 public class ChangeOrderActivity extends AppCompatActivity {
 
     ListView listView;
@@ -43,21 +45,22 @@ public class ChangeOrderActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list);
 
+        // set listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO
                 Intent intent = new Intent(ChangeOrderActivity.this, ChangeOrderNextActivity.class);
                 intent.putExtra(C.KEY_ORDER, id);
                 intent.putExtra(C.KEY_ORDER, (Order)adapter.getItem(position));
                 startActivity(intent);
             }
         });
-
+        // sync with server
         getAndSyncListView();
     }
 
     public void getAndSyncListView() {
+        // create request
         String url = C.HOME_URL + "/getOrderByPenyedia";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -115,6 +118,7 @@ public class ChangeOrderActivity extends AppCompatActivity {
                 return input;
             }
         };
+        // sent request
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 
